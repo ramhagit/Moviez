@@ -1,11 +1,12 @@
 import React from 'react';
-import Movies from './Movies';
+import Home from './Home';
 
-const App = () => { 
-    return <>
-        <div>App</div>
-        <Movies />
-    </>;
+const App = () => {
+    return (
+        <div>
+            <Home />
+        </div>
+    );
 };
 
 export default App;

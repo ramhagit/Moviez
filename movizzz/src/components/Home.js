@@ -3,7 +3,7 @@ import { TMDBAPI } from './api';
 import { tmdbKey } from '../secrets';
 import ShowList from './ShowList';
 
-export default class Movies extends React.Component {
+export default class Home extends React.Component {
     state = {
         data: []
     }
