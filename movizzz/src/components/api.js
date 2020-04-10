@@ -8,3 +8,7 @@ export const OMDBAPI = axios.create({
 export const TMDBAPI = axios.create({
     baseURL: "https://api.themoviedb.org/3/discover/"
 })
+
+export const tmdbImage = axios.create({
+    baseURL: "https://image.tmdb.org/t/p/"
+})
