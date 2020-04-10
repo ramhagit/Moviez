@@ -1,5 +1,6 @@
 import React from 'react';
 import { TMDBAPI } from './api';
+import { tmdbKey } from '../secrets'
 
 export default class Movies extends React.Component {
     state = {
@@ -7,7 +8,7 @@ export default class Movies extends React.Component {
     }
 
     async componentDidMount() {
-        const response = await TMDBAPI.get('movie?api_key=5dc629ddd638c7ad0b2708391cad5c5b&sort_by=release_date.desc');
+        const response = await TMDBAPI.get(`movie?api_key=${tmdbKey}&language=en-US&sort_by=release_date.desc&release_date.lte=2020-01-04&vote_average.gte=5.5&with_original_language=en`);
         const data = response.data.results;
         console.log(data);
         this.setState({ data: data });
@@ -25,8 +26,8 @@ export default class Movies extends React.Component {
                     
                     return(
                     <div>
-                        <span>Title: {item.title}</span>
-                        <span>Year: {item.release_date.split('-')[0]}</span>
+                        <span>{item.title} </span>
+                        <span>{item.release_date.split('-')[0]}</span>
                         </div>
                         )
                 })}

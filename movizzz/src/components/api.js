@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { omdbKey } from '../secrets';
 
 export const OMDBAPI = axios.create({
-    baseURL: "http://www.omdbapi.com/?apikey=e91d1d1c"
+    baseURL: `http://www.omdbapi.com/?apikey=${omdbKey}`
 })
 
 export const TMDBAPI = axios.create({
