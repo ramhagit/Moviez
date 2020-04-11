@@ -1,7 +1,8 @@
 .thumb {
     position: relative;
-    height: 225px;
-    width: 150px;
+    height: 270px;
+    width: 180px;
+    margin: 25px 15px;
 }
 
 .thumb__poster {

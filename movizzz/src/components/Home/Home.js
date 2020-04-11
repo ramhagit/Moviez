@@ -1,7 +1,9 @@
 import React from 'react';
-import { TMDBAPI } from './api';
-import { tmdbKey } from '../secrets';
-import ShowList from './ShowList';
+import { TMDBAPI } from '../api';
+import { tmdbKey } from '../../secrets';
+import ShowList from '../ShowList/ShowList';
+
+import './Home.css';
 
 export default class Home extends React.Component {
     state = {
@@ -17,7 +19,9 @@ export default class Home extends React.Component {
     render() {
         const { data } = this.state;
         return (
-            <ShowList data={data} />
+            <div className="home-container">
+                <ShowList data={data} />
+            </div>
         )
     }
 }
