@@ -9,25 +9,22 @@ const ShowList = (props) => {
     const posterSize = 'w185';
 
     return (
-        <>
-            <h1>movies: </h1>
-            <div className="list-container">
-                {data.map(item => {
-                    console.log(item);
-                    const releaseYear = item.release_date.split('-')[0];
-                    const posterPath = `${baseUrl}${posterSize}${item.poster_path}`;
+        <div className="list-container">
+            {data.map(item => {
+                console.log(item);
+                const releaseYear = item.release_date.split('-')[0];
+                const posterPath = `${baseUrl}${posterSize}${item.poster_path}`;
 
-                    return (
-                        <>
-                            {/* <span>{item.title} </span> */}
-                            {/* <span>{releaseYear}</span> */}
-                            {/* {item.poster_path && <img alt={item.title} src={posterPath}/>} */}
-                            <Thumbnail name={item.title} imgSrc={posterPath} releaseYear={releaseYear} starRate={item.vote_average} />
-                        </>
-                    )
-                })}
-            </div>
-        </>
+                return (
+                    <>
+                        {/* <span>{item.title} </span> */}
+                        {/* <span>{releaseYear}</span> */}
+                        {/* {item.poster_path && <img alt={item.title} src={posterPath}/>} */}
+                        <Thumbnail name={item.title} imgSrc={posterPath} releaseYear={releaseYear} starRate={item.vote_average} />
+                    </>
+                )
+            })}
+        </div>
     )
 }
 

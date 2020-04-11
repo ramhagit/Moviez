@@ -20,6 +20,7 @@ export default class Home extends React.Component {
         const { data } = this.state;
         return (
             <div className="home-container">
+                <h1>Welcome to MOVIZZZ</h1>
                 <ShowList data={data} />
             </div>
         )
