@@ -1,34 +1,42 @@
 .thumb {
     position: relative;
-    height: 150px;
-    width: 100px;
+    height: 225px;
+    width: 150px;
 }
 
 .thumb__poster {
+    height: 100%;
+    width: 100%;
 }
 
 .thumb__year, .thumb__rate, .thumb__title {
     position: absolute;
     color: teal;
     background-color: purple;
+    font-size: large;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.thumb__year, .thumb__rate {
+    top: 5px;
+    border-radius: 5px;
+    padding: 1.5px;
 }
 
 .thumb__year {
-    top: 0;
-    left: 0;
-    width: 40px;
+    left: 5px;
 }
 
 .thumb__rate {
-    top: 0;
-    right: 0;
-    width: 35px;
+    right: 5px;
 }
 
 .thumb__title {
     bottom: 0;
     left: 0;
-    height: 20px;
+    height: 23.5px;
     width: 100%;
     overflow: hidden;
+    padding-top: 2px;
 }

@@ -5,7 +5,7 @@ import Thumbnail from './Thumbnail/Thumbnail';
 const ShowList = (props) => {
     const { data } = props;
     const baseUrl = 'https://image.tmdb.org/t/p/';
-    const posterSize = 'w92';
+    const posterSize = 'w185';
 
     return (
         <>
