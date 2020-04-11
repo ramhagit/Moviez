@@ -24,7 +24,7 @@ const Thumbnail = (props) => {
         <div className="thumb">
             <img className="thumb__poster" alt={name} src={imgSrc} />
             <span className="thumb__year">{releaseYear}</span>
-            <span className="thumb__rate">⭐ {starRate} </span>
+            <span className="thumb__rate"><p>⭐</p> {starRate} </span>
             <span className="thumb__title">{name}</span>
         </div>
     )
