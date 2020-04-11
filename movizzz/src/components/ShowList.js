@@ -1,5 +1,5 @@
 import React from 'react';
-import Thumbnail from './Thumbnail';
+import Thumbnail from './Thumbnail/Thumbnail';
 
 
 const ShowList = (props) => {
@@ -16,12 +16,12 @@ const ShowList = (props) => {
                 const posterPath = `${baseUrl}${posterSize}${item.poster_path}`;
                 
                 return (
-                    <div>
-                        <span>{item.title} </span>
-                        <span>{releaseYear}</span>
-                        {item.poster_path && <img alt={item.title} src={posterPath}/>}
-                        {/* <Thumbnail name={item.title} imgSrc={posterPath} releaseYear={releaseYear} starRate={item.vote_average}/> */}
-                    </div>
+                    <>
+                        {/* <span>{item.title} </span> */}
+                        {/* <span>{releaseYear}</span> */}
+                        {/* {item.poster_path && <img alt={item.title} src={posterPath}/>} */}
+                        <Thumbnail name={item.title} imgSrc={posterPath} releaseYear={releaseYear} starRate={item.vote_average}/>
+                    </>
                 )
             })}
         </>

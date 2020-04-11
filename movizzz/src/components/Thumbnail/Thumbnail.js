@@ -1,6 +1,8 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { tmdbImage } from './api';
+import { tmdbImage } from '../api';
+
+import './Thumbnail.css';
 
 const Thumbnail = (props) => {
     const { name, imgSrc, releaseYear, starRate } = props;
@@ -9,7 +11,7 @@ const Thumbnail = (props) => {
     //     try {
     //         const response = await tmdbImage.get(`/w92${path}`);
     //         console.log(response);
-            
+
     //         return () => {
     //             tmdbImage.CancelToken.source().cancel();
     //         }
@@ -18,8 +20,13 @@ const Thumbnail = (props) => {
     //     }
     // }, [])
 
-    return(
-        <img alt={name} src={imgSrc}/>
+    return (
+        <div className="thumb">
+            <img className="thumb__poster" alt={name} src={imgSrc} />
+            <span className="thumb__year">{releaseYear}</span>
+            <span className="thumb__rate">{starRate}</span>
+            <span className="thumb__title">{name}</span>
+        </div>
     )
 }
 

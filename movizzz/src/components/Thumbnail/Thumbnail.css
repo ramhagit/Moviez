@@ -1,0 +1,34 @@
+.thumb {
+    position: relative;
+    height: 150px;
+    width: 100px;
+}
+
+.thumb__poster {
+}
+
+.thumb__year, .thumb__rate, .thumb__title {
+    position: absolute;
+    color: teal;
+    background-color: purple;
+}
+
+.thumb__year {
+    top: 0;
+    left: 0;
+    width: 40px;
+}
+
+.thumb__rate {
+    top: 0;
+    right: 0;
+    width: 35px;
+}
+
+.thumb__title {
+    bottom: 0;
+    left: 0;
+    height: 20px;
+    width: 100%;
+    overflow: hidden;
+}
