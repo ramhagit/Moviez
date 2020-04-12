@@ -20,7 +20,7 @@ const ShowList = (props) => {
                         {/* <span>{item.title} </span> */}
                         {/* <span>{releaseYear}</span> */}
                         {/* {item.poster_path && <img alt={item.title} src={posterPath}/>} */}
-                        <Thumbnail name={item.title} imgSrc={posterPath} releaseYear={releaseYear} starRate={item.vote_average} />
+                        <Thumbnail name={item.title} imgSrc={posterPath} releaseYear={releaseYear} starRate={item.vote_average} key={item.id}/>
                     </>
                 )
             })}

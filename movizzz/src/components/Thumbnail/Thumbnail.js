@@ -5,7 +5,7 @@ import { tmdbImage } from '../api';
 import './Thumbnail.css';
 
 const Thumbnail = (props) => {
-    const { name, imgSrc, releaseYear, starRate } = props;
+    const { name, imgSrc, releaseYear, starRate, key } = props;
 
     // useEffect(async () => {
     //     try {
@@ -21,7 +21,7 @@ const Thumbnail = (props) => {
     // }, [])
 
     return (
-        <div className="thumb">
+        <div className="thumb" key={key}>
             <img className="thumb__poster" alt={name} src={imgSrc} />
             <span className="thumb__year">{releaseYear}</span>
             <span className="thumb__rate"><p>⭐</p> {starRate} </span>
