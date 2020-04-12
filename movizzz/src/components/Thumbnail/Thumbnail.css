@@ -2,7 +2,7 @@
     position: relative;
     height: 300px;
     width: 185px;
-    margin: 25px 15px;
+    margin: 25px 20px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
 }
 
@@ -31,11 +31,11 @@
 }
 
 .thumb__year {
-    left: 5px;
+    right: 5px;
 }
 
 .thumb__rate {
-    right: 5px;
+    left: 5px;
 }
 
 .thumb__title {
