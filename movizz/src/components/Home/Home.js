@@ -1,34 +1,44 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TMDBAPI } from '../../api';
 import { tmdbKey } from '../../secrets';
 import ShowList from '../ShowList/ShowList';
 
 import './Home.css';
 
-const Home = (props) => {
-    const { dataProp, setDataFunc } = props;
+const Home = () => {
+    const [data, setData] = useState([]);
+    // const { dataProp, setDataFunc } = props;
+    const nowDate = new Date();
+    const mm = nowDate.getMonth();
+    const dd = nowDate.getDate(); 
+    const releaseDateLimit = `${nowDate.getFullYear()}-${mm < 10 ? '0' + mm : mm}-${dd < 10 ? '0' + dd : dd}`;
+    console.log(releaseDateLimit);
+    
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await TMDBAPI.get(`movie?api_key=${tmdbKey}&language=en-US&sort_by=release_date.desc&release_date.lte=2020-01-04&vote_average.gte=5.5`);
-                const data = response.data.results;
-                setDataFunc(data);
-
+                const response = await TMDBAPI.get(`discover/movie?api_key=${tmdbKey}&language=en-US&region=US&sort_by=release_date.desc&release_date.lte=${releaseDateLimit}&vote_average.gte=5.5`);
+                const fetchedData = response.data.results;
+                setData(fetchedData);
+                console.log(fetchedData);
+                
                 return () => {
                     TMDBAPI.CancelToken.source().cancel();
                 }
+
             } catch (error) {
                 console.error(error);
             }
         }
         fetchData();
-    }, [setDataFunc])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <div className="home-container">
             <h2>Welcome to MOVIZZZ</h2>
-            <ShowList data={dataProp} />
+            <ShowList data={data} />
         </div>
     );
 }
