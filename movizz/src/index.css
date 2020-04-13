@@ -1,0 +1,12 @@
+@import './styles/base.css';
+@import './styles/typograghy.css';
+@import './styles/variables.css';
+
+body {
+    background: var(--background-color);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
