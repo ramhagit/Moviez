@@ -35,7 +35,11 @@
 }
 
 .thumb__rate {
+    height: 45px;
     left: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .thumb__title {

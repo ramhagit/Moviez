@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { TMDBAPI } from '../../api';
 import { tmdbKey } from '../../secrets';
+import { Link } from 'react-router-dom';
 
 const ItemDetail = (props) => {
     const [title, setTitle] = useState('');
@@ -34,6 +35,7 @@ const ItemDetail = (props) => {
             <h1>ItemDetail</h1>
             <p>title: {title}</p>
             <p>year: {year}</p>
+            <Link to='/' >Back to Homepage</Link>
         </div>
     );
 }
