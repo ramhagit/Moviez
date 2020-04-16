@@ -1,7 +1,0 @@
-@import './styles/base.css';
-@import './styles/variables.css';
-@import './styles/typography.css';
-
-body {
-    background: var(--background-color);
-}
