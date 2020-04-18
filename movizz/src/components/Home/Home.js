@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { TMDBAPI } from '../../api';
 import { tmdbKey } from '../../secrets';
 import ShowList from '../ShowList/ShowList';
+import Loader from '../../Loader';
 
 import './Home.css';
 
 const Home = () => {
     const [data, setData] = useState([]);
-    // const { dataProp, setDataFunc } = props;
+    // const [isLoading, setIsLoading] = useState(false);
     const nowDate = new Date();
     const mm = nowDate.getMonth();
     const dd = nowDate.getDate(); 
@@ -24,7 +25,7 @@ const Home = () => {
                 console.log(fetchedData);
                 
                 return () => {
-                    TMDBAPI.CancelToken.source().cancel();
+                    TMDBAPI.CancelToken.source().cancel();   
                 }
 
             } catch (error) {
@@ -38,7 +39,7 @@ const Home = () => {
     return (
         <div className="home-container">
             <h2>Welcome to MOVIZZZ</h2>
-            <ShowList data={data} />
+            {data.length ?  <ShowList data={data} /> : <Loader />}
         </div>
     );
 }

@@ -4,6 +4,7 @@ import { tmdbKey, omdbKey } from '../../secrets';
 import { Link } from 'react-router-dom';
 import MovieCard from '../MovieCard/MovieCard';
 import Cast from '../Cast/Cast';
+import Loader from '../../Loader';
 
 const ItemDetail = (props) => {
     const { itemId } = props;
@@ -41,18 +42,27 @@ const ItemDetail = (props) => {
 
     return (
         <div className="item-container">
+            {Object.keys(tmdbData).length ?
             <img alt="TMDB backdrop" src={`${baseImageUrl}${backdropSize}${tmdbData.backdrop_path}`} />
-            {
-                Object.keys(tmdbData).length && Object.keys(omdbData).length &&
-                <MovieCard tmdbData={tmdbData} omdbData={omdbData} />
+            : <Loader />
             }
-            <h1>{tmdbData.tagline && `"${tmdbData.tagline}"`}</h1>
-            <p>{tmdbData.overview}</p>
             {
-                Object.keys(omdbData).length && omdbData.Response === "True" &&
-                <Cast castList={omdbData.Actors} />
+                Object.keys(tmdbData).length && Object.keys(omdbData).length ?
+                    <MovieCard tmdbData={tmdbData} omdbData={omdbData} /> : 
+                    <Loader />
             }
-            <img alt="OMDB poster" src={omdbData.Poster} />
+            {
+                Object.keys(tmdbData).length ? 
+                <>
+                    <h1>{tmdbData.tagline && `"${tmdbData.tagline}"`}</h1>
+                    <p>{tmdbData.overview}</p>
+                </> : <Loader />
+            }
+            {
+                Object.keys(omdbData).length && omdbData.Response === "True" ?
+                    <Cast castList={omdbData.Actors} /> : <Loader />
+            }
+            {<img alt="OMDB poster" src={omdbData.Poster} />}
             <Link to="/" >Back to Homepage</Link>
         </div>
     );

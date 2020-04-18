@@ -8,7 +8,7 @@ const Cast = (props) => {
     }) : '';
 
     return (
-        <div>CastList: {displayCast}</div>
+        <div>Cast: {displayCast}</div>
     )
 }
 
