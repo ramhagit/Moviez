@@ -10,6 +10,7 @@ const ItemDetail = (props) => {
     const { itemId } = props;
     const [tmdbData, setTmadbData] = useState({});
     const [omdbData, setOmadbData] = useState({});
+    const [data, setData] = useState(null);
     const backdropSize = 'w300';
     const posterSize = 'w185';
 
@@ -37,39 +38,104 @@ const ItemDetail = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    useEffect(() => {
+        const dataObj = {
+            backdrop: `${tmdbImage}${backdropSize}${tmdbData.backdrop_path}`,
+            title: tmdbData.title,
+            year: omdbData.Response === "True" ? omdbData.Year : tmdbData.release_date ? tmdbData.release_date.split('-')[0] : null,
+            runTime: omdbData.Response === "True" && omdbData.Runtime !== "N/A" ? omdbData.Runtime : tmdbData.runtime ? `${tmdbData.runtime} min` : 'run time unknown',
+            genres: genre(),
+            language: languages(),
+            rating: ratings(),
+            tagline: tmdbData.tagline ? `"${tmdbData.tagline}"` : null,
+            overview: tmdbData.overview,
+            cast: displayCast()
+        }
+        setData(dataObj);
+    }, [omdbData])
+
+    const genre = () => {
+        return <>
+            {
+                omdbData.Genre || tmdbData.genres ? tmdbData.genres.map(
+                    (genre, index) => {
+                        return <>
+                            {index === tmdbData.genres.length - 1 ? genre.name : `${genre.name}, `}
+                        </>
+                    }) : 'No genre available'
+            }
+        </>
+    }
+
+    const languages = () => {
+        return <>
+            {
+                tmdbData.spoken_languages ? tmdbData.spoken_languages.map(
+                    (language, index) => {
+                        return <>
+                            {index === tmdbData.spoken_languages.length - 1 ? language.name : `${language.name}, `}
+                        </>
+                    }) : omdbData.Language || 'Language unknown'
+            }
+        </>
+    }
+
+    const ratings = () => {
+        return <>
+            {
+                omdbData.Response === "True" && omdbData.Ratings.length ? omdbData.Ratings.map(
+                    (rating, index) => {
+                        return <>
+                            {
+                                index === omdbData.Ratings.length - 1 ?
+                                    `${rating.Source} :  ${rating.Value}` :
+                                    `${rating.Source} :  ${rating.Value}, `
+                            }
+                        </>
+                    }) : null
+            }
+        </>
+    }
+
+    const displayCast = () => {
+        return <>
+            {
+                omdbData.Actors && omdbData.Actors !== "N/A" ? omdbData.Actors.split(',').map(
+                    item => {
+                        return <div key={item}>{item}</div>
+                    }) : ''
+            }
+        </>
+    }
+
     console.log('TMDB: ', tmdbData, 'OMDB: ', omdbData);
 
     return (
         <div className="item-container">
             {
-                Object.keys(tmdbData).length && tmdbData.backdrop_path !== null ?
-                    <img alt="TMDB backdrop" src={`${tmdbImage}${backdropSize}${tmdbData.backdrop_path}`} />
-                    : tmdbData.backdrop_path === null ? null : <Loader />
-            }
-            {
-                Object.keys(tmdbData).length && Object.keys(omdbData).length ?
-                    <MovieCard tmdbData={tmdbData} omdbData={omdbData} /> :
-                    <Loader />
-            }
-            {
-                Object.keys(tmdbData).length ?
+                data ?
                     <>
-                        <h1>{tmdbData.tagline && `"${tmdbData.tagline}"`}</h1>
-                        <p>{tmdbData.overview}</p>
-                    </> : <Loader />
+                        {
+                            tmdbData.backdrop_path !== null ?
+                                <img alt="TMDB backdrop" src={data.backdrop} />
+                                : null
+                        }
+
+                        <MovieCard title={data.title} year={data.year} runTime={data.runTime} genres={data.genres} language={data.language} rating={data.rating} />
+                        <h1>{data.tagline}</h1>
+                        <p>{data.overview}</p>
+                        <Cast castList={data.cast} />
+                        {
+                            omdbData.Response === "True" && omdbData.Poster !== "N/A" ?
+                                <img alt="OMDB poster" src={omdbData.Poster} />
+                                : tmdbData.poster_path ?
+                                    <img alt="TMDB poster" src={`${tmdbImage}${posterSize}${tmdbData.poster_path}`} />
+                                    : null
+                        }
+                        <Link to="/" >Back to Homepage</Link>
+                    </>
+                    : <Loader />
             }
-            {
-                Object.keys(omdbData).length && omdbData.Response === "True" ?
-                    <Cast castList={omdbData.Actors} /> : omdbData.Response === "False" ? null : <Loader />
-            }
-            {
-                omdbData.Response === "True" && omdbData.Poster !== "N/A" ?
-                    <img alt="OMDB poster" src={omdbData.Poster} />
-                    : tmdbData.poster_path ?
-                    <img alt="TMDB poster" src={`${tmdbImage}${posterSize}${tmdbData.poster_path}`} /> 
-                    : null
-            }
-            <Link to="/" >Back to Homepage</Link>
         </div>
     );
 }
