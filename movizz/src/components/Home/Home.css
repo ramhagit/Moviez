@@ -1,0 +1,11 @@
+@import '../../index.css';
+
+.welcome {
+    width: 100%;
+    color: var(--primary-color);
+    font-size: var(--heading-primary);
+    font-weight: 600;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    margin: 10px;
+    text-align: center;
+} 

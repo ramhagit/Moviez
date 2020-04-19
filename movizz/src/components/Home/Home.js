@@ -12,9 +12,7 @@ const Home = () => {
     const mm = nowDate.getMonth();
     const dd = nowDate.getDate(); 
     const releaseDateLimit = `${nowDate.getFullYear()}-${mm < 10 ? '0' + mm : mm}-${dd < 10 ? '0' + dd : dd}`;
-    console.log(releaseDateLimit);
     
-
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -37,7 +35,7 @@ const Home = () => {
 
     return (
         <div className="home-container">
-            <h2>Welcome to MOVIZZZ</h2>
+            <div className="welcome">Welcome to MOVIZZZ</div>
             {data.length ?  <ShowList data={data} /> : <Loader />}
         </div>
     );
