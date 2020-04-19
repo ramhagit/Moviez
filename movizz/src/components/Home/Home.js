@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { TMDBAPI } from '../../api';
-import { tmdbKey } from '../../secrets';
+import { tmdbKey } from '../../keys';
 import ShowList from '../ShowList/ShowList';
 import Loader from '../../Loader';
 
@@ -8,7 +8,6 @@ import './Home.css';
 
 const Home = () => {
     const [data, setData] = useState([]);
-    // const [isLoading, setIsLoading] = useState(false);
     const nowDate = new Date();
     const mm = nowDate.getMonth();
     const dd = nowDate.getDate(); 

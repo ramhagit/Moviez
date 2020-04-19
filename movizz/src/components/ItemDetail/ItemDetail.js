@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { TMDBAPI, OMDBAPI } from '../../api';
-import { tmdbKey, omdbKey } from '../../secrets';
+import { TMDBAPI, OMDBAPI, tmdbImage } from '../../api';
+import { tmdbKey, omdbKey } from '../../keys';
 import { Link } from 'react-router-dom';
 import MovieCard from '../MovieCard/MovieCard';
 import Cast from '../Cast/Cast';
@@ -10,9 +10,8 @@ const ItemDetail = (props) => {
     const { itemId } = props;
     const [tmdbData, setTmadbData] = useState({});
     const [omdbData, setOmadbData] = useState({});
-    const baseImageUrl = 'https://image.tmdb.org/t/p/';
     const backdropSize = 'w300';
-    // const posterSize = 'w185';
+    const posterSize = 'w185';
 
     useEffect(() => {
         async function fetchData() {
@@ -42,27 +41,34 @@ const ItemDetail = (props) => {
 
     return (
         <div className="item-container">
-            {Object.keys(tmdbData).length ?
-            <img alt="TMDB backdrop" src={`${baseImageUrl}${backdropSize}${tmdbData.backdrop_path}`} />
-            : <Loader />
+            {
+                Object.keys(tmdbData).length && tmdbData.backdrop_path !== null ?
+                    <img alt="TMDB backdrop" src={`${tmdbImage}${backdropSize}${tmdbData.backdrop_path}`} />
+                    : tmdbData.backdrop_path === null ? null : <Loader />
             }
             {
                 Object.keys(tmdbData).length && Object.keys(omdbData).length ?
-                    <MovieCard tmdbData={tmdbData} omdbData={omdbData} /> : 
+                    <MovieCard tmdbData={tmdbData} omdbData={omdbData} /> :
                     <Loader />
             }
             {
-                Object.keys(tmdbData).length ? 
-                <>
-                    <h1>{tmdbData.tagline && `"${tmdbData.tagline}"`}</h1>
-                    <p>{tmdbData.overview}</p>
-                </> : <Loader />
+                Object.keys(tmdbData).length ?
+                    <>
+                        <h1>{tmdbData.tagline && `"${tmdbData.tagline}"`}</h1>
+                        <p>{tmdbData.overview}</p>
+                    </> : <Loader />
             }
             {
                 Object.keys(omdbData).length && omdbData.Response === "True" ?
-                    <Cast castList={omdbData.Actors} /> : <Loader />
+                    <Cast castList={omdbData.Actors} /> : omdbData.Response === "False" ? null : <Loader />
             }
-            {<img alt="OMDB poster" src={omdbData.Poster} />}
+            {
+                omdbData.Response === "True" && omdbData.Poster !== "N/A" ?
+                    <img alt="OMDB poster" src={omdbData.Poster} />
+                    : tmdbData.poster_path ?
+                    <img alt="TMDB poster" src={`${tmdbImage}${posterSize}${tmdbData.poster_path}`} /> 
+                    : null
+            }
             <Link to="/" >Back to Homepage</Link>
         </div>
     );
