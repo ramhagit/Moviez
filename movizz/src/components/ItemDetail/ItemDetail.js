@@ -25,22 +25,6 @@ const ItemDetail = (props) => {
                 const anotherFetchedData = anotherResponse.data;
                 setOmadbData(anotherFetchedData);
 
-                // const dataObj = {
-                //     backdrop: `${tmdbImage}${backdropSize}${tmdbData.backdrop_path}`,
-                //     card: {
-                //         title: tmdbData.title,
-                //         year: omdbData.Response === "True" ? omdbData.Year : tmdbData.release_date ? tmdbData.release_date.split('-')[0] : null,
-                //         runTime: omdbData.Response === "True" && omdbData.Runtime !== "N/A" ? omdbData.Runtime : tmdbData.runtime ? `${tmdbData.runtime} min` : 'run time unknown',
-                //         genres: genre(),
-                //         language: languages(),
-                //         rating: ratings()
-                //     },
-                //     tagline: tmdbData.tagline ? `"${tmdbData.tagline}"` : null,
-                //     overview: tmdbData.overview,
-                //     cast: displayCast()
-                // }
-                // setData(dataObj);
-
                 return () => {
                     TMDBAPI.CancelToken.source().cancel();
                     OMDBAPI.CancelToken.source().cancel();
@@ -128,36 +112,31 @@ const ItemDetail = (props) => {
 
     console.log('TMDB: ', tmdbData, 'OMDB: ', omdbData);
 
-    const movieCard = data && <MovieCard card={data.card} /> || <Loader />;
+    const backdrop = tmdbData.backdrop_path ?
+        <img alt="TMDB backdrop" src={data.backdrop} /> || <Loader /> : null;
+
+    const movieCard = data && <MovieCard data={data} /> || <Loader />;
+
     const cast = data && <Cast castList={data.cast} /> || <Loader />;
+
+    const trailerThumb = omdbData.Response === "True" && omdbData.Poster !== "N/A" ?
+        <img alt="OMDB poster" src={omdbData.Poster} /> : tmdbData.poster_path ?
+            <img alt="TMDB poster" src={`${tmdbImage}${posterSize}${tmdbData.poster_path}`} /> : null;
+
 
     return (
         <div className="item-container">
-            {
-                data ?
-                    <>
-                        {
-                            tmdbData.backdrop_path ?
-                                <img alt="TMDB backdrop" src={data.backdrop} /> || <Loader />
-                                : null
-                        }
-                        {/* <img src={data.backdrop} /> */}
-                        {/* {<MovieCard card={data.card} /> || <Loader />} */}
-                        {movieCard}
-                        <div className="item__tagline">{data.tagline}</div>
-                        <div className="item__overview">{data.overview}</div>
-                        {/* {<Cast castList={data.cast} /> || <Loader />} */}
-                        {cast}
-                        {
-                            omdbData.Response === "True" && omdbData.Poster !== "N/A" ?
-                                <img alt="OMDB poster" src={omdbData.Poster} />
-                                : tmdbData.poster_path ?
-                                    <img alt="TMDB poster" src={`${tmdbImage}${posterSize}${tmdbData.poster_path}`} />
-                                    : null
-                        }
-                        <Link to="/" >Back to Homepage</Link>
-                    </>
-                    : <Loader />
+            {data ?
+                <>
+                    <Link to="/" >Back to Homepage</Link>
+                    <div className="item__backdrop">{backdrop}</div>
+                    <div className="item__card">{movieCard}</div>
+                    <div className="item__tagline">{data.tagline}</div>
+                    <div className="item__overview">{data.overview}</div>
+                    <div className="item__cast">{cast}</div>
+                    <div className="item__trailer">{trailerThumb}</div>
+                </> :
+                <Loader />
             }
         </div>
     );

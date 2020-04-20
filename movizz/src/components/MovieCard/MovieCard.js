@@ -1,7 +1,8 @@
 import React from 'react';
 
 const MovieCard = (props) => {
-    const { title, year, runTime, genres, language, rating } = props.card;
+    const { data } = props;
+    const { title, year, runTime, genres, language, rating } = data.card;
 
     return (
         <div className="movie-card">
