@@ -1,0 +1,10 @@
+@import '../../index.css';
+@import '../../styles/variables.css';
+
+.item__tagline {
+    font-size: var(--heading-secondary);
+}
+
+.item__overview {
+    font-size: var(--heading-tertiary);
+}

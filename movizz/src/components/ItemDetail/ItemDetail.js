@@ -25,6 +25,22 @@ const ItemDetail = (props) => {
                 const anotherFetchedData = anotherResponse.data;
                 setOmadbData(anotherFetchedData);
 
+                // const dataObj = {
+                //     backdrop: `${tmdbImage}${backdropSize}${tmdbData.backdrop_path}`,
+                //     card: {
+                //         title: tmdbData.title,
+                //         year: omdbData.Response === "True" ? omdbData.Year : tmdbData.release_date ? tmdbData.release_date.split('-')[0] : null,
+                //         runTime: omdbData.Response === "True" && omdbData.Runtime !== "N/A" ? omdbData.Runtime : tmdbData.runtime ? `${tmdbData.runtime} min` : 'run time unknown',
+                //         genres: genre(),
+                //         language: languages(),
+                //         rating: ratings()
+                //     },
+                //     tagline: tmdbData.tagline ? `"${tmdbData.tagline}"` : null,
+                //     overview: tmdbData.overview,
+                //     cast: displayCast()
+                // }
+                // setData(dataObj);
+
                 return () => {
                     TMDBAPI.CancelToken.source().cancel();
                     OMDBAPI.CancelToken.source().cancel();
@@ -41,12 +57,14 @@ const ItemDetail = (props) => {
     useEffect(() => {
         const dataObj = {
             backdrop: `${tmdbImage}${backdropSize}${tmdbData.backdrop_path}`,
-            title: tmdbData.title,
-            year: omdbData.Response === "True" ? omdbData.Year : tmdbData.release_date ? tmdbData.release_date.split('-')[0] : null,
-            runTime: omdbData.Response === "True" && omdbData.Runtime !== "N/A" ? omdbData.Runtime : tmdbData.runtime ? `${tmdbData.runtime} min` : 'run time unknown',
-            genres: genre(),
-            language: languages(),
-            rating: ratings(),
+            card: {
+                title: tmdbData.title,
+                year: omdbData.Response === "True" ? omdbData.Year : tmdbData.release_date ? tmdbData.release_date.split('-')[0] : null,
+                runTime: omdbData.Response === "True" && omdbData.Runtime !== "N/A" ? omdbData.Runtime : tmdbData.runtime ? `${tmdbData.runtime} min` : 'run time unknown',
+                genres: genre(),
+                language: languages(),
+                rating: ratings()
+            },
             tagline: tmdbData.tagline ? `"${tmdbData.tagline}"` : null,
             overview: tmdbData.overview,
             cast: displayCast()
@@ -110,21 +128,26 @@ const ItemDetail = (props) => {
 
     console.log('TMDB: ', tmdbData, 'OMDB: ', omdbData);
 
+    const movieCard = data && <MovieCard card={data.card} /> || <Loader />;
+    const cast = data && <Cast castList={data.cast} /> || <Loader />;
+
     return (
         <div className="item-container">
             {
                 data ?
                     <>
                         {
-                            tmdbData.backdrop_path !== null ?
-                                <img alt="TMDB backdrop" src={data.backdrop} />
+                            tmdbData.backdrop_path ?
+                                <img alt="TMDB backdrop" src={data.backdrop} /> || <Loader />
                                 : null
                         }
-
-                        <MovieCard title={data.title} year={data.year} runTime={data.runTime} genres={data.genres} language={data.language} rating={data.rating} />
-                        <h1>{data.tagline}</h1>
-                        <p>{data.overview}</p>
-                        <Cast castList={data.cast} />
+                        {/* <img src={data.backdrop} /> */}
+                        {/* {<MovieCard card={data.card} /> || <Loader />} */}
+                        {movieCard}
+                        <div className="item__tagline">{data.tagline}</div>
+                        <div className="item__overview">{data.overview}</div>
+                        {/* {<Cast castList={data.cast} /> || <Loader />} */}
+                        {cast}
                         {
                             omdbData.Response === "True" && omdbData.Poster !== "N/A" ?
                                 <img alt="OMDB poster" src={omdbData.Poster} />
