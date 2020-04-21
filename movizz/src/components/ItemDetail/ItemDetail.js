@@ -10,7 +10,7 @@ const ItemDetail = (props) => {
     const { itemId } = props;
     const [tmdbData, setTmadbData] = useState({});
     const [omdbData, setOmadbData] = useState({});
-    const [data, setData] = useState(null);
+    const [data, setData] = useState({});
     const backdropSize = 'w300';
     const posterSize = 'w185';
 
@@ -115,9 +115,9 @@ const ItemDetail = (props) => {
     const backdrop = tmdbData.backdrop_path ?
         <img alt="TMDB backdrop" src={data.backdrop} /> || <Loader /> : null;
 
-    const movieCard = data && <MovieCard data={data} /> || <Loader />;
+    const movieCard = Object.keys(data).includes('card') && <MovieCard data={data} /> || <Loader />;
 
-    const cast = data && <Cast castList={data.cast} /> || <Loader />;
+    const cast = Object.keys(data).includes('cast') && <Cast castList={data.cast} /> || <Loader />;
 
     const trailerThumb = omdbData.Response === "True" && omdbData.Poster !== "N/A" ?
         <img alt="OMDB poster" src={omdbData.Poster} /> : tmdbData.poster_path ?
@@ -126,11 +126,27 @@ const ItemDetail = (props) => {
 
     return (
         <div className="item-container">
-            {data ?
+            {Object.keys(data).length ?
+                // <>
+                //     <Link to="/" >Back to Homepage</Link>
+                //     <div className="item__backdrop">{backdrop}</div>
+                //     <div className="item__card">{movieCard}</div>
+                //     <div className="item__tagline">{data.tagline}</div>
+                //     <div className="item__overview">{data.overview}</div>
+                //     <div className="item__cast">{cast}</div>
+                //     <div className="item__trailer">{trailerThumb}</div>
+                // </> :
+                // <Loader />
                 <>
                     <Link to="/" >Back to Homepage</Link>
                     <div className="item__backdrop">{backdrop}</div>
-                    <div className="item__card">{movieCard}</div>
+                    <div className="item__card">
+                        <div className="movie-card">
+                            {data.card.year && <h1>{data.card.title} ({data.card.year})</h1>}
+                            <p>{data.card.genres}  |  {data.card.runTime}  |  {data.card.language}</p>
+                            <p>{data.card.rating}</p>
+                        </div>
+                    </div>
                     <div className="item__tagline">{data.tagline}</div>
                     <div className="item__overview">{data.overview}</div>
                     <div className="item__cast">{cast}</div>
