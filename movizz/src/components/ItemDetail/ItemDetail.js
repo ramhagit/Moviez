@@ -6,12 +6,14 @@ import MovieCard from '../MovieCard/MovieCard';
 import Cast from '../Cast/Cast';
 import Loader from '../../Loader';
 
+import './ItemDetail.css';
+
 const ItemDetail = (props) => {
     const { itemId } = props;
     const [tmdbData, setTmadbData] = useState({});
     const [omdbData, setOmadbData] = useState({});
     const [data, setData] = useState({});
-    const backdropSize = 'w300';
+    const backdropSize = 'w1280';
     const posterSize = 'w185';
 
     useEffect(() => {
@@ -113,7 +115,8 @@ const ItemDetail = (props) => {
     console.log('TMDB: ', tmdbData, 'OMDB: ', omdbData);
 
     const backdrop = tmdbData.backdrop_path ?
-        <img alt="TMDB backdrop" src={data.backdrop} /> || <Loader /> : null;
+        <img alt={tmdbData.backdrop_path ? "TMDB backdrop" : null} src={data.backdrop} className="backdropImg"/>
+        || <Loader /> : null;
 
     const movieCard = Object.keys(data).includes('card') && <MovieCard data={data} /> || <Loader />;
 

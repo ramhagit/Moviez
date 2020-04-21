@@ -5,12 +5,12 @@ import ItemDetail from './components/ItemDetail/ItemDetail';
 
 const App = () => {
     return (
-        <div>
+        <div className="page-container">
             <BrowserRouter>
-                <div>
+                <>
                     <Route path='/' exact component={Home} />
                     <Route path='/movie/:id' exact component={(props) => <ItemDetail itemId={props.match.params.id} />} />
-                </div>
+                </>
             </BrowserRouter>
         </div>
     );
