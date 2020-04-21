@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const OMDBAPI = axios.create({
-    baseURL: `http://www.omdbapi.com`
+    baseURL: `https://www.omdbapi.com`
 })
 
 export const TMDBAPI = axios.create({
@@ -11,5 +11,5 @@ export const TMDBAPI = axios.create({
 export const tmdbImage = "https://image.tmdb.org/t/p/";
 
 export const omdbImage = axios.create({
-    baseURL: "http://img.omdbapi.com/"
+    baseURL: "https://img.omdbapi.com/"
 })

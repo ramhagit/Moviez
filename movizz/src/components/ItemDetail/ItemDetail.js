@@ -127,26 +127,10 @@ const ItemDetail = (props) => {
     return (
         <div className="item-container">
             {Object.keys(data).length ?
-                // <>
-                //     <Link to="/" >Back to Homepage</Link>
-                //     <div className="item__backdrop">{backdrop}</div>
-                //     <div className="item__card">{movieCard}</div>
-                //     <div className="item__tagline">{data.tagline}</div>
-                //     <div className="item__overview">{data.overview}</div>
-                //     <div className="item__cast">{cast}</div>
-                //     <div className="item__trailer">{trailerThumb}</div>
-                // </> :
-                // <Loader />
                 <>
                     <Link to="/" >Back to Homepage</Link>
                     <div className="item__backdrop">{backdrop}</div>
-                    <div className="item__card">
-                        <div className="movie-card">
-                            {data.card.year && <h1>{data.card.title} ({data.card.year})</h1>}
-                            <p>{data.card.genres}  |  {data.card.runTime}  |  {data.card.language}</p>
-                            <p>{data.card.rating}</p>
-                        </div>
-                    </div>
+                    <div className="item__card">{movieCard}</div>
                     <div className="item__tagline">{data.tagline}</div>
                     <div className="item__overview">{data.overview}</div>
                     <div className="item__cast">{cast}</div>
