@@ -115,7 +115,7 @@ const ItemDetail = (props) => {
     console.log('TMDB: ', tmdbData, 'OMDB: ', omdbData);
 
     const backdrop = tmdbData.backdrop_path ?
-        <img alt={tmdbData.backdrop_path ? "TMDB backdrop" : null} src={data.backdrop} className="backdropImg"/>
+        <img alt={tmdbData.backdrop_path ? "TMDB backdrop" : null} src={data.backdrop} className="backdropImg" />
         || <Loader /> : null;
 
     const movieCard = Object.keys(data).includes('card') && <MovieCard data={data} /> || <Loader />;
@@ -123,8 +123,10 @@ const ItemDetail = (props) => {
     const cast = Object.keys(data).includes('cast') && <Cast castList={data.cast} /> || <Loader />;
 
     const trailerThumb = omdbData.Response === "True" && omdbData.Poster !== "N/A" ?
-        <img alt="OMDB poster" src={omdbData.Poster} /> : tmdbData.poster_path ?
-            <img alt="TMDB poster" src={`${tmdbImage}${posterSize}${tmdbData.poster_path}`} /> : null;
+        <img alt="OMDB poster" src={omdbData.Poster} className="posterImg" /> :
+        tmdbData.poster_path ?
+            <img alt="TMDB poster" src={`${tmdbImage}${posterSize}${tmdbData.poster_path}`} className="posterImg" /> :
+            null;
 
 
     return (

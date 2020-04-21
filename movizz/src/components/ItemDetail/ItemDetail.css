@@ -1,5 +1,5 @@
 .item-container{
-    width: 70%;
+    width: 76%;
     background-color: rgba(0, 0, 0, 0.1);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
     position: relative;
@@ -11,22 +11,38 @@
 
 .item__card {
     position: absolute;
-    top: 29rem;
+    top: 35vh;
     width: 100%;
     padding: 0.5rem;
     color: var(--background-color);
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     text-align: center;
     background-color: rgba(0, 0, 0, 0.6);
+    z-index: 2;
 }
 
 .item__tagline {
     color: var(--primary-color);
     font-size: var(--heading-secondary);
-    margin: 1rem;
+    margin: 15vh 1rem 1rem 2vh;
 }
 
 .item__overview {
+    width: 56%;
     font-size: var(--heading-tertiary);
     margin: 1rem 2rem;
+}
+
+.item__trailer {
+    position: absolute;
+    text-align: right;
+    padding: 2vw;
+    top: 65%;
+    right: 0;
+    z-index: 1;
+}
+
+.posterImg {
+    width: 20vw;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
 }
