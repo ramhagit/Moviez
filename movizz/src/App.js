@@ -11,6 +11,7 @@ const App = () => {
                 <Header />
                 <div className="content-container">
                     <Route path='/' exact component={Home} />
+                    <Route path='/page/:page_num' exact component={(props) => <Home pageNum={props.match.params.page_num}/>} />
                     <Route path='/movie/:id' exact component={(props) => <ItemDetail itemId={props.match.params.id} />} />
                 </div>
             </BrowserRouter>

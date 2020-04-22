@@ -1,8 +1,9 @@
 header {
     height: 8vh;
     width: 100vw;
-    background-image: linear-gradient(rgba(65, 65, 57, 0.1), beige);
+    background-image: linear-gradient(to bottom right, rgba(65, 65, 57, 0.7), beige, rgba(65, 65, 57, 0.4));
     display: flex;
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
+    padding: 1rem;
 }
