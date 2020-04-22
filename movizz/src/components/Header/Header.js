@@ -6,7 +6,12 @@ import './Header.css';
 const Header = () => {
     return (
         <header>
-            <Link to="/" >Home</Link>
+            <div className="home">
+                <Link to="/" >Home</Link>
+            </div>
+            <div className="links">
+                
+            </div>
         </header>
     )
 }

@@ -1,4 +1,7 @@
 header {
+    position: fixed;
+    z-index: 1;
+    top: 0;
     height: 8vh;
     width: 100vw;
     background-image: linear-gradient(to bottom right, rgba(65, 65, 57, 0.7), beige, rgba(65, 65, 57, 0.4));
