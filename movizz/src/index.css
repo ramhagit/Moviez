@@ -22,5 +22,12 @@ code {
 .page-container {
   width: 100%;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content-container {
+  width: 100vw;
+  display: flex;
   justify-content: center;
 }

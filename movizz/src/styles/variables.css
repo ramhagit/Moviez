@@ -1,8 +1,10 @@
 :root {
     --primary-color: rgb(61, 32, 32);
-    --background-color: beige;
+    /* --background-color: beige; */
+    --background-color: rgba(218, 218, 194, 0.5);
     --heading-primary: 3.5rem;
     --heading-secondary: 2.3rem;
     --heading-tertiary: 1.8rem;
     --paragraph: 1.6rem;
 }
+

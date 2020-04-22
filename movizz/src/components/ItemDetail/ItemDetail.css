@@ -2,42 +2,50 @@
     width: 76%;
     background-color: rgba(0, 0, 0, 0.1);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
-    position: relative;
 }
 
 .backdropImg {
     width: 100%;
+    margin-bottom: 4vh;
+    margin-top: 1rem;
+}
+
+.item__backdrop {
+    position: relative;
 }
 
 .item__card {
     position: absolute;
-    top: 35vh;
-    width: 100%;
+    /* top: 35vh; */
+    top: 34vh;
+    width: 86%;
     padding: 0.5rem;
-    color: var(--background-color);
+    color: beige;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.6);
+    /* background-color: rgba(0, 0, 0, 0.6); */
+    background-image: linear-gradient(to right, rgba(65, 65, 57, 1), rgba(65, 65, 57,0));
     z-index: 2;
 }
 
 .item__tagline {
+    width: 70%;
     color: var(--primary-color);
     font-size: var(--heading-secondary);
-    margin: 15vh 1rem 1rem 2vh;
+    margin: 1rem 3vh;
 }
 
 .item__overview {
     width: 56%;
     font-size: var(--heading-tertiary);
-    margin: 1rem 2rem;
+    margin: 1rem 2vh;
 }
 
 .item__trailer {
     position: absolute;
     text-align: right;
     padding: 2vw;
-    top: 65%;
+    top: 28%;
     right: 0;
     z-index: 1;
 }

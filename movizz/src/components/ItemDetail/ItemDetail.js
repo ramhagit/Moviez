@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { TMDBAPI, OMDBAPI, tmdbImage } from '../../api';
 import { tmdbKey, omdbKey } from '../../keys';
-import { Link } from 'react-router-dom';
 import MovieCard from '../MovieCard/MovieCard';
 import Cast from '../Cast/Cast';
 import Loader from '../../Loader';
@@ -133,7 +132,6 @@ const ItemDetail = (props) => {
         <div className="item-container">
             {Object.keys(data).length ?
                 <>
-                    <Link to="/" >Back to Homepage</Link>
                     <div className="item__backdrop">{backdrop}</div>
                     <div className="item__card">{movieCard}</div>
                     <div className="item__tagline">{data.tagline}</div>
