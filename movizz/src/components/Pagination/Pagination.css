@@ -1,8 +1,28 @@
-.pages-bar {
-    width: 53vw;
-    height: 2.2rem;
+.pagination-nav {
     display: flex;
     align-items: center;
+}
+
+.pages-bar {
+    width: 40vw;
+    height: 2.2rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
     flex-wrap: wrap;
     overflow: hidden;
+    margin: 1rem 0;
+}
+
+.page, .pagination-arrow {
+    background-color: beige;
+    color: var(--primary-color);
+}
+
+.page:hover, .pagination-arrow:hover {
+    background-color: var(--background-color);
+}
+
+.pagination-arrow {
+    height: 2.5rem;
 }

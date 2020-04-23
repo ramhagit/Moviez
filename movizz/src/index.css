@@ -12,6 +12,14 @@ code {
     monospace;
 }
 
+a, a:hover {
+  color: var(--primary-color);
+}
+
+a:hover {
+  font-weight: 600;
+}
+
 .loading-spinner {
   height: 4rem;
   width: 4rem;
