@@ -1,12 +1,12 @@
 import React from 'react';
 import Pagination from '../Pagination/Pagination';
 
-const Movies = (props) => {
-    console.log(props);
+const Movies = () => {
+    
     
     return (
         <div>
-            <Pagination numOfPages={5} path={props.match.path}/>
+            <Pagination numOfPages={5}/>
         </div>
     )
 }

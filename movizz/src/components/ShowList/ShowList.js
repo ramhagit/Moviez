@@ -15,7 +15,7 @@ const ShowList = (props) => {
         const title = item.title.length < 21 ? item.title : item.title.substring(0, 18) + '...';
         const listItem = <Thumbnail name={title} imgSrc={posterPath} releaseYear={releaseYear} starRate={item.vote_average} key={item.id} />;
         return (
-            <Link to={`movie/${item.id}`} key={item.id}>{listItem}</Link>
+            <Link to={`/movie/${item.id}`} key={item.id}>{listItem}</Link>
         );
     });
 

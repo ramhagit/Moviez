@@ -1,22 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import './Pagination.css';
+
 const Pagination = (props) => {
-    const { numOfPages, path } = props;
+    const { numOfPages } = props;
     console.log(props);
 
 
     const pages = Array.from(new Array(numOfPages), (x, i) => i + 1).map(page => {
-        const pageButton = <button className="page" key={page}>{page}</button>
+        const pageButton = <button onClick={e => console.log(e.target.value)} className="page" key={page}>{page}</button>
         return (
-            // <></>
-            <Link to={`${path}/page/${page}`}>{pageButton}</Link>
+            <Link to={`/page/${page}`}>{pageButton}</Link>
         )
     });
-    // console.log(arr);
 
     return (
-        <div className="pages-bar">{pages}</div>
+        <>
+            {numOfPages > 1 ? <div className="pages-bar">{pages}</div> : null}
+        </>
     )
 }
 

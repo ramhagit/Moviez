@@ -32,7 +32,7 @@
     width: 70%;
     color: var(--primary-color);
     font-size: var(--heading-secondary);
-    margin: 1rem 3vw;
+    margin: 1rem 2rem;
 }
 
 .item__overview {
@@ -44,9 +44,8 @@
 .item__trailer {
     position: absolute;
     text-align: right;
-    padding: 2vw;
     top: 28vw;
-    right: 0;
+    right: 5vw;
     z-index: 1;
 }
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { TMDBAPI } from '../../api';
 import { tmdbKey } from '../../keys';
+import Pagination from '../Pagination/Pagination';
 import ShowList from '../ShowList/ShowList';
 import Loader from '../../Loader';
 
@@ -9,19 +10,21 @@ import './Home.css';
 const Home = (props) => {
     const { pageNum } = props;
     const [data, setData] = useState([]);
+    const [numOfPages, setNumOfPages] = useState(1);
     const nowDate = new Date();
     const mm = nowDate.getMonth();
     const dd = nowDate.getDate(); 
     const releaseDateLimit = `${nowDate.getFullYear()}-${mm < 10 ? '0' + mm : mm}-${dd < 10 ? '0' + dd : dd}`;
-    // console.log(pageNum);
     
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchData = () => {
+            setData([]);
             try {
-                const response = await TMDBAPI.get(`discover/movie?api_key=${tmdbKey}&language=en-US&region=US&sort_by=release_date.desc&release_date.lte=${releaseDateLimit}&vote_average.gte=5.5&page=${pageNum}`);
-                const fetchedData = response.data.results;
-                setData(fetchedData);
-                console.log(response.data);
+                TMDBAPI.get(`discover/movie?api_key=${tmdbKey}&language=en-US&region=US&sort_by=release_date.desc&release_date.lte=${releaseDateLimit}&vote_average.gte=5.5&page=${pageNum}`
+                ).then(response => {
+                    setData(response.data.results);
+                    setNumOfPages(response.data.total_pages);
+                });
                 
                 return () => {
                     TMDBAPI.CancelToken.source().cancel();   
@@ -32,11 +35,11 @@ const Home = (props) => {
             }
         }
         fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [pageNum])
 
     return (
         <div className="home-container">
+            <Pagination numOfPages={numOfPages}/>
             <div className="welcome">Welcome to MovizZ</div>
             {data.length ?  <ShowList data={data} /> : <Loader />}
         </div>

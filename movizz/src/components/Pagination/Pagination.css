@@ -1,0 +1,8 @@
+.pages-bar {
+    width: 53vw;
+    height: 2.2rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+}

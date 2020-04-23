@@ -3,6 +3,7 @@
 @import './styles/variables.css';
 
 body {
+  height: 92vh;
     background: var(--background-color);
 }
 
