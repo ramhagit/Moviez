@@ -62,9 +62,9 @@ const ItemDetail = (props) => {
             {
                 omdbData.Genre || tmdbData.genres ? tmdbData.genres.map(
                     (genre, index) => {
-                        return <>
+                        return <span>
                             {index === tmdbData.genres.length - 1 ? genre.name : `${genre.name}, `}
-                        </>
+                        </span>
                     }) : 'No genre available'
             }
         </>
@@ -75,9 +75,9 @@ const ItemDetail = (props) => {
             {
                 tmdbData.spoken_languages ? tmdbData.spoken_languages.map(
                     (language, index) => {
-                        return <>
+                        return <span>
                             {index === tmdbData.spoken_languages.length - 1 ? language.name : `${language.name}, `}
-                        </>
+                        </span>
                     }) : omdbData.Language || 'Language unknown'
             }
         </>
@@ -130,17 +130,19 @@ const ItemDetail = (props) => {
 
     return (
         <div className="item-container">
-            {Object.keys(data).length ?
-                <>
-                    <div className="item__backdrop">{backdrop}</div>
-                    <div className="item__card">{movieCard}</div>
-                    <div className="item__tagline">{data.tagline}</div>
-                    <div className="item__overview">{data.overview}</div>
-                    <div className="item__cast">{cast}</div>
-                    <div className="item__trailer">{trailerThumb}</div>
-                </> :
-                <Loader />
-            }
+            <div className="item-content">
+                {Object.keys(data).length ?
+                    <>
+                        <div className="item__backdrop">{backdrop}</div>
+                        <div className="item__card">{movieCard}</div>
+                        <div className="item__tagline">{data.tagline}</div>
+                        <div className="item__overview">{data.overview}</div>
+                        <div className="item__cast">{cast}</div>
+                        <div className="item__trailer">{trailerThumb}</div>
+                    </> :
+                    <Loader />
+                }
+            </div>
         </div>
     );
 }

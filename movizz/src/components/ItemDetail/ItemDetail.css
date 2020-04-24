@@ -2,23 +2,33 @@
     width: 70%;
     background-color: rgba(0, 0, 0, 0.1);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+}
+
+.item-content{
+    width: calc(100% - 8vw);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .backdropImg {
     width: 100%;
-    margin-top: 1rem;
+    margin-top: 2rem;
 }
 
 .item__backdrop {
     position: relative;
     height: 38vw;
-    margin-bottom: 5vw;
+    /* margin-bottom: 2vh; */
 }
 
 .item__card {
     position: absolute;
-    top: 16vw;
-    width: 80%;
+    /* top: 22vw; */
+    top: calc(14vw + 15%);
+    width: 62vw;
     padding: 0.5rem;
     color: beige;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
@@ -31,11 +41,13 @@
     width: 80%;
     color: var(--primary-color);
     font-size: var(--heading-secondary);
-    margin: 1rem 2rem;
+    /* margin-top: calc((1vh / 1vw)*5); */
+    margin-top: 3vh;
+    margin-left: 2rem;
 }
 
 .item__overview {
-    width: 56%;
+    width: 66%;
     font-size: var(--heading-tertiary);
     margin: 1rem 3vh;
 }
@@ -43,12 +55,12 @@
 .item__trailer {
     position: absolute;
     text-align: right;
-    top: 16vw;
-    right: 5vw;
+    top: calc(14vw + 15%);
+    right: 10vw;
     z-index: 1;
 }
 
 .posterImg {
-    width: 20vw;
+    width: calc(20vw - 10%);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
 }

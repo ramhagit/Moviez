@@ -1,0 +1,32 @@
+.card__title {
+    font-size: var(--heading-tertiary);
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+.card__data-line {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2px;
+}
+
+.card__genres, .card__languages {
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 36%;
+}
+
+.card__genres {
+    justify-content: flex-end;
+    margin-right: 0.5rem;
+}
+
+.card__runtime {
+    flex-basis: 6.5rem;
+    flex-grow: 0;
+}
+
+.card__languages {
+    margin-left: 0.5rem;
+}
