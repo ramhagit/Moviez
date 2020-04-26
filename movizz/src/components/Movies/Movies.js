@@ -12,6 +12,18 @@ const Movies = (props) => {
     const [searchProp, setSearchProp] = useState('');
 
     useEffect(() => {
+        switch (searchBy) {
+            case 'latest':
+                setSearchProp('&sort_by=release_date.desc');
+                break;
+
+            default:
+                setSearchProp('&sort_by=release_date.desc');
+                break;
+        }
+    }, [searchBy])
+
+    useEffect(() => {
         const fetchData = () => {
             setMovieList([]);
             try {
@@ -31,17 +43,6 @@ const Movies = (props) => {
         }
         fetchData();
     }, [pageNum])
-
-    useEffect(() => {
-        switch (searchBy) {
-            case 'latest':
-                setSearchProp('&sort_by=release_date.desc');
-                break;
-
-            default:
-                break;
-        }
-    }, [searchBy])
 
     return (
         <div>

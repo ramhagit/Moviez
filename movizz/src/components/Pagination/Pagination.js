@@ -26,9 +26,9 @@ const Pagination = (props) => {
     </div>
 
     return (
-        <>
+        <div className="pagination">
             {numOfPages > 1 ? paginationNav : null}
-        </>
+        </div>
     )
 }
 

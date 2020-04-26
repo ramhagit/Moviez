@@ -7,6 +7,11 @@ header {
     background-image: linear-gradient(to top right, rgba(65, 65, 57, 0.4), beige, rgba(65, 65, 57, 0.7));
     display: flex;
     align-items: center;
+    justify-content: space-between;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
     padding: 1rem;
+}
+
+.links {
+    margin-right: 2rem;
 }

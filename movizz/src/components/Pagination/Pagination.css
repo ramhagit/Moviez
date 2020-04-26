@@ -1,3 +1,9 @@
+.pagination {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 .pagination-nav {
     display: flex;
     align-items: center;

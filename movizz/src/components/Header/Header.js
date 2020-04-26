@@ -10,7 +10,7 @@ const Header = () => {
                 <Link to="/" >🏠 Home</Link>
             </div>
             <div className="links">
-                
+                <Link to="/movies/latest/page/1" >MOVIES</Link>
             </div>
         </header>
     )

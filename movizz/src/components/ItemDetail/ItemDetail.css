@@ -39,12 +39,13 @@
 }
 
 .item__tagline {
-    width: 80%;
+    width: 100%;
     color: var(--primary-color);
     font-size: var(--heading-secondary);
     /* margin-top: calc((1vh / 1vw)*5); */
     margin-top: 3vh;
     margin-left: 2rem;
+    padding: 0 20% 0 5%;
 }
 
 .item__overview {
