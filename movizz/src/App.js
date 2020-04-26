@@ -12,9 +12,9 @@ const App = () => {
                 <Header />
                 <div className="content-container">
                     <Route path='/' exact component={() => <Home />} />
-                    <Route path='/page/:page_num' exact component={(props) => <Home pageNum={props.match.params.page_num} />} />
-                    <Route path='/movie/:id' exact component={(props) => <ItemDetail itemId={props.match.params.id} />} />
-                    <Route path='/movies' component={Movies} />
+                    <Route path='/page/:page_num' exact component={props => <Home pageNum={props.match.params.page_num} />} />
+                    <Route path='/movie/:id' exact component={props => <ItemDetail itemId={props.match.params.id} />} />
+                    <Route path='/movies/:search_by/page/:page_num' component={props => <Movies searchBy={props.match.params.search_by} pageNum={props.match.params.page_num}/>} />
                 </div>
             </BrowserRouter>
         </div>

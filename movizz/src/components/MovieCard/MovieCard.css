@@ -20,6 +20,8 @@
 .card__genres {
     justify-content: flex-end;
     margin-right: 0.5rem;
+    height: 2.2rem;
+    overflow: hidden;
 }
 
 .card__runtime {

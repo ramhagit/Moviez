@@ -4,6 +4,7 @@
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
     display: flex;
     justify-content: center;
+    margin-bottom: 1rem;
 }
 
 .item-content{
@@ -63,4 +64,9 @@
 .posterImg {
     width: calc(20vw - 10%);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+}
+
+.item__cast {
+    width: 100%;
+    margin-bottom: 5px;
 }
