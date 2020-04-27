@@ -11,23 +11,26 @@ const Home = (props) => {
     const { pageNum } = props;
     const [data, setData] = useState([]);
     const [numOfPages, setNumOfPages] = useState(1);
-    const nowDate = new Date();
-    const mm = nowDate.getMonth();
-    const dd = nowDate.getDate(); 
-    const releaseDateLimit = `${nowDate.getFullYear()}-${mm < 10 ? '0' + mm : mm}-${dd < 10 ? '0' + dd : dd}`;
-    
+
+    const releaseDateLimit = () => {
+        const nowDate = new Date();
+        const mm = nowDate.getMonth();
+        const dd = nowDate.getDate();
+        return `${nowDate.getFullYear()}-${mm < 10 ? '0' + mm : mm}-${dd < 10 ? '0' + dd : dd}`;
+    }
+
     useEffect(() => {
         const fetchData = () => {
             setData([]);
             try {
-                TMDBAPI.get(`discover/movie?api_key=${tmdbKey}&language=en-US&region=US&sort_by=release_date.desc&release_date.lte=${releaseDateLimit}&vote_average.gte=5.5&page=${pageNum}`
+                TMDBAPI.get(`discover/movie?api_key=${tmdbKey}&language=en-US&region=US&sort_by=release_date.desc&release_date.lte=${releaseDateLimit()}&vote_average.gte=5.5&page=${pageNum}`
                 ).then(response => {
                     setData(response.data.results);
                     setNumOfPages(response.data.total_pages);
                 });
-                
+
                 return () => {
-                    TMDBAPI.CancelToken.source().cancel();   
+                    TMDBAPI.CancelToken.source().cancel();
                 }
 
             } catch (error) {
@@ -39,9 +42,9 @@ const Home = (props) => {
 
     return (
         <div className="home-container">
-            <Pagination numOfPages={numOfPages}/>
+            <Pagination numOfPages={numOfPages} />
             <div className="welcome">Welcome to MovizZ</div>
-            {data.length ?  <ShowList data={data} /> : <Loader />}
+            {data.length ? <ShowList data={data} /> : <Loader />}
         </div>
     );
 }

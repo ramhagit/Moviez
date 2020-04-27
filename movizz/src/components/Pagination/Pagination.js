@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import './Pagination.css';
 
 const Pagination = (props) => {
-    const { numOfPages } = props;
-    console.log(props);
+    const { numOfPages, path } = props;
+    console.log('path: ', path);
 
 
     const pages = Array.from(new Array(numOfPages), (x, i) => i + 1).map(page => {
@@ -30,6 +30,10 @@ const Pagination = (props) => {
             {numOfPages > 1 ? paginationNav : null}
         </div>
     )
+}
+
+Pagination.defaultProps = {
+    path: {}
 }
 
 export default Pagination;

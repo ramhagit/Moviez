@@ -11,6 +11,7 @@ const ItemDetail = (props) => {
     const { itemId } = props;
     const [tmdbData, setTmadbData] = useState({});
     const [omdbData, setOmadbData] = useState({});
+    const [movieVideos, setMovieVideos] = useState({});
     const [data, setData] = useState({});
     const backdropSize = 'w1280';
     const posterSize = 'w185';
@@ -25,6 +26,10 @@ const ItemDetail = (props) => {
                 const anotherResponse = await OMDBAPI.get(`?apikey=${omdbKey}&i=${fetchedData.imdb_id}`)
                 const anotherFetchedData = anotherResponse.data;
                 setOmadbData(anotherFetchedData);
+
+                //https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=5dc629ddd638c7ad0b2708391cad5c5b&language=en-US
+                const res = await TMDBAPI.get(`movie/${itemId}/videos?api_key=${tmdbKey}&language=en-US`);
+                setMovieVideos(res.data.results);
 
                 return () => {
                     TMDBAPI.CancelToken.source().cancel();
@@ -111,7 +116,7 @@ const ItemDetail = (props) => {
         </>
     }
 
-    console.log('TMDB: ', tmdbData, 'OMDB: ', omdbData);
+    console.log('TMDB: ', tmdbData, 'OMDB: ', omdbData, 'Videos: ', movieVideos);
 
     const backdrop = tmdbData.backdrop_path ?
         <img alt={tmdbData.backdrop_path ? "TMDB backdrop" : null} src={data.backdrop} className="backdropImg" />
