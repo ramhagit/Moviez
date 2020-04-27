@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { TMDBAPI, OMDBAPI, tmdbImage } from '../../api';
 import { tmdbKey, omdbKey } from '../../keys';
+import ReactPlayer from 'react-player';
 import MovieCard from '../MovieCard/MovieCard';
 import Cast from '../Cast/Cast';
 import Loader from '../../Loader';
@@ -13,6 +14,7 @@ const ItemDetail = (props) => {
     const [omdbData, setOmadbData] = useState({});
     const [movieVideos, setMovieVideos] = useState({});
     const [data, setData] = useState({});
+    const [trailerURL, setTrailerURL] = useState('');
     const backdropSize = 'w1280';
     const posterSize = 'w185';
 
@@ -30,6 +32,7 @@ const ItemDetail = (props) => {
                 //https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=5dc629ddd638c7ad0b2708391cad5c5b&language=en-US
                 const res = await TMDBAPI.get(`movie/${itemId}/videos?api_key=${tmdbKey}&language=en-US`);
                 setMovieVideos(res.data.results);
+                youtubeTrailers(res.data.results);
 
                 return () => {
                     TMDBAPI.CancelToken.source().cancel();
@@ -116,6 +119,15 @@ const ItemDetail = (props) => {
         </>
     }
 
+    const youtubeTrailers = (videos) => {
+        const youtubeTrailersList = videos.filter(video => {
+            return video.site === "YouTube" && video.type === "Trailer";
+        })
+        setTrailerURL(youtubeTrailersList[0].key);
+        console.log('inside youtubeTrailers trailerURL: ', trailerURL);
+        
+    }
+
     console.log('TMDB: ', tmdbData, 'OMDB: ', omdbData, 'Videos: ', movieVideos);
 
     const backdrop = tmdbData.backdrop_path ?
@@ -144,6 +156,7 @@ const ItemDetail = (props) => {
                         <div className="item__overview">{data.overview}</div>
                         <div className="item__cast">{cast}</div>
                         <div className="item__trailer">{trailerThumb}</div>
+                        {trailerURL ? <ReactPlayer url={`https://www.youtube.com/watch?v=${trailerURL}`} playing /> : null}
                     </> :
                     <Loader />
                 }

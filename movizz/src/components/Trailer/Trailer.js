@@ -1,6 +1,7 @@
 import React from 'react';
 
-const Trailer = () => {
+const Trailer = (props) => {
+    const { videoList } = props;
     return <></>
 }
 

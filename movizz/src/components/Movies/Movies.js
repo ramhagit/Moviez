@@ -59,7 +59,7 @@ const Movies = (props) => {
             }
         }
         fetchData();
-    }, [searchProp, pageNum])
+    }, [pageNum, searchProp])
 
     console.log('searchBy: ', searchBy, 'searchProp: ', searchProp);
 
