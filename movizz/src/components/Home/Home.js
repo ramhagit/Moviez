@@ -11,6 +11,7 @@ const Home = (props) => {
     const { pageNum } = props;
     const [data, setData] = useState([]);
     const [numOfPages, setNumOfPages] = useState(1);
+    // const [path, setPath] = useState("");
 
     const releaseDateLimit = () => {
         const nowDate = new Date();
@@ -42,7 +43,7 @@ const Home = (props) => {
 
     return (
         <div className="home-container">
-            <Pagination numOfPages={numOfPages} />
+            <Pagination numOfPages={numOfPages} path={""} />
             <div className="welcome">Welcome to MovizZ</div>
             {data.length ? <ShowList data={data} /> : <Loader />}
         </div>
