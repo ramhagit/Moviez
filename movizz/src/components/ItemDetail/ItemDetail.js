@@ -29,7 +29,6 @@ const ItemDetail = (props) => {
                 const anotherFetchedData = anotherResponse.data;
                 setOmadbData(anotherFetchedData);
 
-                //https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=5dc629ddd638c7ad0b2708391cad5c5b&language=en-US
                 const res = await TMDBAPI.get(`movie/${itemId}/videos?api_key=${tmdbKey}&language=en-US`);
                 setMovieVideos(res.data.results);
                 youtubeTrailers(res.data.results);
@@ -123,9 +122,9 @@ const ItemDetail = (props) => {
         const youtubeTrailersList = videos.filter(video => {
             return video.site === "YouTube" && video.type === "Trailer";
         })
-        setTrailerURL(youtubeTrailersList[0].key);
+        const url = `https://www.youtube.com/watch?v=${youtubeTrailersList[0].key}`;
+        setTrailerURL(url);
         console.log('inside youtubeTrailers trailerURL: ', trailerURL);
-        
     }
 
     console.log('TMDB: ', tmdbData, 'OMDB: ', omdbData, 'Videos: ', movieVideos);
@@ -156,7 +155,7 @@ const ItemDetail = (props) => {
                         <div className="item__overview">{data.overview}</div>
                         <div className="item__cast">{cast}</div>
                         <div className="item__trailer">{trailerThumb}</div>
-                        {trailerURL ? <ReactPlayer url={`https://www.youtube.com/watch?v=${trailerURL}`} playing /> : null}
+                        {trailerURL ? <ReactPlayer url={trailerURL} /> : null}
                     </> :
                     <Loader />
                 }

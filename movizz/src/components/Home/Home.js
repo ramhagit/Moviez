@@ -13,18 +13,13 @@ const Home = (props) => {
     const [numOfPages, setNumOfPages] = useState(1);
     // const [path, setPath] = useState("");
 
-    const releaseDateLimit = () => {
-        const nowDate = new Date();
-        const mm = nowDate.getMonth();
-        const dd = nowDate.getDate();
-        return `${nowDate.getFullYear()}-${mm < 10 ? '0' + mm : mm}-${dd < 10 ? '0' + dd : dd}`;
-    }
-
     useEffect(() => {
         const fetchData = () => {
             setData([]);
             try {
-                TMDBAPI.get(`discover/movie?api_key=${tmdbKey}&language=en-US&region=US&sort_by=release_date.desc&release_date.lte=${releaseDateLimit()}&vote_average.gte=5.5&page=${pageNum}`
+                // TMDBAPI.get(`discover/movie?api_key=${tmdbKey}&language=en-US&region=US&sort_by=release_date.desc&release_date.lte=${releaseDateLimit()}&vote_average.gte=5.5&page=${pageNum}`
+                // TMDBAPI.get(`movie/upcoming?api_key=${tmdbKey}&language=en-US&region=US&page=${pageNum}`
+                TMDBAPI.get(`movie/now_playing?api_key=${tmdbKey}&language=en-US&region=US&page=${pageNum}`
                 ).then(response => {
                     setData(response.data.results);
                     setNumOfPages(response.data.total_pages);

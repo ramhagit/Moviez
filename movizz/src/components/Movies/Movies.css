@@ -1,0 +1,11 @@
+.navigation {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.navigation__buttons {
+    width: 30%;
+    display: flex;
+    justify-content: space-evenly;
+}

@@ -1,5 +1,6 @@
 .item-container{
     width: 70%;
+    max-width: 760px;
     background-color: rgba(0, 0, 0, 0.1);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
     display: flex;
@@ -22,6 +23,7 @@
 .item__backdrop {
     position: relative;
     height: 38vw;
+    max-height: 390px;
     /* margin-bottom: 2vh; */
 }
 
@@ -30,6 +32,7 @@
     /* top: 22vw; */
     top: calc(14vw + 15%);
     width: 62vw;
+    max-width: 650px;
     padding: 0.5rem;
     color: beige;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
@@ -43,7 +46,7 @@
     color: var(--primary-color);
     font-size: var(--heading-secondary);
     /* margin-top: calc((1vh / 1vw)*5); */
-    margin-top: 3vh;
+    margin-top: 1rem;
     margin-left: 2rem;
     padding: 0 20% 0 5%;
 }
@@ -58,13 +61,14 @@
     position: absolute;
     text-align: right;
     top: calc(14vw + 15%);
-    right: 10vw;
+    left: 72%;
     z-index: 1;
 }
 
 .posterImg {
     width: calc(20vw - 10%);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+    max-width: 185px;
 }
 
 .item__cast {
