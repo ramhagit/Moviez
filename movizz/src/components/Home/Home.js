@@ -11,14 +11,11 @@ const Home = (props) => {
     const { pageNum } = props;
     const [data, setData] = useState([]);
     const [numOfPages, setNumOfPages] = useState(1);
-    // const [path, setPath] = useState("");
 
     useEffect(() => {
         const fetchData = () => {
             setData([]);
             try {
-                // TMDBAPI.get(`discover/movie?api_key=${tmdbKey}&language=en-US&region=US&sort_by=release_date.desc&release_date.lte=${releaseDateLimit()}&vote_average.gte=5.5&page=${pageNum}`
-                // TMDBAPI.get(`movie/upcoming?api_key=${tmdbKey}&language=en-US&region=US&page=${pageNum}`
                 TMDBAPI.get(`movie/now_playing?api_key=${tmdbKey}&language=en-US&region=US&page=${pageNum}`
                 ).then(response => {
                     setData(response.data.results);
