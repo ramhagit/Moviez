@@ -5,8 +5,7 @@ import './Pagination.css';
 
 const Pagination = (props) => {
     const { numOfPages, path } = props;
-    console.log('path: ', path, 'current url: ', window.location.href);
-
+    // console.log('path: ', path, 'current url: ', window.location.href);
 
     const pages = Array.from(new Array(numOfPages), (x, i) => i + 1).map(page => {
         const pageButton = <button onClick={e => console.log(e.target.value)} className="page" key={page}>{page}</button>

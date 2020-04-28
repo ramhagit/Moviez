@@ -24,12 +24,10 @@
     position: relative;
     height: 38vw;
     max-height: 390px;
-    /* margin-bottom: 2vh; */
 }
 
 .item__card {
     position: absolute;
-    /* top: 22vw; */
     top: calc(14vw + 15%);
     width: 62vw;
     max-width: 650px;
@@ -45,7 +43,6 @@
     width: 100%;
     color: var(--primary-color);
     font-size: var(--heading-secondary);
-    /* margin-top: calc((1vh / 1vw)*5); */
     margin-top: 1rem;
     margin-left: 2rem;
     padding: 0 20% 0 5%;

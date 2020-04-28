@@ -153,9 +153,9 @@ const ItemDetail = (props) => {
                         <div className="item__card">{movieCard}</div>
                         <div className="item__tagline">{data.tagline}</div>
                         <div className="item__overview">{data.overview}</div>
+                        {trailerURL ? <ReactPlayer url={trailerURL} /> : null}
                         <div className="item__cast">{cast}</div>
                         <div className="item__trailer">{trailerThumb}</div>
-                        {trailerURL ? <ReactPlayer url={trailerURL} /> : null}
                     </> :
                     <Loader />
                 }

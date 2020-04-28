@@ -9,3 +9,13 @@
     display: flex;
     justify-content: space-evenly;
 }
+
+.navigation__buttons a {
+    flex-basis: 8rem;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+.navigation__buttons button {
+    width: 100%;
+}

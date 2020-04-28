@@ -18,10 +18,11 @@ const Movies = (props) => {
 
     useEffect(() => {
         const common = `?api_key=${tmdbKey}&language=en-US`;
+
         switch (searchBy) {
             case 'latest':
                 setPath("/movies/latest");
-                setSearchProp(`discover/movie${common}&region=US&sort_by=release_date.desc&release_date.lte=${releaseDateLimit()}&vote_average.gte=5.5`);
+                setSearchProp(`discover/movie${common}&sort_by=release_date.desc&release_date.lte=${releaseDateLimit()}&vote_average.gte=5.5`);
                 break;
 
             case 'top':
@@ -31,10 +32,10 @@ const Movies = (props) => {
 
             case 'upcoming':
                 setPath("/movies/upcoming");
-                setSearchProp(`movie/upcoming${common}&region=US`);
+                setSearchProp(`movie/upcoming${common}`);
                 break;
 
-            case 'popular':
+            default:
                 setPath("/movies/popular");
                 setSearchProp(`movie/popular${common}`);
                 break;
@@ -73,7 +74,7 @@ const Movies = (props) => {
                     <div className="navigation">
                         <div className="navigation__buttons">
                             <Link to='/movies/latest/page/1'><button>latest</button></Link>
-                            <Link to='/movies/top/page/1'><button>top</button></Link>
+                            <Link to='/movies/top/page/1'><button>high rate</button></Link>
                             <Link to='/movies/popular/page/1'><button>popular</button></Link>
                             <Link to='/movies/upcoming/page/1'><button>upcoming</button></Link>
                         </div>

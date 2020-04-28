@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { TMDBAPI } from '../../api';
 import { tmdbKey } from '../../keys';
+import Carousel from '../Carousel/Carousel';
 import Pagination from '../Pagination/Pagination';
 import ShowList from '../ShowList/ShowList';
 import Loader from '../../Loader';
@@ -35,6 +36,7 @@ const Home = (props) => {
 
     return (
         <div className="home-container">
+            <Carousel />
             <Pagination numOfPages={numOfPages} path={""} />
             <div className="welcome">Welcome to MovizZ</div>
             {data.length ? <ShowList data={data} /> : <Loader />}
