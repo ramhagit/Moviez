@@ -17,20 +17,26 @@ const Movies = (props) => {
     const [path, setPath] = useState('');
 
     useEffect(() => {
+        const common = `?api_key=${tmdbKey}&language=en-US`;
         switch (searchBy) {
             case 'latest':
                 setPath("/movies/latest");
-                setSearchProp(`discover/movie?api_key=${tmdbKey}&language=en-US&region=US&sort_by=release_date.desc&release_date.lte=${releaseDateLimit()}&vote_average.gte=5.5`);
+                setSearchProp(`discover/movie${common}&region=US&sort_by=release_date.desc&release_date.lte=${releaseDateLimit()}&vote_average.gte=5.5`);
                 break;
 
             case 'top':
                 setPath("/movies/top");
-                setSearchProp(`movie/top_rated?api_key=${tmdbKey}&language=en-US`);
+                setSearchProp(`movie/top_rated${common}`);
                 break;
 
             case 'upcoming':
                 setPath("/movies/upcoming");
-                setSearchProp(`movie/upcoming?api_key=${tmdbKey}&language=en-US&region=US`);
+                setSearchProp(`movie/upcoming${common}&region=US`);
+                break;
+
+            case 'popular':
+                setPath("/movies/popular");
+                setSearchProp(`movie/popular${common}`);
                 break;
         }
     }, [searchBy])
@@ -62,21 +68,22 @@ const Movies = (props) => {
 
     return (
         <div>
-            <div className="navigation">
-                <div className="navigation__buttons">
-                    <Link to='/movies/latest/page/1'><button>latest movies</button></Link>
-                    <Link to='/movies/top/page/1'><button>highest rating</button></Link>
-                </div>
-            </div>
-            {path ? <Pagination numOfPages={numOfPages} path={path} /> : <Loader />}
+            {path ?
+                <>
+                    <div className="navigation">
+                        <div className="navigation__buttons">
+                            <Link to='/movies/latest/page/1'><button>latest</button></Link>
+                            <Link to='/movies/top/page/1'><button>top</button></Link>
+                            <Link to='/movies/popular/page/1'><button>popular</button></Link>
+                            <Link to='/movies/upcoming/page/1'><button>upcoming</button></Link>
+                        </div>
+                    </div>
+                    <Pagination numOfPages={numOfPages} path={path} />
+                </> :
+                <Loader />}
             {movieList.length ? <ShowList data={movieList} /> : <Loader />}
         </div>
     )
 }
-
-// Movies.defaultProps = {
-//     searchBy: 'upcoming',
-//     pageNum: 1
-// }
 
 export default Movies;
