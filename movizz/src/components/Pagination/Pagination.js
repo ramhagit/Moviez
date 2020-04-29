@@ -8,7 +8,7 @@ const Pagination = (props) => {
     // console.log('path: ', path, 'current url: ', window.location.href);
 
     const pages = Array.from(new Array(numOfPages), (x, i) => i + 1).map(page => {
-        const pageButton = <button onClick={e => console.log(e.target.value)} className="page" key={page}>{page}</button>
+        const pageButton = <button onClick={e => console.log(e)} className="page" key={page}>{page}</button>
         return (
             <Link to={`${path}/page/${page}`} key={page}>{pageButton}</Link>
         )

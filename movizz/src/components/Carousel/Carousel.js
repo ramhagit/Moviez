@@ -26,8 +26,8 @@ const Carousel = () => {
         fetchData();
     }, [])
 
-    const topMovies = displayMovies.filter(item => item.vote_average > 7);
-    const fiveTop = topMovies.length >= 5 ? topMovies.slice(topMovies.length-7, topMovies.length-1) : displayMovies.slice(5, 10);
+    const topMovies = displayMovies.filter(item => item.vote_average > 7 && item.backdrop_path);
+    const fiveTop = topMovies.length >= 5 ? topMovies.slice(topMovies.length-6, topMovies.length-1) : displayMovies.slice(5, 10);
     const disp = fiveTop.map(movie => {
         return (
             <>
