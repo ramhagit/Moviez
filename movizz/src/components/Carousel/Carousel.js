@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import LeftArrow from './LeftArrow';
 import RightArrow from './RightArrow';
 
+import './Carousel.css';
+
 const Carousel = (props) => {
     const { displayList, activeIndex, setActiveIndex } = props;
     const length = displayList.length;
