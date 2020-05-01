@@ -9,6 +9,7 @@ const LeftArrow = (props) => {
     return (
         <button className='back_arrow' onClick={goToPrevSlide}>
             <FontAwesomeIcon icon={faAngleLeft} />
+            {/* {'<'} */}
         </button>
     )
 }

@@ -1,10 +1,16 @@
 import React from 'react';
+import uniqid from "uniqid";
 
 const DotButtons = (props) => {
-    const { numOfButtons, goToSlide } = props;
+    const { numOfButtons, goToSlide, activeIndex } = props;
 
     const DotButton = (index) => {
-        return <span className="dot-button" data-index={index} onClick={e => goToSlide(e.target.dataset.index)} key={index} ></span>
+        return <span
+            className={`dot-button ${index === activeIndex ? 'active' : ''}`}
+            data-index={index}
+            onClick={e => goToSlide(e.target.dataset.index)}
+            key={uniqid()}
+        ></span>
     }
 
     const dots = Array.from(new Array(numOfButtons), (x, i) => i).map(dot => {

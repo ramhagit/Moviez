@@ -24,26 +24,26 @@ const Carousel = (props) => {
 
     const goToSlide = (index) => {
         setActiveIndex(index);
-    } 
+    }
 
     return (
         <div className="carousel">
             <div className=""></div>
-            <LeftArrow goToPrevSlide={goToPrevSlide} />
             {/* {displayList.map(item => {
                 return <div className="home__cover">
-                    <h2>{item.title}</h2>
-                    <img src={item.img_src} />
+                <h2>{item.title}</h2>
+                <img src={item.img_src} />
                 </div>
             })} */}
             {displayList.length ?
                 <div className="carousel_show_slide">
-                    <h2>{displayList[activeIndex].title}</h2>
-                    <img className="carousel__img" src={displayList[activeIndex].img_src} />
+                    <img className="carousel__img_home" src={displayList[activeIndex].img_src} />
+                    <h2 className="carousel__title_home">{displayList[activeIndex].title}</h2>
                 </div>
                 : null}
+            <LeftArrow goToPrevSlide={goToPrevSlide} />
             <RightArrow goToNextSlide={goToNextSlide} />
-            <DotButtons numOfButtons={length} goToSlide={goToSlide} />
+            <DotButtons numOfButtons={length} goToSlide={goToSlide} activeIndex={activeIndex} />
         </div>
     )
 }
