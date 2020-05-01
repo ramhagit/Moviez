@@ -2,4 +2,14 @@
     width: 90%;
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.carousel_show_slide {
+    width: 96%;
+    overflow: hidden;
+}
+
+.carousel__img {
+    width: 100%;
 }

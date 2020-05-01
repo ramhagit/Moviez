@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import LeftArrow from './LeftArrow';
 import RightArrow from './RightArrow';
 
@@ -11,28 +11,15 @@ const Carousel = (props) => {
 
     const goToPrevSlide = () => {
         let index = activeIndex;
-
-        if (index < 1) {
-            index = length - 1;
-        }
-        else {
-            index--;
-        }
+        index < 1 ? index = length - 1 : index--;
         setActiveIndex(index);
     }
 
     const goToNextSlide = () => {
         let index = activeIndex;
-
-        if (index === length - 1) {
-            index = 0
-        }
-        else {
-            index++;
-        }
+        index === length - 1 ? index = 0 : index++;
         setActiveIndex(index);
     }
-
 
     return (
         <div className="carousel">
@@ -46,7 +33,7 @@ const Carousel = (props) => {
             {displayList.length ?
                 <div className="carousel_show_slide">
                     <h2>{displayList[activeIndex].title}</h2>
-                    <img src={displayList[activeIndex].img_src} />
+                    <img className="carousel__img" src={displayList[activeIndex].img_src} />
                 </div>
                 : null}
             <RightArrow goToNextSlide={goToNextSlide} />
