@@ -1,6 +1,7 @@
 import React from 'react';
 import LeftArrow from './LeftArrow';
 import RightArrow from './RightArrow';
+import DotButtons from './DotButtons';
 
 import './Carousel.css';
 
@@ -21,8 +22,13 @@ const Carousel = (props) => {
         setActiveIndex(index);
     }
 
+    const goToSlide = (index) => {
+        setActiveIndex(index);
+    } 
+
     return (
         <div className="carousel">
+            <div className=""></div>
             <LeftArrow goToPrevSlide={goToPrevSlide} />
             {/* {displayList.map(item => {
                 return <div className="home__cover">
@@ -37,6 +43,7 @@ const Carousel = (props) => {
                 </div>
                 : null}
             <RightArrow goToNextSlide={goToNextSlide} />
+            <DotButtons numOfButtons={length} goToSlide={goToSlide} />
         </div>
     )
 }

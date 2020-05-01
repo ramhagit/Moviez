@@ -2,14 +2,43 @@
     width: 90%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
 }
 
 .carousel_show_slide {
-    width: 96%;
     overflow: hidden;
+    text-align: center;
 }
 
 .carousel__img {
     width: 100%;
+    max-width: 780px;
+    position: relative;
+}
+
+.back_arrow, .forward_arrow {
+    height: 100%;
+}
+
+.dot-buttons {
+    width: 30rem;
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    padding-bottom: 2rem;
+}
+
+.dot-button {
+    height: 0.7rem;
+    width: 0.7rem;
+    border-radius: 50%;
+    /* background-color: var(--background-color); */
+    background-color: beige;
+    border: 1px solid black;
+    box-shadow: 0 5px 10px rgba(245, 245, 245, 0.8);
+}
+
+.dot-button:hover {
+    background-color: var(--primary-color);
+    cursor: pointer;
 }

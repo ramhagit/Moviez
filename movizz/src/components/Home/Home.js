@@ -63,8 +63,8 @@ const Home = (props) => {
     return (
         <div className="home-container">
             <Carousel displayList={coverList()} activeIndex={carouselActiveIndex} setActiveIndex={setCarouselActiveIndex} />
-            <Pagination numOfPages={numOfPages} path={""} />
             <div className="welcome">Welcome to MovizZ</div>
+            <Pagination numOfPages={numOfPages} path={""} />
             {data.length ? <ShowList data={data} /> : <Loader />}
         </div>
     );
