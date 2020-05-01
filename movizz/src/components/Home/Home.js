@@ -13,6 +13,7 @@ const Home = (props) => {
     const [data, setData] = useState([]);
     const [numOfPages, setNumOfPages] = useState(1);
     const [coverMovies, setCoverMovies] = useState([]);
+    const [carouselActiveIndex, setCarouselActiveIndex] = useState(0);
 
     useEffect(() => {
         const fetchData = () => {
@@ -45,10 +46,14 @@ const Home = (props) => {
         const fiveTop = topMovies.length >= 5 ? topMovies.slice(topMovies.length - 6, topMovies.length - 1) : coverMovies.slice(5, 10);
         const disp = fiveTop.map(movie => {
             return (
-                <div className="home__cover">
-                    <h2>{movie.title}</h2>
-                    <img src={`${tmdbImage}w780${movie.backdrop_path}`} />
-                </div>
+                // <div className="home__cover">
+                //     <h2>{movie.title}</h2>
+                //     <img src={`${tmdbImage}w780${movie.backdrop_path}`} />
+                // </div>
+                {
+                    title: movie.title,
+                    img_src: `${tmdbImage}w780${movie.backdrop_path}`
+                }
             )
         })
 
@@ -57,7 +62,7 @@ const Home = (props) => {
 
     return (
         <div className="home-container">
-            <Carousel displayList={coverList()}/>
+            <Carousel displayList={coverList()} activeIndex={carouselActiveIndex} setActiveIndex={setCarouselActiveIndex} />
             <Pagination numOfPages={numOfPages} path={""} />
             <div className="welcome">Welcome to MovizZ</div>
             {data.length ? <ShowList data={data} /> : <Loader />}
