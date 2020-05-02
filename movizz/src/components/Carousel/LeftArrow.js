@@ -1,7 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
-import { faChevronSquareLeft } from '@fortawesome/free-brands-svg-icons';
 
 const LeftArrow = (props) => {
     const { goToPrevSlide } = props;
