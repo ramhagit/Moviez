@@ -21,10 +21,13 @@
 
 .carousel__title_home {
     position: absolute;
-    top: 10rem;
     padding: 2px 1.5rem;
     font-size: xx-large;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    left: 50%;
+    top: 35%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
 }
 
 .carousel__title_home, button.back_arrow, button.forward_arrow {
@@ -62,6 +65,9 @@ button.back_arrow:focus, button.forward_arrow:focus {
     align-items: center;
     position: absolute;
     padding: 1px 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
 }
 
 .dot-button {
@@ -80,11 +86,4 @@ button.back_arrow:focus, button.forward_arrow:focus {
 
 .dot-button.active {
     background-color: var(--primary-color);
-}
-
-.carousel__title_home, .dot-buttons {
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
-
 }
