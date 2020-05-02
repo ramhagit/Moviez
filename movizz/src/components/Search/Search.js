@@ -3,15 +3,11 @@ import { Link } from 'react-router-dom';
 
 const Search = () => {
     const [value, setValue] = useState('');
-
-    const handleChange = () => {
-        return false;
-    }
-
+    
     return (
         <div className="search">
-            <input type='text' />
-            <button>SEARCH</button>
+            <input type='text' onChange={e => setValue(e.target.value)} />
+            <Link to={`/search/q=${value}`}><button>SEARCH</button></Link>
         </div>
     )
 }

@@ -11,16 +11,18 @@ const SearchResults = (props) => {
     const { searchQuery, pageNum } = props;
     const [resultsList, setResultsList] = useState([]);
     const [numOfPages, setNumOfPages] = useState(1);
+    const [totalResults, setTotalResults] = useState(0);
 
     useEffect(() => {
         const fetchData = () => {
-            setResultsList([]);
-            setNumOfPages(1);
             try {
                 TMDBAPI.get(`search/movie?api_key=${tmdbKey}&query=${searchQuery.split("q=")[1].replace(' ', '+')}&page=${pageNum}`)
                     .then(response => {
+                        console.log(response.data);
+                        
                         setResultsList(response.data.results);
                         setNumOfPages(response.data.total_pages);
+                        setTotalResults(response.data.total_results);
                     });
 
                 return () => {
@@ -39,7 +41,8 @@ const SearchResults = (props) => {
 
     return (
         <div className="search-results-container">
-            <h1 className="search-results__headline">Search Results for:  {searchQuery.split('q=')[1]}</h1>
+            <h1 className="search-results__headline">Search Results For:  <b>{searchQuery.split('q=')[1]}</b></h1>
+            <h2 className="search-results__num_of_results">({totalResults})</h2>
             {resultsList.length ?
                 <>
                     <Pagination numOfPages={numOfPages} path={`/search/${searchQuery}`} />
