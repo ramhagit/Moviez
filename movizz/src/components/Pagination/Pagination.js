@@ -6,9 +6,14 @@ import './Pagination.css';
 const Pagination = (props) => {
     const { numOfPages, path } = props;
     // console.log('path: ', path, 'current url: ', window.location.href);
+    const currentPage = window.location.href.split('page/')[1];
 
     const pages = Array.from(new Array(numOfPages), (x, i) => i + 1).map(page => {
-        const pageButton = <button onClick={e => {console.log("target value: ", e.target.innerHTML)}} className="page" key={page}>{page}</button>
+        const pageButton = <button
+            className={`page ${page == currentPage ? 'active' : ''}`}
+            onClick={e => { console.log("target value: ", e.target.innerHTML) }}
+            key={page}
+        >{page}</button>
         return (
             <Link to={`${path}/page/${page}`} key={page}>{pageButton}</Link>
         )
@@ -32,7 +37,7 @@ const Pagination = (props) => {
 }
 
 Pagination.defaultProps = {
-    path: {}
+    path: ''
 }
 
 export default Pagination;

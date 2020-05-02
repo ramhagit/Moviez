@@ -25,8 +25,9 @@
     color: var(--primary-color);
 }
 
-.page:hover, .pagination-arrow:hover {
+.page:hover, .pagination-arrow:hover, .page.active {
     background-color: var(--background-color);
+    outline: none;
 }
 
 .pagination-arrow {

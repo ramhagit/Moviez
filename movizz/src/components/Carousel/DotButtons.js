@@ -18,7 +18,9 @@ const DotButtons = (props) => {
     });
 
     return (
-        <div className="dot-buttons">{dots}</div>
+        <div className="dot-buttons-container">
+            <div className="dot-buttons">{dots}</div>
+        </div>
     )
 }
 

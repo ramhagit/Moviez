@@ -2,6 +2,7 @@ import React from 'react';
 import LeftArrow from './LeftArrow';
 import RightArrow from './RightArrow';
 import DotButtons from './DotButtons';
+import { Link } from 'react-router-dom';
 
 import './Carousel.css';
 
@@ -29,16 +30,12 @@ const Carousel = (props) => {
     return (
         <div className="carousel">
             <div className=""></div>
-            {/* {displayList.map(item => {
-                return <div className="home__cover">
-                <h2>{item.title}</h2>
-                <img src={item.img_src} />
-                </div>
-            })} */}
             {displayList.length ?
                 <div className="carousel_show_slide">
                     <img className="carousel__img_home" src={displayList[activeIndex].img_src} alt={displayList[activeIndex].title} />
-                    <h1 className="carousel__title_home">{displayList[activeIndex].title}</h1>
+                    <Link to={displayList[activeIndex].link_path} >
+                        <h1 className="carousel__title_home">{displayList[activeIndex].title}</h1>
+                    </Link>
                 </div>
                 : null}
             <LeftArrow goToPrevSlide={goToPrevSlide} />

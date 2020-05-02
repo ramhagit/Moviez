@@ -46,13 +46,10 @@ const Home = (props) => {
         const fiveTop = topMovies.length >= 5 ? topMovies.slice(topMovies.length - 6, topMovies.length - 1) : coverMovies.slice(5, 10);
         const disp = fiveTop.map(movie => {
             return (
-                // <div className="home__cover">
-                //     <h2>{movie.title}</h2>
-                //     <img src={`${tmdbImage}w780${movie.backdrop_path}`} />
-                // </div>
                 {
                     title: movie.title,
-                    img_src: `${tmdbImage}w780${movie.backdrop_path}`
+                    img_src: `${tmdbImage}w780${movie.backdrop_path}`,
+                    link_path: `/movie/${movie.id}`
                 }
             )
         })
@@ -62,7 +59,11 @@ const Home = (props) => {
 
     return (
         <div className="home-container">
-            <Carousel displayList={coverList()} activeIndex={carouselActiveIndex} setActiveIndex={setCarouselActiveIndex} />
+            <Carousel
+                displayList={coverList()}
+                activeIndex={carouselActiveIndex}
+                setActiveIndex={setCarouselActiveIndex}
+            />
             <div className="welcome">Welcome to MovizZ</div>
             <Pagination numOfPages={numOfPages} path={""} />
             {data.length ? <ShowList data={data} /> : <Loader />}
