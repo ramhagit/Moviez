@@ -11,10 +11,12 @@
 }
 
 .carousel__img_home {
+    box-sizing: border-box;
     margin-top: 5rem;
     width: 100%;
     max-width: 780px;
     position: relative;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
 }
 
 .carousel__title_home {
@@ -23,11 +25,11 @@
     left: 50%;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
-    border-radius: 5px;
     padding: 2px 1.5rem;
 }
 
 .carousel__title_home, button.back_arrow, button.forward_arrow {
+    border-radius: 5px;
     color: rgba(0, 0, 0, 0.6);
     background-color: var(--background-color);
     mix-blend-mode: luminosity;
@@ -38,7 +40,6 @@ button.back_arrow, button.forward_arrow {
     width: calc(8% - 1rem);
     position: absolute;
     top: 33%;
-    border-radius: 15px;
     font-weight: 900;
 }
 
@@ -48,6 +49,11 @@ button.back_arrow {
 
 button.forward_arrow {
     margin-left: 40%;
+}
+
+button.back_arrow:focus, button.forward_arrow:focus {
+    outline: none;
+    color: rgba(0, 0, 0, 0.9);
 }
 
 .dot-buttons {
