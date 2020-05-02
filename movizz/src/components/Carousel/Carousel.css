@@ -11,7 +11,7 @@
 }
 
 .carousel__img_home {
-    margin-top: 6rem;
+    margin-top: 5rem;
     width: 100%;
     max-width: 780px;
     position: relative;
@@ -21,6 +21,13 @@
     position: absolute;
     top: 10rem;
     left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    mix-blend-mode: luminosity;
+    background-color: var(--background-color);
+    color: rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+    padding: 2px 1.5rem;
 }
 
 button.back_arrow, button.forward_arrow {

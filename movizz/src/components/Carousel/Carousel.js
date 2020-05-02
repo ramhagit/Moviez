@@ -38,7 +38,7 @@ const Carousel = (props) => {
             {displayList.length ?
                 <div className="carousel_show_slide">
                     <img className="carousel__img_home" src={displayList[activeIndex].img_src} />
-                    <h2 className="carousel__title_home">{displayList[activeIndex].title}</h2>
+                    <h1 className="carousel__title_home">{displayList[activeIndex].title}</h1>
                 </div>
                 : null}
             <LeftArrow goToPrevSlide={goToPrevSlide} />

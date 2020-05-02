@@ -42,7 +42,7 @@
 
 .thumb__title {
     -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
+    /* -webkit-background-clip: text; */
     bottom: 0;
     left: 0;
     height: 2.25rem;
