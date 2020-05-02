@@ -1,5 +1,5 @@
 .item-container{
-    width: 70%;
+    width: 80%;
     max-width: 760px;
     background-color: rgba(0, 0, 0, 0.1);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
@@ -29,7 +29,7 @@
 .item__card {
     position: absolute;
     top: calc(14vw + 15%);
-    width: 62vw;
+    width: 72vw;
     max-width: 650px;
     padding: 0.5rem;
     color: beige;

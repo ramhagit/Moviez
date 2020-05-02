@@ -18,8 +18,6 @@ const SearchResults = (props) => {
             try {
                 TMDBAPI.get(`search/movie?api_key=${tmdbKey}&query=${searchQuery.split("q=")[1].replace(' ', '+')}&page=${pageNum}`)
                     .then(response => {
-                        console.log(response.data);
-                        
                         setResultsList(response.data.results);
                         setNumOfPages(response.data.total_pages);
                         setTotalResults(response.data.total_results);
@@ -36,8 +34,7 @@ const SearchResults = (props) => {
         fetchData();
     }, [searchQuery, pageNum])
 
-    console.log('resultsList: ', resultsList, 'numOfPages: ', numOfPages);
-
+    // console.log('resultsList: ', resultsList, 'numOfPages: ', numOfPages);
 
     return (
         <div className="search-results-container">
