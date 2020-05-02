@@ -2,7 +2,7 @@
     position: relative;
     height: 30rem;
     width: 18.5rem;
-    margin: 2.5rem;
+    margin: 2rem;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
 }
 
@@ -42,7 +42,7 @@
 
 .thumb__title {
     -webkit-text-fill-color: transparent;
-    /* -webkit-background-clip: text; */
+    -webkit-background-clip: text;
     bottom: 0;
     left: 0;
     height: 2.25rem;
