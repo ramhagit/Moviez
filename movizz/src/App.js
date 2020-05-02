@@ -16,7 +16,8 @@ const App = () => {
                     <Route path='/page/:page_num' exact component={props => <Home pageNum={props.match.params.page_num} />} />
                     <Route path='/movie/:id' exact component={props => <ItemDetail itemId={props.match.params.id} />} />
                     <Route path='/movies/:search_by/page/:page_num' exact component={props => <Movies searchBy={props.match.params.search_by} pageNum={props.match.params.page_num} />} />
-                    <Route path='/search/:search_query' exact component={() => <SearchResults />} />
+                    <Route path='/search/:search_query' exact component={props => <SearchResults searchQuery={props.match.params.search_query}/>} />
+                    <Route path='/search/:search_query/page/:page_num' exact component={props => <SearchResults searchQuery={props.match.params.search_query} pageNum={props.match.params.page_num} />} />
                 </div>
             </BrowserRouter>
         </div>
