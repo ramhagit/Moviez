@@ -15,13 +15,13 @@
     display: flex;
     flex-wrap: wrap;
     flex-basis: 36%;
+    height: 2.2rem;
+    overflow: hidden;
 }
 
 .card__genres {
     justify-content: flex-end;
     margin-right: 0.5rem;
-    height: 2.2rem;
-    overflow: hidden;
 }
 
 .card__runtime {
