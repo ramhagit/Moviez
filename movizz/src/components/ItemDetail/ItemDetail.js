@@ -143,6 +143,9 @@ const ItemDetail = (props) => {
             <img alt="TMDB poster" src={`${tmdbImage}${posterSize}${tmdbData.poster_path}`} className="posterImg" /> :
             null;
 
+    const trailerStyle = {
+        maxHeight: '390px'
+    };
 
     return (
         <div className="item-container">
@@ -153,7 +156,7 @@ const ItemDetail = (props) => {
                         <div className="item__card">{movieCard}</div>
                         <div className="item__tagline">{data.tagline}</div>
                         <div className="item__overview"><div className="overview-content">{data.overview}</div></div>
-                        {trailerURL ? <ReactPlayer url={trailerURL} /> : null}
+                        {trailerURL ? <ReactPlayer url={trailerURL} width='100%' height='36vw' style={trailerStyle}/> : null}
                         <div className="item__cast">{cast}</div>
                         <div className="item__trailer">{trailerThumb}</div>
                     </> :
