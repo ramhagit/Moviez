@@ -65,6 +65,7 @@
     top: calc(14vw + 15%);
     left: 72%;
     z-index: 1;
+    margin-right: 1rem;
 }
 
 .posterImg {

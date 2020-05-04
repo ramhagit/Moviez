@@ -1,0 +1,4 @@
+.auto-complete-suggestions {
+    display: flex;
+    flex-direction: column;
+}
