@@ -7,3 +7,7 @@
     max-height: 500%;
     overflow-y: scroll;
 }
+
+.search button {
+    background-color: var(--background-color);
+}

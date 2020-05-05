@@ -10,7 +10,7 @@ const ShowList = (props) => {
     const posterSize = 'w185';
 
     const listItems = data.map(item => {
-        const releaseYear = item.release_date ? item.release_date.split('-')[0] : null;
+        const releaseYear = item.release_date ? item.release_date.split('-')[0] : '- - - -';
         const posterPath = `${tmdbImage}${posterSize}${item.poster_path}`;
         const title = item.title.length < 21 ? item.title : item.title.substring(0, 18) + '...';
         const listItem = <Thumbnail name={title} imgSrc={posterPath} releaseYear={releaseYear} starRate={item.vote_average} key={item.id} />;

@@ -73,10 +73,26 @@ const Movies = (props) => {
                 <>
                     <div className="navigation">
                         <div className="navigation__buttons">
-                            <Link to='/movies/latest/page/1'><button>latest</button></Link>
-                            <Link to='/movies/top/page/1'><button>high rate</button></Link>
-                            <Link to='/movies/popular/page/1'><button>popular</button></Link>
-                            <Link to='/movies/upcoming/page/1'><button>upcoming</button></Link>
+                            <Link to='/movies/latest/page/1'>
+                                <button
+                                    className={`nav-btn ${searchBy === 'latest' ? 'active' : ''}`}
+                                >latest</button>
+                            </Link>
+                            <Link to='/movies/top/page/1'>
+                                <button
+                                    className={`nav-btn ${searchBy === 'top' ? 'active' : ''}`}
+                                >high rate</button>
+                            </Link>
+                            <Link to='/movies/popular/page/1'>
+                                <button
+                                    className={`nav-btn ${searchBy === 'popular' ? 'active' : ''}`}
+                                >popular</button>
+                            </Link>
+                            <Link to='/movies/upcoming/page/1'>
+                                <button
+                                    className={`nav-btn ${searchBy === 'upcoming' ? 'active' : ''}`}
+                                >upcoming</button>
+                            </Link>
                         </div>
                     </div>
                     <Pagination numOfPages={numOfPages} path={path} />
