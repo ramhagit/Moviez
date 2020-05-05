@@ -36,8 +36,11 @@ const AutoComplete = (props) => {
         return <span
             className="auto-complete-suggestion"
             key={item.title}
-            onClick={e => {setInputValue(e.target.innerHTML)}}
-        >{item.title}</span>
+            data-title={item.title}
+            onClick={e => { setInputValue(e.target.dataset.title) }}
+        >
+            {item.title.length > 25 ? `${item.title.substring(0,22)}...` : item.title}
+        </span>
     }) : null;
 
     return (

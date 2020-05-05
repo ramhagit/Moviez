@@ -10,7 +10,7 @@ const Search = () => {
     return (
         <div className="search-container">
             <div className="search">
-                <input type='text' onChange={e => setValue(e.target.value)} value={value} />
+                <input type="text" onChange={e => setValue(e.target.value)} value={value} />
                 <Link to={`/search/q=${value}`}>
                     <button onClick={() => { setValue('') }}>SEARCH</button>
                 </Link>

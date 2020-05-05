@@ -1,4 +1,11 @@
 .auto-complete-suggestions {
     display: flex;
     flex-direction: column;
+    -webkit-text-fill-color: var(--background-color);
+    background-color: rgba(61, 32, 32, 0.8);
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.auto-complete-suggestion:hover {
+    cursor: pointer;
 }
