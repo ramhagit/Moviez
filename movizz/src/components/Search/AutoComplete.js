@@ -5,7 +5,7 @@ import { TMDBAPI } from '../../api';
 import './AutoComplete.css';
 
 const AutoComplete = (props) => {
-    const { inputValue } = props;
+    const { inputValue, setInputValue } = props;
     const [resultsList, setResultsList] = useState([]);
 
     useEffect(() => {
@@ -33,7 +33,11 @@ const AutoComplete = (props) => {
 
 
     const display = resultsList.length ? resultsList.map(item => {
-        return <span className="auto-complete-suggestion">{item.title}</span>
+        return <span
+            className="auto-complete-suggestion"
+            key={item.title}
+            onClick={e => {setInputValue(e.target.innerHTML)}}
+        >{item.title}</span>
     }) : null;
 
     return (

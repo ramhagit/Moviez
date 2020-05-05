@@ -6,11 +6,11 @@ import './Pagination.css';
 const Pagination = (props) => {
     const { numOfPages, path } = props;
     // console.log('path: ', path, 'current url: ', window.location.href);
-    const currentPage = window.location.href.split('page/')[1];
+    const currentPage = Number(window.location.href.split('page/')[1]);
 
     const pages = Array.from(new Array(numOfPages), (x, i) => i + 1).map(page => {
         const pageButton = <button
-            className={`page ${page == currentPage ? 'active' : ''}`}
+            className={`page ${page === currentPage ? 'active' : ''}`}
             onClick={e => { console.log("target value: ", e.target.innerHTML) }}
             key={page}
         >{page}</button>

@@ -1,0 +1,9 @@
+.search-container {
+    position: relative;
+}
+
+.auto-complete-container {
+    position: absolute;
+    max-height: 500%;
+    overflow-y: scroll;
+}
