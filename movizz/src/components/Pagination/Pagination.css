@@ -11,11 +11,11 @@
 
 .pages-bar {
     max-width: 42vw;
-    height: 2.2rem;
+    /* height: 2.2rem; */
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     overflow: hidden;
     margin: 1rem 0;
 }

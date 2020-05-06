@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import LeftArrow from './LeftArrow';
 import RightArrow from './RightArrow';
 import DotButtons from './DotButtons';
@@ -11,6 +11,18 @@ const Carousel = (props) => {
     const { displayList, activeIndex, setActiveIndex } = props;
     const length = displayList.length;
     console.log('displayList: ', displayList, 'activeIndex: ', activeIndex, 'displayList at activeIndex: ', displayList[activeIndex]);
+
+    useEffect(() => {
+        if (length) {
+            setTimeout(() => {
+                let index = activeIndex ? activeIndex : 0;
+                let nextIndex = (index + 1) % length;
+                console.log('length: ', length, 'nextIndex: ', nextIndex);
+
+                setActiveIndex(nextIndex);
+            }, 5000)
+        }
+    }, [length, activeIndex])
 
     const goToPrevSlide = () => {
         let index = activeIndex;

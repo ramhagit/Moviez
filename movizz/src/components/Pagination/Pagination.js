@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import './Pagination.css';
 
 const Pagination = (props) => {
     const { numOfPages, path } = props;
+    const [activePageIndex, setActivePageIndex] = useState(0);
     // console.log('path: ', path, 'current url: ', window.location.href);
     const currentPage = Number(window.location.href.split('page/')[1]);
 
