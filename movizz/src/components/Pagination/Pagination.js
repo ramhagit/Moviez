@@ -12,8 +12,8 @@ const Pagination = (props) => {
     const [forwardsDisabled, setForwardsDisabled] = useState(false);
 
     const currentPage = Number(window.location.href.split('page/')[1]);
-    const prevDisabled = currentPage === 1 ? true : false;
-    const nextDisabled = currentPage === numOfPages ? true : false;
+    const prevDisabled = !currentPage ? true : currentPage === 1 ? true : false;
+    const nextDisabled = !currentPage ? true : currentPage === numOfPages ? true : false;
     // console.log('path: ', path, 'current url: ', window.location.href);
 
 
