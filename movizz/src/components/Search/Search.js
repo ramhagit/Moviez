@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AutoComplete from './AutoComplete';
 
@@ -6,6 +6,16 @@ import './Search.css';
 
 const Search = () => {
     const [value, setValue] = useState('');
+    const [reset, setReset] = useState(false);
+
+    useEffect(() => {
+        if (reset) {
+            setValue('');
+        }
+        return () => {
+            setReset(false);
+        }
+    }, [reset])
 
     return (
         <div className="search-container">
@@ -16,7 +26,7 @@ const Search = () => {
                 </Link>
             </div>
             <div className="auto-complete-container">
-                {value && <AutoComplete inputValue={value} setInputValue={setValue} />}
+                {value && <AutoComplete inputValue={value} setInputValue={setValue} setReset={setReset}/>}
             </div>
         </div>
     )

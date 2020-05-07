@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import './AutoComplete.css';
 
 const AutoComplete = (props) => {
-    const { inputValue, setInputValue } = props;
+    const { inputValue, setInputValue, setReset } = props;
     const [resultsList, setResultsList] = useState([]);
 
     useEffect(() => {
@@ -41,14 +41,10 @@ const AutoComplete = (props) => {
             onClick={e => { setInputValue(e.target.dataset.title) }}
         >
             {item.title.length > 20 ? `${item.title.substring(0, 19)} ` : `${item.title} `}
-            <Link to={`/movie/${item.id}`} key={item.id}>
+            <Link to={`/movie/${item.id}`} key={item.id} onMouseUp={() => {setReset(true)}}>
                 <span
                     role="img"
                     aria-label="Drop"
-                    onClick={() => {
-                        console.log('hello');
-                        setInputValue('')
-                    }}
                 >💧</span>
             </Link>
 
