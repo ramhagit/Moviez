@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { tmdbKey } from '../../keys';
 import { TMDBAPI } from '../../api';
+import { Link } from 'react-router-dom';
 
 import './AutoComplete.css';
 
@@ -39,7 +40,18 @@ const AutoComplete = (props) => {
             data-title={item.title}
             onClick={e => { setInputValue(e.target.dataset.title) }}
         >
-            {item.title.length > 25 ? `${item.title.substring(0,22)}...` : item.title}
+            {item.title.length > 20 ? `${item.title.substring(0, 19)} ` : `${item.title} `}
+            <Link to={`/movie/${item.id}`} key={item.id}>
+                <span
+                    role="img"
+                    aria-label="Drop"
+                    onClick={() => {
+                        console.log('hello');
+                        setInputValue('')
+                    }}
+                >💧</span>
+            </Link>
+
         </span>
     }) : null;
 

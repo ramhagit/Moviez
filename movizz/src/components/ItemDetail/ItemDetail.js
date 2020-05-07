@@ -43,8 +43,7 @@ const ItemDetail = (props) => {
             }
         }
         fetchData();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [itemId])
 
     useEffect(() => {
         const dataObj = {
