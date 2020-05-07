@@ -9,3 +9,13 @@
 .auto-complete-suggestion:hover {
     cursor: pointer;
 }
+
+.auto-complete-suggestion {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.auto-complete-suggestion img {
+    width: 1.85rem;
+}

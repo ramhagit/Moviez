@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { tmdbKey } from '../../keys';
-import { TMDBAPI } from '../../api';
+import { TMDBAPI, tmdbImage } from '../../api';
 import { Link } from 'react-router-dom';
 
 import './AutoComplete.css';
@@ -40,12 +40,13 @@ const AutoComplete = (props) => {
             data-title={item.title}
             onClick={e => { setInputValue(e.target.dataset.title) }}
         >
-            {item.title.length > 20 ? `${item.title.substring(0, 19)} ` : `${item.title} `}
+            {item.title.length > 20 ? `${item.title.substring(0, 18)} ` : `${item.title} `}
             <Link to={`/movie/${item.id}`} key={item.id} onMouseUp={() => {setReset(true)}}>
-                <span
+                {/* <span
                     role="img"
                     aria-label="Drop"
-                >💧</span>
+                >💧</span> */}
+                <img src={`${tmdbImage}w92${item.poster_path}`} alt={item.title}/>
             </Link>
 
         </span>
