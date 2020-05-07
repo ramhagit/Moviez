@@ -30,8 +30,7 @@ const AutoComplete = (props) => {
         fetchData();
     }, [inputValue])
 
-    console.log('inputValue: ', inputValue, 'resultsList: ', resultsList);
-
+    // console.log('inputValue: ', inputValue, 'resultsList: ', resultsList);
 
     const display = resultsList.length ? resultsList.map(item => {
         return <span
@@ -40,12 +39,8 @@ const AutoComplete = (props) => {
             data-title={item.title}
             onClick={e => { setInputValue(e.target.dataset.title) }}
         >
-            {item.title.length > 20 ? `${item.title.substring(0, 18)} ` : `${item.title} `}
+            {item.title.length > 18 ? `${item.title.substring(0, 18)}` : item.title}
             <Link to={`/movie/${item.id}`} key={item.id} onMouseUp={() => {setReset(true)}}>
-                {/* <span
-                    role="img"
-                    aria-label="Drop"
-                >💧</span> */}
                 <img src={`${tmdbImage}w92${item.poster_path}`} alt={item.title}/>
             </Link>
 

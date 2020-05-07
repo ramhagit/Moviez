@@ -68,7 +68,7 @@ const ItemDetail = (props) => {
             {
                 omdbData.Genre || tmdbData.genres ? tmdbData.genres.map(
                     (genre, index) => {
-                        return <span key={tmdbData.id}>
+                        return <span>
                             {index === tmdbData.genres.length - 1 ? genre.name : `${genre.name}, `}
                         </span>
                     }) : 'No genre available'
@@ -81,7 +81,7 @@ const ItemDetail = (props) => {
             {
                 tmdbData.spoken_languages ? tmdbData.spoken_languages.map(
                     (language, index) => {
-                        return <span key={tmdbData.id}>
+                        return <span>
                             {index === tmdbData.spoken_languages.length - 1 ? language.name : `${language.name}, `}
                         </span>
                     }) : omdbData.Language || 'Language unknown'
