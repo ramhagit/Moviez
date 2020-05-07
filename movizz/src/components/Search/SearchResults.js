@@ -16,13 +16,14 @@ const SearchResults = (props) => {
     useEffect(() => {
         const fetchData = () => {
             try {
-                TMDBAPI.get(`search/movie?api_key=${tmdbKey}&query=${searchQuery.split("q=")[1].replace(' ', '+')}&page=${pageNum}`)
-                    .then(response => {
-                        setResultsList(response.data.results);
-                        setNumOfPages(response.data.total_pages);
-                        setTotalResults(response.data.total_results);
-                    });
-
+                if (searchQuery) {
+                    TMDBAPI.get(`search/movie?api_key=${tmdbKey}&query=${searchQuery.split("q=")[1].replace(' ', '+')}&page=${pageNum}`)
+                        .then(response => {
+                            setResultsList(response.data.results);
+                            setNumOfPages(response.data.total_pages);
+                            setTotalResults(response.data.total_results);
+                        });
+                }
                 return () => {
                     TMDBAPI.CancelToken.source().cancel();
                 }
@@ -40,12 +41,14 @@ const SearchResults = (props) => {
         <div className="search-results-container">
             <h1 className="search-results__headline">Search Results For:  <b>{searchQuery.split('q=')[1]}</b></h1>
             <h2 className="search-results__num_of_results">({totalResults})</h2>
-            {resultsList.length ?
-                <>
-                    <Pagination numOfPages={numOfPages} path={`/search/${searchQuery}`} />
-                    <ShowList data={resultsList} />
-                </>
-                : <Loader />}
+            {!totalResults ?
+                <h1 className="search-results__no_results">No items found</h1>
+                : resultsList.length ?
+                    <>
+                        <Pagination numOfPages={numOfPages} path={`/search/${searchQuery}`} />
+                        <ShowList data={resultsList} />
+                    </>
+                    : <Loader />}
         </div>
     )
 }

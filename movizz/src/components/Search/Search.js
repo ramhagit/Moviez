@@ -20,13 +20,22 @@ const Search = () => {
     return (
         <div className="search-container">
             <div className="search">
-                <input type="text" onChange={e => setValue(e.target.value)} value={value} />
+                <input
+                    type="text"
+                    onChange={e => setValue(e.target.value)}
+                    value={value}
+                    onBlur={() => {
+                        setTimeout(() => {
+                            setReset(true);
+                        }, 500);
+                    }}
+                />
                 <Link to={`/search/q=${value}`}>
                     <button onClick={() => { setValue('') }}>SEARCH</button>
                 </Link>
             </div>
             <div className="auto-complete-container">
-                {value && <AutoComplete inputValue={value} setInputValue={setValue} setReset={setReset}/>}
+                {value && <AutoComplete inputValue={value} setInputValue={setValue} setReset={setReset} />}
             </div>
         </div>
     )
