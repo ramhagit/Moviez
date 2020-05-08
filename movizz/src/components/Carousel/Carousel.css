@@ -14,9 +14,10 @@
 .carousel__img_home {
     box-sizing: border-box;
     margin-top: 5rem;
-    width: 90%;
+    width: 80vw;
     max-width: 780px;
-    /* z-index: -1; */
+    position: static;
+    z-index: 3;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
 }
 
@@ -44,22 +45,24 @@ button.back_arrow, button.forward_arrow {
     position: absolute;
     /* top: 33%; */
     font-weight: 900;
-    z-index: -1;
-    height: 80%;
+    z-index: 0;
+    /* height: 70%; */
+    height: calc(100% - 5rem);
     /* top: calc(5rem + 10%); */
-    bottom: 4%;
-    width: 15%;
-    box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.5);
+    /* bottom: 4%; */
+    bottom: 0;
+    width: 4%;
+    /* box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.5); */
 }
 
 button.back_arrow {
     /* margin-left: -40%; */
-    left: -6%;
+    right: 100%;
 }
 
 button.forward_arrow {
     /* margin-left: 40%; */
-    right: -6%;
+    left: 100%;
 }
 
 /* button.forward_arrow {

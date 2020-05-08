@@ -14,6 +14,12 @@ const Carousel = (props) => {
     console.log('displayList: ', displayList, 'activeIndex: ', activeIndex, 'displayList at activeIndex: ', displayList[activeIndex]);
 
     useEffect(() => {
+        setTimeout(() => {
+            setAuto(false);
+        },25000) 
+    }, [])
+    
+    useEffect(() => {
         if (auto && length) {
             setTimeout(() => {
                 // let index = activeIndex ? activeIndex : 0;
@@ -46,15 +52,15 @@ const Carousel = (props) => {
     }
 
     const leftImgSrc = () => {
-        return !activeIndex ? displayList[length - 1].img_src : displayList[activeIndex - 1].img_src;
+        let prevIndex = activeIndex === 0 ? length - 1 : activeIndex - 1; 
+        return displayList[prevIndex].img_src;
     }
 
     const rightImgSrc = () => {
+        let nextIndex = activeIndex === length - 1 ? 0 : activeIndex + 1; 
         console.log('activeIndex: ', activeIndex);
         
-        return activeIndex === length - 1 ?
-            displayList[0].img_src :
-            displayList[activeIndex + 1].img_src;
+        return displayList[nextIndex].img_src;
     }
 
     return (
@@ -62,8 +68,8 @@ const Carousel = (props) => {
             {length ?
                 <div className="carousel">
                     <div className="carousel_show_slide">
-                        <LeftArrow goToPrevSlide={goToPrevSlide} />
-                        {/* <LeftArrow goToPrevSlide={goToPrevSlide} imgSrc={leftImgSrc()} /> */}
+                        {/* <LeftArrow goToPrevSlide={goToPrevSlide} /> */}
+                        <LeftArrow goToPrevSlide={goToPrevSlide} imgSrc={leftImgSrc()} />
                         <img
                             className="carousel__img_home"
                             src={displayList[activeIndex].img_src}
@@ -72,8 +78,8 @@ const Carousel = (props) => {
                         <Link to={displayList[activeIndex].link_path} >
                             <h1 className="carousel__title_home">{displayList[activeIndex].title}</h1>
                         </Link>
-                        {/* <RightArrow goToNextSlide={goToNextSlide} imgSrc={rightImgSrc()} /> */}
-                        <RightArrow goToNextSlide={goToNextSlide} />
+                        <RightArrow goToNextSlide={goToNextSlide} imgSrc={rightImgSrc()} />
+                        {/* <RightArrow goToNextSlide={goToNextSlide} /> */}
                     </div>
                     <DotButtons numOfButtons={length} goToSlide={goToSlide} activeIndex={activeIndex} />
                 </div>
