@@ -37,11 +37,16 @@ const AutoComplete = (props) => {
             className="auto-complete-suggestion"
             key={item.title}
             data-title={item.title}
-            onClick={e => { setInputValue(e.target.dataset.title) }}
+            onClick={e => {
+                const newInputValue = e.target.dataset.title;
+                setTimeout(() => {
+                    setInputValue(newInputValue);
+                }, 250)
+            }}
         >
             {item.title.length > 18 ? `${item.title.substring(0, 18)}` : item.title}
-            <Link to={`/movie/${item.id}`} key={item.id} onMouseUp={() => {setReset(true)}}>
-                <img src={`${tmdbImage}w92${item.poster_path}`} alt={item.title}/>
+            <Link to={`/movie/${item.id}`} key={item.id} onMouseUp={() => { setReset(true) }}>
+                <img src={`${tmdbImage}w92${item.poster_path}`} alt={item.title} />
             </Link>
 
         </span>

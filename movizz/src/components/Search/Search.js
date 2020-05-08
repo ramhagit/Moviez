@@ -27,7 +27,7 @@ const Search = () => {
                     onBlur={() => {
                         setTimeout(() => {
                             setReset(true);
-                        }, 500);
+                        }, 200);
                     }}
                 />
                 <Link to={`/search/q=${value}`}>

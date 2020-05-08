@@ -10,7 +10,6 @@ const Header = () => {
     return (
         <header>
             <div className="home">
-            
                 <Link to="/" ><FontAwesomeIcon icon={faHome} /></Link>
                 {/* <Link to="/" ><span role="img" aria-label="Home">🏠 </span>Home</Link> */}
             </div>
