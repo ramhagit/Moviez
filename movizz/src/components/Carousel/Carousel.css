@@ -30,10 +30,10 @@
     top: calc(5rem + 35%);
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
+    border-radius: 5px;
 }
 
 .carousel__title_home, button.back_arrow, button.forward_arrow {
-    border-radius: 5px;
     color: rgba(0, 0, 0, 0.6);
     background-color: var(--background-color);
     mix-blend-mode: luminosity;
@@ -52,7 +52,7 @@ button.back_arrow, button.forward_arrow {
     /* bottom: 4%; */
     bottom: 0;
     width: 4%;
-    /* box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.5); */
+    box-shadow: 1px 1px 0.5px rgba(0, 0, 0, 0.5);
 }
 
 button.back_arrow {
