@@ -8,7 +8,8 @@ const DotButtons = (props) => {
         return <span
             className={`dot-button ${index === activeIndex ? 'active' : ''}`}
             data-index={index}
-            onClick={e => goToSlide(e.target.dataset.index)}
+            // onClick={e => goToSlide(e.target.dataset.index)}
+            onClick={() => goToSlide(index)}
             key={uniqid()}
         ></span>
     }

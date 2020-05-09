@@ -6,7 +6,6 @@
 }
 
 .carousel_show_slide {
-    /* overflow: hidden; */
     text-align: center;
     position: relative;
 }
@@ -16,8 +15,6 @@
     margin-top: 5rem;
     width: 80vw;
     max-width: 780px;
-    position: static;
-    z-index: 3;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
 }
 
@@ -41,7 +38,7 @@
 
 button.back_arrow, button.forward_arrow {
     /* height: calc(5rem - 2%); */
-    width: calc(8% - 1rem);
+    /* width: calc(8% - 1rem); */
     position: absolute;
     /* top: 33%; */
     font-weight: 900;
@@ -50,18 +47,17 @@ button.back_arrow, button.forward_arrow {
     height: calc(100% - 5rem);
     /* top: calc(5rem + 10%); */
     /* bottom: 4%; */
-    bottom: 0;
+    bottom: 2px;
     width: 4%;
+    min-width: 20px;
     box-shadow: 1px 1px 0.5px rgba(0, 0, 0, 0.5);
 }
 
 button.back_arrow {
-    /* margin-left: -40%; */
     right: 100%;
 }
 
 button.forward_arrow {
-    /* margin-left: 40%; */
     left: 100%;
 }
 
