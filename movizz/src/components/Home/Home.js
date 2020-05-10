@@ -13,7 +13,7 @@ const Home = (props) => {
     const [data, setData] = useState([]);
     const [numOfPages, setNumOfPages] = useState(1);
     const [coverMovies, setCoverMovies] = useState([]);
-    const [carouselActiveIndex, setCarouselActiveIndex] = useState(0);
+    const [carouselActiveIndex, setCarouselActiveIndex] = useState(2);
 
     useEffect(() => {
         const fetchData = () => {

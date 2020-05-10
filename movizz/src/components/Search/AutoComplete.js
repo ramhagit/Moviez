@@ -46,7 +46,7 @@ const AutoComplete = (props) => {
         >
             {item.title.length > 18 ? `${item.title.substring(0, 18)}` : item.title}
             <Link to={`/movie/${item.id}`} key={item.id} onMouseUp={() => { setReset(true) }}>
-                <img src={`${tmdbImage}w92${item.poster_path}`} alt={item.title} />
+                <img src={`${tmdbImage}w92${item.poster_path}`} alt={item.poster_path ? item.title : ''} />
             </Link>
 
         </span>

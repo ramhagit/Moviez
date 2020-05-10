@@ -69,7 +69,7 @@ const ItemDetail = (props) => {
             {
                 omdbData.Genre || tmdbData.genres ? tmdbData.genres.map(
                     (genre, index) => {
-                        return <span>
+                        return <span key={uniqid()}>
                             {index === tmdbData.genres.length - 1 ? genre.name : `${genre.name}, `}
                         </span>
                     }) : 'No genre available'
@@ -82,7 +82,7 @@ const ItemDetail = (props) => {
             {
                 tmdbData.spoken_languages ? tmdbData.spoken_languages.map(
                     (language, index) => {
-                        return <span>
+                        return <span key={uniqid()}>
                             {index === tmdbData.spoken_languages.length - 1 ? language.name : `${language.name}, `}
                         </span>
                     }) : omdbData.Language || 'Language unknown'
@@ -95,13 +95,13 @@ const ItemDetail = (props) => {
             {
                 omdbData.Response === "True" && omdbData.Ratings.length ? omdbData.Ratings.map(
                     (rating, index) => {
-                        return <>
+                        return <span key={uniqid()}>
                             {
                                 index === omdbData.Ratings.length - 1 ?
                                     `${rating.Source} :  ${rating.Value}` :
                                     `${rating.Source} :  ${rating.Value}, `
                             }
-                        </>
+                        </span>
                     }) : null
             }
         </>
@@ -112,7 +112,7 @@ const ItemDetail = (props) => {
             {
                 omdbData.Actors && omdbData.Actors !== "N/A" ? omdbData.Actors.split(',').map(
                     item => {
-                        return <div key={item}>{item}</div>
+                        return <div key={uniqid()}>{item}</div>
                     }) : ''
             }
         </>
