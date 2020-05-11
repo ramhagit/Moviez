@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import Search from '../Search/Search';
 
-import './Header.css';
+import './Navbar.css';
 
 const Header = () => {
     return (

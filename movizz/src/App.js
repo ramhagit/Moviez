@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import Header from './components/Header/Header';
+import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import ItemDetail from './components/ItemDetail/ItemDetail';
 import Movies from './components/Movies/Movies';
@@ -10,7 +10,7 @@ const App = () => {
     return (
         <div className="page-container">
             <BrowserRouter>
-                <Header />
+                <Navbar />
                 <div className="content-container">
                     <Route path='/' exact component={() => <Home />} />
                     <Route path='/page/:page_num' exact component={props => <Home pageNum={props.match.params.page_num} />} />
