@@ -1,5 +1,7 @@
 :root {
     --primary-color: rgb(61, 32, 32);
+    --primary-trans: rgba(61, 32, 32, 0.8);
+    --secondary-color: rgb(245, 245, 220);
     --background-color: rgba(218, 218, 194, 0.5);
     --heading-primary: 3.5rem;
     --heading-secondary: 2.3rem;

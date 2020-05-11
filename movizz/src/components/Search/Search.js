@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import AutoComplete from './AutoComplete';
 
 import './Search.css';
@@ -17,6 +17,10 @@ const Search = () => {
         }
     }, [reset])
 
+    const handleClick = () => {
+        return <Redirect to={`/search/q=${value}`} />
+    }
+
     return (
         <div className="search-container">
             <div className="search">
@@ -31,7 +35,7 @@ const Search = () => {
                     }}
                 />
                 <Link to={`/search/q=${value}`}>
-                    <button onClick={() => { setValue('') }}>SEARCH</button>
+                    <button onClick={handleClick}>SEARCH</button>
                 </Link>
             </div>
             <div className="auto-complete-container">

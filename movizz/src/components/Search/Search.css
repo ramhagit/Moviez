@@ -1,5 +1,6 @@
 .search-container {
     position: relative;
+    margin-right: 0.5rem;
 }
 
 .auto-complete-container {
@@ -9,5 +10,6 @@
 }
 
 .search button {
-    background-color: var(--background-color);
+    background-color: var(--primary-trans);
+    color: var(--secondary-color);
 }

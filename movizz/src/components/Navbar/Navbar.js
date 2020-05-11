@@ -6,19 +6,19 @@ import Search from '../Search/Search';
 
 import './Navbar.css';
 
-const Header = () => {
+const Navbar = () => {
     return (
         <header>
             <div className="home">
                 <Link to="/" ><FontAwesomeIcon icon={faHome} /></Link>
                 {/* <Link to="/" ><span role="img" aria-label="Home">🏠 </span>Home</Link> */}
             </div>
-            <Search />
             <div className="links">
                 <Link to="/movies/popular/page/1" >MOVIES</Link>
             </div>
+            <Search />
         </header>
     )
 }
 
-export default Header;
+export default Navbar;
