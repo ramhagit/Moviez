@@ -7,9 +7,11 @@ const LeftArrow = (props) => {
 
     const backgroundImgStyle = {
         backgroundImage: `url('${imgSrc}')`,
-        // backgroundRepeat: 'no-repeat',
+        backgroundRepeat: 'no-repeat',
         // backgroundAttachment: 'fixed',
-        // backgroundSize: 'cover'
+        backgroundPositionY: 'center',
+        backgroundPositionX: 'center',
+        backgroundSize: 'cover'
     }
 
     return (

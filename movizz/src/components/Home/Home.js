@@ -17,7 +17,6 @@ const Home = (props) => {
 
     useEffect(() => {
         const fetchData = () => {
-            setData([]);
             try {
                 TMDBAPI.get(`movie/now_playing?api_key=${tmdbKey}&language=en-US&region=US&page=${pageNum}`
                 ).then(response => {

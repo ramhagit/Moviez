@@ -8,7 +8,8 @@ const RightArrow = (props) => {
     const backgroundImgStyle = {
         backgroundImage: `url('${imgSrc}')`,
         backgroundRepeat: 'no-repeat',
-        backgroundAttachment: 'fixed',
+        // backgroundAttachment: 'fixed',
+        backgroundPositionX: 'center',
         backgroundSize: 'cover'
     }
 

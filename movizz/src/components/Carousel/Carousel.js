@@ -70,11 +70,13 @@ const Carousel = (props) => {
                     <div className="carousel_show_slide">
                         {/* <LeftArrow goToPrevSlide={goToPrevSlide} /> */}
                         <LeftArrow goToPrevSlide={goToPrevSlide} imgSrc={leftImgSrc()} />
+                        <div className="carousel__img_home prev"></div>
                         <img
                             className="carousel__img_home"
                             src={displayList[activeIndex].img_src}
                             alt={displayList[activeIndex].title}
                         />
+                        <div className="carousel__img_home next"></div>
                         <Link to={displayList[activeIndex].link_path} >
                             <h1 className="carousel__title_home">{displayList[activeIndex].title}</h1>
                         </Link>
