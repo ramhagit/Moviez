@@ -4,7 +4,7 @@ import { tmdbKey } from '../../keys';
 import { Link } from 'react-router-dom';
 import Pagination from '../Pagination/Pagination';
 import ShowList from '../ShowList/ShowList';
-import Loader from '../../Loader';
+import Loader from '../Loader/Loader';
 import { releaseDateLimit } from '../../utils/date';
 
 import './Movies.css';

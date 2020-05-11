@@ -3,7 +3,7 @@ import LeftArrow from './LeftArrow';
 import RightArrow from './RightArrow';
 import DotButtons from './DotButtons';
 import { Link } from 'react-router-dom';
-import Loader from '../../Loader';
+import Loader from '../Loader/Loader';
 
 import './Carousel.css';
 

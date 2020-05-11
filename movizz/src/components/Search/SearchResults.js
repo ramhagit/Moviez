@@ -3,7 +3,7 @@ import { tmdbKey } from '../../keys';
 import { TMDBAPI } from '../../api';
 import Pagination from '../Pagination/Pagination';
 import ShowList from '../ShowList/ShowList';
-import Loader from '../../Loader';
+import Loader from '../Loader/Loader';
 
 import './SearchResults.css';
 

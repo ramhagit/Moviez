@@ -4,7 +4,7 @@ import { tmdbKey, omdbKey } from '../../keys';
 import ReactPlayer from 'react-player';
 import MovieCard from '../MovieCard/MovieCard';
 import Cast from '../Cast/Cast';
-import Loader from '../../Loader';
+import Loader from '../Loader/Loader';
 import uniqid from "uniqid";
 
 import './ItemDetail.css';
