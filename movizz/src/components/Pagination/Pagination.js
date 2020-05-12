@@ -7,7 +7,7 @@ const Pagination = (props) => {
     const { numOfPages, path } = props;
 
     const [indexOfFirstToDisplayPage, setIndexOfFirstToDisplayPage] = useState(0);
-    const [pagesDisplaySize, setPagesDisplaySize] = useState(5);
+    const [amountOfDisplayedPages, setAmountOfDisplayedPages] = useState(5);
     const [backwardsDisabled, setBackwardsDisabled] = useState(true);
     const [forwardsDisabled, setForwardsDisabled] = useState(false);
 
@@ -16,28 +16,27 @@ const Pagination = (props) => {
     const nextDisabled = !currentPage ? true : currentPage === numOfPages ? true : false;
     // console.log('path: ', path, 'current url: ', window.location.href);
 
-
     useEffect(() => {
         if (indexOfFirstToDisplayPage > numOfPages) {
             setIndexOfFirstToDisplayPage(currentPage - 1);
         }
-        if (currentPage > indexOfFirstToDisplayPage + pagesDisplaySize || currentPage < indexOfFirstToDisplayPage + 1) {
+        if (currentPage > indexOfFirstToDisplayPage + amountOfDisplayedPages || currentPage < indexOfFirstToDisplayPage + 1) {
             setIndexOfFirstToDisplayPage(currentPage - 1);
         }
 
-        if (indexOfFirstToDisplayPage >= numOfPages - pagesDisplaySize - 1) {
+        if (indexOfFirstToDisplayPage >= numOfPages - amountOfDisplayedPages - 1) {
             setForwardsDisabled(true);
         }
-        if (indexOfFirstToDisplayPage + pagesDisplaySize - 1 < numOfPages - 1) {
+        if (indexOfFirstToDisplayPage + amountOfDisplayedPages - 1 < numOfPages - 1) {
             setBackwardsDisabled(true);
         }
         if (indexOfFirstToDisplayPage !== 0) {
             setBackwardsDisabled(false);
         }
-    }, [currentPage, indexOfFirstToDisplayPage])
+    }, [currentPage, indexOfFirstToDisplayPage, numOfPages, amountOfDisplayedPages])
 
-    const firstDisabled = indexOfFirstToDisplayPage < pagesDisplaySize ? true : false;
-    const lastDisabled = indexOfFirstToDisplayPage + 1 >= numOfPages - pagesDisplaySize ? true : false;
+    const firstDisabled = indexOfFirstToDisplayPage < amountOfDisplayedPages ? true : false;
+    const lastDisabled = indexOfFirstToDisplayPage + 1 >= numOfPages - amountOfDisplayedPages ? true : false;
     console.log('currentPage: ', currentPage, 'indexOfFirstToDisplayPage: ', indexOfFirstToDisplayPage, 'backwardsDisabled: ', backwardsDisabled, 'forwardsDisabled: ', forwardsDisabled);
 
     const pages = Array.from(new Array(numOfPages), (x, i) => i + 1).map(page => {
@@ -67,7 +66,7 @@ const Pagination = (props) => {
         </Link>
         <button className="pagination-arrow backward" disabled={backwardsDisabled}>&lt;</button>
         <div className="pages-bar">
-            {pages.slice(indexOfFirstToDisplayPage, indexOfFirstToDisplayPage + pagesDisplaySize)}
+            {pages.slice(indexOfFirstToDisplayPage, indexOfFirstToDisplayPage + amountOfDisplayedPages)}
         </div>
         <button className="pagination-arrow forward" disabled={forwardsDisabled}>&gt;</button>
         <Link to={`${path}/page/${currentPage + 1}`}>
@@ -79,7 +78,7 @@ const Pagination = (props) => {
         <Link to={`${path}/page/${numOfPages}`}>
             <button
                 className="pagination-arrow last"
-                onClick={() => { setIndexOfFirstToDisplayPage(numOfPages - pagesDisplaySize) }}
+                onClick={() => { setIndexOfFirstToDisplayPage(numOfPages - amountOfDisplayedPages) }}
                 disabled={lastDisabled}
             >{'Last'}</button>
         </Link>
