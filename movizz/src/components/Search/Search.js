@@ -35,7 +35,7 @@ const Search = () => {
                     }}
                 />
                 <Link to={`/search/q=${value}`}>
-                    <button onClick={handleClick}>SEARCH</button>
+                    <button onClick={handleClick}>Search</button>
                 </Link>
             </div>
             <div className="auto-complete-container">

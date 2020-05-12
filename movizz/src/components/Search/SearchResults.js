@@ -17,7 +17,7 @@ const SearchResults = (props) => {
         const fetchData = () => {
             try {
                 if (searchQuery) {
-                    TMDBAPI.get(`search/movie?api_key=${tmdbKey}&query=${searchQuery.split("q=")[1].replace(' ', '+')}&page=${pageNum}`)
+                    TMDBAPI.get(`search/movie?api_key=${tmdbKey}&query=${searchQuery.split("q=")[1].replace(' ', '+').replace('%20', '+')}&page=${pageNum}`)
                         .then(response => {
                             setResultsList(response.data.results);
                             setNumOfPages(response.data.total_pages);

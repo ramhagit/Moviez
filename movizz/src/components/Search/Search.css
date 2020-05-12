@@ -13,3 +13,14 @@
     background-color: var(--primary-trans);
     color: var(--secondary-color);
 }
+
+.search input {
+    margin-right: 2px;
+    /* outline: 1px solid var(--primary-color);
+    outline-offset: 0.5px;
+    outline-style: inset;
+    outline-width: thin;
+    outline-color: var(--primary-color); */
+    border-color: var(--primary-trans);
+    outline: none;
+}
