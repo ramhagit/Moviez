@@ -17,3 +17,10 @@
     margin: 7rem 1rem 5rem 1rem;
     text-align: center;
 } 
+
+.welcome::before {
+    content: "";
+    color: var(--secondary-color);
+    height: 2px;
+    width: 8px;
+}

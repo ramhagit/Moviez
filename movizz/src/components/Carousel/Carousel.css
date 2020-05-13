@@ -42,21 +42,22 @@
 
 .carousel__title_home, .carousel__rate_home {
     position: absolute;
-    font-size: xx-large;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     color: rgba(0, 0, 0, 0.6);
     mix-blend-mode: luminosity;
+    font-size: xx-large;
 }
 
 .carousel__rate_home {
     border-radius: 50%;
     padding: 1rem;
     bottom: 0.5rem;
-    height: 7rem;
-    width: 7rem;
+    height: 8rem;
+    width: 8rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    /* font-size: 90%; */
 }
 
 .carousel__title_home, button.back_arrow, button.forward_arrow, .carousel__rate_home {
@@ -122,3 +123,26 @@ button.back_arrow:focus, button.forward_arrow:focus {
 .dot-button.active {
     background-color: var(--primary-color);
 }
+
+@media screen and (max-width: 650px) {
+    .carousel__title_home, .carousel__rate_home {
+        font-size: large;
+    }
+
+    .carousel__rate_home {
+        height: 6rem;
+        width: 6rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .carousel__title_home, .carousel__rate_home {
+        font-size: medium;
+    }
+
+    .carousel__rate_home {
+        height: 4rem;
+        width: 4rem;
+    }
+}
+
