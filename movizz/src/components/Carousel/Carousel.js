@@ -16,34 +16,39 @@ const Carousel = (props) => {
     useEffect(() => {
         setTimeout(() => {
             setAuto(false);
-        },25000) 
+        }, 25000)
     }, [])
-    
+
     useEffect(() => {
         if (auto && length) {
             setTimeout(() => {
                 // let index = activeIndex ? activeIndex : 0;
                 // let nextIndex = (activeIndex + 1) % length;
-                let nextIndex = activeIndex === length - 1 ? 0 : activeIndex + 1;
-                console.log('length: ', length, 'nextIndex: ', nextIndex);
+                // let nextIndex = activeIndex === length - 1 ? 0 : activeIndex + 1;
+                // console.log('length: ', length, 'nextIndex: ', nextIndex);
 
-                setActiveIndex(nextIndex);
+                setActiveIndex(nextIndex());
             }, 5000)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [auto, length, activeIndex])
+
+    const prevIndex = () => {
+        return activeIndex === 0 ? length - 1 : activeIndex - 1;
+    }
+
+    const nextIndex = () => {
+        return activeIndex === length - 1 ? 0 : activeIndex + 1;
+    }
 
     const goToPrevSlide = () => {
         setAuto(false);
-        let index = activeIndex;
-        index < 1 ? index = length - 1 : index--;
-        setActiveIndex(index);
+        setActiveIndex(prevIndex());
     }
 
     const goToNextSlide = () => {
         setAuto(false);
-        let index = activeIndex;
-        index === length - 1 ? index = 0 : index++;
-        setActiveIndex(index);
+        setActiveIndex(nextIndex());
     }
 
     const goToSlide = (index) => {
@@ -52,15 +57,11 @@ const Carousel = (props) => {
     }
 
     const leftImgSrc = () => {
-        let prevIndex = activeIndex === 0 ? length - 1 : activeIndex - 1; 
-        return displayList[prevIndex].img_src;
+        return displayList[prevIndex()].img_src;
     }
 
     const rightImgSrc = () => {
-        let nextIndex = activeIndex === length - 1 ? 0 : activeIndex + 1; 
-        console.log('activeIndex: ', activeIndex);
-        
-        return displayList[nextIndex].img_src;
+        return displayList[nextIndex()].img_src;
     }
 
     return (
@@ -70,13 +71,21 @@ const Carousel = (props) => {
                     <div className="carousel_show_slide">
                         {/* <LeftArrow goToPrevSlide={goToPrevSlide} /> */}
                         <LeftArrow goToPrevSlide={goToPrevSlide} imgSrc={leftImgSrc()} />
-                        <div className="carousel__img_home prev"></div>
+                        {/* <img
+                            className="carousel__img_home prev"
+                            src={displayList[prevIndex()].img_src}
+                            alt=""
+                        /> */}
                         <img
                             className="carousel__img_home"
                             src={displayList[activeIndex].img_src}
                             alt={displayList[activeIndex].title}
                         />
-                        <div className="carousel__img_home next"></div>
+                        {/* <img
+                            className="carousel__img_home next"
+                            src={displayList[nextIndex()].img_src}
+                            alt=""
+                        /> */}
                         <Link to={displayList[activeIndex].link_path} >
                             <h1 className="carousel__title_home">{displayList[activeIndex].title}</h1>
                         </Link>
