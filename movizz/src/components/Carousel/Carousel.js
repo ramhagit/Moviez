@@ -4,13 +4,16 @@ import RightArrow from './RightArrow';
 import DotButtons from './DotButtons';
 import { Link } from 'react-router-dom';
 import Loader from '../Loader/Loader';
+import useWidth from '../../hooks/useWidth.hooks';
 
 import './Carousel.css';
 
 const Carousel = (props) => {
     const { displayList, activeIndex, setActiveIndex } = props;
     const [auto, setAuto] = useState(true);
+    const [mobile, setMobile] = useState(false);
     const length = displayList.length;
+    const width = useWidth();
     console.log('displayList: ', displayList, 'activeIndex: ', activeIndex, 'displayList at activeIndex: ', displayList[activeIndex]);
 
     useEffect(() => {
@@ -18,6 +21,10 @@ const Carousel = (props) => {
             setAuto(false);
         }, 25000)
     }, [])
+
+    useEffect(() => {
+        width < 450 ? setMobile(true) : setMobile(false);
+    }, [width])
 
     useEffect(() => {
         if (auto && length) {
@@ -64,8 +71,8 @@ const Carousel = (props) => {
             {length ?
                 <div className="carousel">
                     <div className="carousel_show_slide">
-                        {/* <LeftArrow goToPrevSlide={goToPrevSlide} /> */}
-                        <LeftArrow goToPrevSlide={goToPrevSlide} imgSrc={leftImgSrc()} />
+                        {mobile && <LeftArrow goToPrevSlide={goToPrevSlide} />}
+                        {!mobile && <LeftArrow goToPrevSlide={goToPrevSlide} imgSrc={leftImgSrc()} />}
                         {/* <img
                             className="carousel__img_home prev"
                             src={displayList[prevIndex()].img_src}
@@ -88,8 +95,8 @@ const Carousel = (props) => {
                             </div>
                         </Link>
                         <div className="carousel__rate_home">{displayList[activeIndex].rate}</div>
-                        <RightArrow goToNextSlide={goToNextSlide} imgSrc={rightImgSrc()} />
-                        {/* <RightArrow goToNextSlide={goToNextSlide} /> */}
+                        {!mobile && <RightArrow goToNextSlide={goToNextSlide} imgSrc={rightImgSrc()} />}
+                        {mobile && <RightArrow goToNextSlide={goToNextSlide} />}
                     </div>
                     <DotButtons numOfButtons={length} goToSlide={goToSlide} activeIndex={activeIndex} />
                 </div>
