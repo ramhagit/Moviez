@@ -14,7 +14,7 @@
 
 .carousel__img_home {
     box-sizing: border-box;
-    margin-top: 5rem;
+    margin-top: 2.5rem;
     width: 50vw;
     max-width: 780px;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
@@ -73,7 +73,7 @@ button.back_arrow, button.forward_arrow {
     z-index: 0;
     /* height: 70%; */
     /* height: calc(70% - 5rem); */
-    top: calc(5rem + 15%);
+    /* top: calc(5rem + 15%); */
     transform: translateY(7%);
     /* bottom: 4%; */
     /* bottom: calc(40% - 5rem); */
@@ -82,17 +82,19 @@ button.back_arrow, button.forward_arrow {
     height: 30%;
     min-width: 20px;
     box-shadow: 1px 1px 0.5px rgba(0, 0, 0, 0.5);
-    background-position-x: right;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
 }
 
 button.back_arrow {
-    right: 102%;
+    right: 99.5%;
     text-align: left;
+    top: calc(2.5rem - 5%);
 }
 
 button.forward_arrow {
-    left: 102%;
+    left: 99.5%;
     text-align: right;
+    bottom: 0;
 }
 
 button.back_arrow:focus, button.forward_arrow:focus {
