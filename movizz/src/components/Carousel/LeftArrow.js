@@ -6,9 +6,8 @@ const LeftArrow = (props) => {
     const { goToPrevSlide, imgSrc } = props;
 
     const backgroundImgStyle = {
-        backgroundImage: `url('${imgSrc}')`,
+        backgroundImage: `linear-gradient(rgba(218, 218, 194, 0.5), rgba(218, 218, 194, 0.5)), url('${imgSrc}')`,
         backgroundRepeat: 'no-repeat',
-        // backgroundAttachment: 'fixed',
         backgroundPositionY: 'center',
         backgroundPositionX: 'center',
         backgroundSize: 'cover'
@@ -17,7 +16,6 @@ const LeftArrow = (props) => {
     return (
         <button className='back_arrow' onClick={goToPrevSlide} style={backgroundImgStyle}>
             <FontAwesomeIcon icon={faAngleLeft} />
-            {/* {'<'} */}
         </button>
     )
 }

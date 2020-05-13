@@ -47,6 +47,7 @@ const Home = (props) => {
             return (
                 {
                     title: movie.title,
+                    rate: movie.vote_average,
                     img_src: `${tmdbImage}w780${movie.backdrop_path}`,
                     link_path: `/movie/${movie.id}`
                 }

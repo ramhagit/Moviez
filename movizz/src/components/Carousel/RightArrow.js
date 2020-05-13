@@ -6,18 +6,15 @@ const RightArrow = (props) => {
     const { goToNextSlide, imgSrc } = props;
 
     const backgroundImgStyle = {
-        backgroundImage: `url('${imgSrc}')`,
+        backgroundImage: `linear-gradient(rgba(218, 218, 194, 0.5), rgba(218, 218, 194, 0.5)), url('${imgSrc}')`,
         backgroundRepeat: 'no-repeat',
-        // backgroundAttachment: 'fixed',
         backgroundPositionX: 'center',
         backgroundSize: 'cover'
     }
 
     return (
         <button className='forward_arrow' onClick={goToNextSlide} style={backgroundImgStyle}>
-            {/* <i className='fa fa-angle-left fa-3x' aria-hidden='true'></i> */}
             <FontAwesomeIcon icon={faAngleRight} />
-            {/* {'>'} */}
         </button>
     )
 }

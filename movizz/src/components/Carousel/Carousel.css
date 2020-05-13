@@ -9,7 +9,6 @@
     text-align: center;
     position: relative;
     display: inline-table;
-    /* align-items: center; */
 }
 
 .carousel__img_home {
@@ -19,70 +18,62 @@
     max-width: 780px;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
     transition: all 1s ease;
-    /* top: 50%;
-    left: 50%; */
-    /* transform: translateY(50%) translateX(-50%) scale(1); */
     opacity: 1;
-}
-
-.carousel__img_home.prev, .carousel__img_home.next {
-    /* width: 20vw; */
-    /* height: calc(20vw/2); */
 }
 
 .carousel__img_home.prev {
     transform: translateY(50%) translateX(-10%) scale(0.1);
     opacity: 1;
-    /* background-color: red; */
-    /* height: 2px; */
 }
 
 .carousel__img_home.next {
     transform: translateY(-70%) translateX(60%) scale(0.1);
     opacity: 1;
-    /* background-color: green; */
-    /* height: 2px; */
 }
 
 .carousel__title_home {
-    position: absolute;
     padding: 0 2rem;
-    font-size: xx-large;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     left: 50%;
     top: calc(2.5rem + 40%);
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
     border-radius: 5px;
-    color: rgba(0, 0, 0, 0.6);
 }
 
-.carousel__title_home, button.back_arrow, button.forward_arrow {
-    background-color: var(--background-color);
+.carousel__title_home, .carousel__rate_home {
+    position: absolute;
+    font-size: xx-large;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    color: rgba(0, 0, 0, 0.6);
     mix-blend-mode: luminosity;
 }
 
+.carousel__rate_home {
+    border-radius: 50%;
+    padding: 1rem;
+    bottom: 0.5rem;
+    height: 7rem;
+    width: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel__title_home, button.back_arrow, button.forward_arrow, .carousel__rate_home {
+    background-color: var(--background-color);
+}
+
 button.back_arrow, button.forward_arrow {
-    color: beige;
+    color: var(--primary-trans);
     border: 1px solid beige;
-    /* height: calc(5rem - 2%); */
-    /* width: calc(8% - 1rem); */
     position: absolute;
-    /* top: 33%; */
     font-weight: 900;
     z-index: 0;
-    /* height: 70%; */
-    /* height: calc(70% - 5rem); */
-    /* top: calc(5rem + 15%); */
     transform: translateY(7%);
-    /* bottom: 4%; */
-    /* bottom: calc(40% - 5rem); */
-    /* width: 4%; */
     width: 35%;
     height: 30%;
     min-width: 20px;
     box-shadow: 1px 1px 0.5px rgba(0, 0, 0, 0.5);
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
 }
 
 button.back_arrow {

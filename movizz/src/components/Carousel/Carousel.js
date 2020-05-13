@@ -22,11 +22,6 @@ const Carousel = (props) => {
     useEffect(() => {
         if (auto && length) {
             setTimeout(() => {
-                // let index = activeIndex ? activeIndex : 0;
-                // let nextIndex = (activeIndex + 1) % length;
-                // let nextIndex = activeIndex === length - 1 ? 0 : activeIndex + 1;
-                // console.log('length: ', length, 'nextIndex: ', nextIndex);
-
                 setActiveIndex(nextIndex());
             }, 5000)
         }
@@ -38,9 +33,6 @@ const Carousel = (props) => {
     }
 
     const nextIndex = () => {
-        // return activeIndex === length - 1 ? 0 : activeIndex + 1;
-        console.log('nextIndex: ', (activeIndex + 1) % length);
-        
         return (activeIndex + 1) % length;
     }
 
@@ -92,6 +84,7 @@ const Carousel = (props) => {
                         <Link to={displayList[activeIndex].link_path} >
                             <h1 className="carousel__title_home">{displayList[activeIndex].title}</h1>
                         </Link>
+                        <div className="carousel__rate_home">{displayList[activeIndex].rate}</div>
                         <RightArrow goToNextSlide={goToNextSlide} imgSrc={rightImgSrc()} />
                         {/* <RightArrow goToNextSlide={goToNextSlide} /> */}
                     </div>
