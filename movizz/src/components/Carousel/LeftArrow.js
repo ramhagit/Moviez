@@ -14,7 +14,7 @@ const LeftArrow = (props) => {
     }
 
     return (
-        <button className='back_arrow' onClick={goToPrevSlide} style={backgroundImgStyle}>
+        <button className='back_arrow' onClick={goToPrevSlide} style={imgSrc ? backgroundImgStyle : {}}>
             <FontAwesomeIcon icon={faAngleLeft} />
         </button>
     )
