@@ -38,7 +38,10 @@ const Carousel = (props) => {
     }
 
     const nextIndex = () => {
-        return activeIndex === length - 1 ? 0 : activeIndex + 1;
+        // return activeIndex === length - 1 ? 0 : activeIndex + 1;
+        console.log('nextIndex: ', (activeIndex + 1) % length);
+        
+        return (activeIndex + 1) % length;
     }
 
     const goToPrevSlide = () => {

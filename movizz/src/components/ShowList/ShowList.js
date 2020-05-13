@@ -1,7 +1,7 @@
 import React from 'react';
 import Thumbnail from '../Thumbnail/Thumbnail';
 import { Link } from 'react-router-dom';
-import { tmdbImage } from '../../api';
+import { tmdbImage } from '../../api/base';
 
 import './ShowList.css';
 

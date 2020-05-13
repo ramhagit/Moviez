@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { TMDBAPI, OMDBAPI, tmdbImage } from '../../api';
+import { TMDBAPI, OMDBAPI, tmdbImage } from '../../api/base';
 import { tmdbKey, omdbKey } from '../../keys';
 import ReactPlayer from 'react-player';
 import MovieCard from '../MovieCard/MovieCard';

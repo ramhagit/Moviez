@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { TMDBAPI, tmdbImage } from '../../api';
+import { TMDBAPI, tmdbImage } from '../../api/base';
 import { tmdbKey } from '../../keys';
+import { tmdbNowPlaying } from '../../api/tmdb';
 import Carousel from '../Carousel/Carousel';
 import Pagination from '../Pagination/Pagination';
 import ShowList from '../ShowList/ShowList';
@@ -18,8 +19,7 @@ const Home = (props) => {
     useEffect(() => {
         const fetchData = () => {
             try {
-                TMDBAPI.get(`movie/now_playing?api_key=${tmdbKey}&language=en-US&region=US&page=${pageNum}`
-                ).then(response => {
+                tmdbNowPlaying(pageNum).then(response => {
                     setData(response.data.results);
                     setNumOfPages(response.data.total_pages);
                 });

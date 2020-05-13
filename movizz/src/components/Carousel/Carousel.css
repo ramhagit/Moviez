@@ -46,11 +46,11 @@
 
 .carousel__title_home {
     position: absolute;
-    padding: 2px 1.5rem;
+    padding: 0 2rem;
     font-size: xx-large;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     left: 50%;
-    top: calc(5rem + 35%);
+    top: calc(2.5rem + 40%);
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
     border-radius: 5px;

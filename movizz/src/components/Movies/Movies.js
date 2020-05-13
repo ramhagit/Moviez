@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TMDBAPI } from '../../api';
+import { TMDBAPI } from '../../api/base';
 import { tmdbKey } from '../../keys';
 import { Link } from 'react-router-dom';
 import Pagination from '../Pagination/Pagination';

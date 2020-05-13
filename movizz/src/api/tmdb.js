@@ -1,9 +1,6 @@
-import { TMDBAPI } from '../api';
+import { TMDBAPI } from './base';
+import { tmdbKey } from '../keys';
 
-export const tmdbNowPlaying = () => {
-    TMDBAPI.get(`movie/now_playing?api_key=${tmdbKey}&language=en-US&region=US&page=${pageNum}`
-    ).then(response => {
-        setData(response.data.results);
-        setNumOfPages(response.data.total_pages);
-    });
+export const tmdbNowPlaying = (pageNum=1) => {
+    return TMDBAPI.get(`movie/now_playing?api_key=${tmdbKey}&language=en-US&region=US&page=${pageNum}&adult=false`);
 }
