@@ -46,7 +46,8 @@ const Home = (props) => {
         const disp = fiveTop.map(movie => {
             return (
                 {
-                    title: movie.title,
+                    title: movie.title.length < 20 ? movie.title : `${movie.title.substring(0,19)}`,
+                    year: movie.release_date.split('-')[0],
                     rate: movie.vote_average,
                     img_src: `${tmdbImage}w780${movie.backdrop_path}`,
                     link_path: `/movie/${movie.id}`

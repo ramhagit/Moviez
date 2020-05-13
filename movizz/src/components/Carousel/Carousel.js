@@ -82,7 +82,10 @@ const Carousel = (props) => {
                             alt=""
                         /> */}
                         <Link to={displayList[activeIndex].link_path} >
-                            <h1 className="carousel__title_home">{displayList[activeIndex].title}</h1>
+                            <div className="carousel__title_home">
+                                <h1>{displayList[activeIndex].title}</h1>
+                                <h2>{displayList[activeIndex].year}</h2>
+                            </div>
                         </Link>
                         <div className="carousel__rate_home">{displayList[activeIndex].rate}</div>
                         <RightArrow goToNextSlide={goToNextSlide} imgSrc={rightImgSrc()} />
