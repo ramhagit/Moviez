@@ -2,9 +2,9 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
-import ItemDetail from './components/ItemDetail/ItemDetail';
+import ItemDetail from './components/ItemDisplay/ItemDetail/ItemDetail';
 import Movies from './components/Movies/Movies';
-import SearchResults from './components/Search/SearchResults';
+import SearchResults from './components/Navbar/Search/SearchResults';
 
 const App = () => {
     return (

@@ -3,8 +3,7 @@ import { TMDBAPI, tmdbImage } from '../../api/base';
 import { tmdbKey } from '../../keys';
 import { tmdbNowPlaying } from '../../api/tmdb';
 import Carousel from '../Carousel/Carousel';
-import Pagination from '../Pagination/Pagination';
-import ShowList from '../ShowList/ShowList';
+import ShowList from '../ListDisplay/ShowList/ShowList';
 import Loader from '../Loader/Loader';
 
 import './Home.css';
@@ -46,7 +45,7 @@ const Home = (props) => {
         const disp = fiveTop.map(movie => {
             return (
                 {
-                    title: movie.title.length < 20 ? movie.title : `${movie.title.substring(0,19)}`,
+                    title: movie.title.length < 20 ? movie.title : `${movie.title.substring(0,20)}`,
                     year: movie.release_date.split('-')[0],
                     rate: movie.vote_average,
                     img_src: `${tmdbImage}w780${movie.backdrop_path}`,
@@ -66,8 +65,7 @@ const Home = (props) => {
                 setActiveIndex={setCarouselActiveIndex}
             />
             <div className="welcome">Welcome to MovizZ</div>
-            <Pagination numOfPages={numOfPages} path={""} />
-            {data.length ? <ShowList data={data} /> : <Loader />}
+            {data.length ? <ShowList data={data} numOfPages={numOfPages} path={""}/> : <Loader />}
         </div>
     );
 }

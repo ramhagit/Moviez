@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { TMDBAPI } from '../../api/base';
 import { tmdbKey } from '../../keys';
 import { Link } from 'react-router-dom';
-import Pagination from '../Pagination/Pagination';
-import ShowList from '../ShowList/ShowList';
+import ShowList from '../ListDisplay/ShowList/ShowList';
 import Loader from '../Loader/Loader';
 import { releaseDateLimit } from '../../utils/date';
 
@@ -95,10 +94,9 @@ const Movies = (props) => {
                             </Link>
                         </div>
                     </div>
-                    <Pagination numOfPages={numOfPages} path={path} />
                 </> :
                 <Loader />}
-            {movieList.length ? <ShowList data={movieList} /> : <Loader />}
+            {movieList.length ? <ShowList data={movieList} numOfPages={numOfPages} path={path} /> : <Loader />}
         </div>
     )
 }

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { tmdbKey } from '../../keys';
-import { TMDBAPI } from '../../api/base';
-import Pagination from '../Pagination/Pagination';
-import ShowList from '../ShowList/ShowList';
-import Loader from '../Loader/Loader';
+import { tmdbKey } from '../../../keys';
+import { TMDBAPI } from '../../../api/base';
+import Pagination from '../../ListDisplay/Pagination/Pagination';
+import ShowList from '../../ListDisplay/ShowList/ShowList';
+import Loader from '../../Loader/Loader';
 
 import './SearchResults.css';
 

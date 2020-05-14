@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { tmdbKey } from '../../keys';
-import { TMDBAPI, tmdbImage } from '../../api/base';
+import { tmdbKey } from '../../../keys';
+import { TMDBAPI, tmdbImage } from '../../../api/base';
 import { Link } from 'react-router-dom';
 
 import './AutoComplete.css';

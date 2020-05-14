@@ -1,12 +1,13 @@
 import React from 'react';
-import Thumbnail from '../Thumbnail/Thumbnail';
 import { Link } from 'react-router-dom';
-import { tmdbImage } from '../../api/base';
+import { tmdbImage } from '../../../api/base';
+import Thumbnail from '../Thumbnail/Thumbnail';
+import Pagination from '../Pagination/Pagination';
 
 import './ShowList.css';
 
 const ShowList = (props) => {
-    const { data } = props;
+    const { data, numOfPages, path } = props;
     const posterSize = 'w185';
 
     const listItems = data.map(item => {
@@ -20,9 +21,12 @@ const ShowList = (props) => {
     });
 
     return (
-        <div className="list-container">
-            {listItems}
-        </div>
+        <>
+            <Pagination numOfPages={numOfPages} path={path} />
+            <div className="list-container">
+                {listItems}
+            </div>
+        </>
     )
 }
 

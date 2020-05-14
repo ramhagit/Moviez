@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { TMDBAPI, OMDBAPI, tmdbImage } from '../../api/base';
-import { tmdbKey, omdbKey } from '../../keys';
-import ReactPlayer from 'react-player';
+import { TMDBAPI, OMDBAPI, tmdbImage } from '../../../api/base';
+import { tmdbKey, omdbKey } from '../../../keys';
 import MovieCard from '../MovieCard/MovieCard';
 import Cast from '../Cast/Cast';
-import Loader from '../Loader/Loader';
+import Loader from '../../Loader/Loader';
+import Trailer from '../Trailer/Trailer';
 import uniqid from "uniqid";
 
 import './ItemDetail.css';
@@ -156,7 +156,7 @@ const ItemDetail = (props) => {
                         <div className="item__card">{movieCard}</div>
                         <div className="item__tagline">{data.tagline}</div>
                         <div className="item__overview"><div className="overview-content">{data.overview}</div></div>
-                        {trailerURL ? <ReactPlayer url={trailerURL} width='100%' height='36vw' style={trailerStyle}/> : null}
+                        {trailerURL ? <Trailer trailerURL={trailerURL} trailerStyle={trailerStyle} /> : null} 
                         <div className="item__cast">{cast}</div>
                         <div className="item__trailer">{trailerThumb}</div>
                     </> :

@@ -4,7 +4,7 @@ import RightArrow from './RightArrow';
 import DotButtons from './DotButtons';
 import { Link } from 'react-router-dom';
 import Loader from '../Loader/Loader';
-import useWidth from '../../hooks/useWidth.hooks';
+import useWidth from '../../hooks/useWidth';
 
 import './Carousel.css';
 
