@@ -27,9 +27,10 @@ const Hamburger = () => {
             </div>
             <div className="side-menu" ref={sideMenuRef}>
                 <Search />
-                <div className="hamburger__links">
-                    <Link to="/movies/popular/page/1" >MOVIES</Link>
-                </div>
+                <ul className="hamburger__links">
+                    <li className="hamburger__link"><Link to="/movies/popular/page/1" ><u>MOVIES</u></Link></li>
+                    <li className="hamburger__link">TV SHOWS</li>
+                </ul>
             </div>
         </>
     )

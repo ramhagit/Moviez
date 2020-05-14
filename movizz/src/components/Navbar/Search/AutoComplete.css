@@ -20,3 +20,9 @@
 .auto-complete-suggestion img {
     width: 5rem;
 }
+
+@media screen and (max-width: 650px) {
+    .auto-complete-suggestions {
+        width: 68vw;
+    }
+}

@@ -20,3 +20,10 @@
     border-color: var(--primary-trans);
     outline: none;
 }
+
+@media screen and (max-width: 650px) {
+    .auto-complete-container {
+        max-height: none;
+        height: 80vh;
+    }
+}
