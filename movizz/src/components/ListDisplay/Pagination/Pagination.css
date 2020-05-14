@@ -10,7 +10,7 @@
 }
 
 .pages-bar {
-    max-width: 42vw;
+    /* max-width: 42vw; */
     /* height: 2.2rem; */
     display: flex;
     align-items: flex-end;

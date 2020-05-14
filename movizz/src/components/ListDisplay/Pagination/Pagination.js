@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import useWidth from '../../../hooks/useWidth';
 
 import './Pagination.css';
 
@@ -14,7 +15,18 @@ const Pagination = (props) => {
     const currentPage = Number(window.location.href.split('page/')[1]);
     const prevDisabled = !currentPage ? true : currentPage === 1 ? true : false;
     const nextDisabled = !currentPage ? true : currentPage === numOfPages ? true : false;
+    const width = useWidth();
     // console.log('path: ', path, 'current url: ', window.location.href);
+
+
+    useEffect(() => {
+        width < 440 ? setAmountOfDisplayedPages(4) :
+            width < 540 ? setAmountOfDisplayedPages(5) :
+                width < 660 ? setAmountOfDisplayedPages(7) :
+                    width < 850 ? setAmountOfDisplayedPages(10) :
+                        width < 1050 ? setAmountOfDisplayedPages(15) :
+                            setAmountOfDisplayedPages(20);
+    }, [width])
 
     useEffect(() => {
         if (indexOfFirstToDisplayPage > numOfPages) {
