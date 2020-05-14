@@ -1,6 +1,6 @@
 .search-container {
     position: relative;
-    margin-right: 0.5rem;
+    margin-right: 1.5rem;
 }
 
 .auto-complete-container {
@@ -12,15 +12,11 @@
 .search button {
     background-color: var(--primary-trans);
     color: var(--secondary-color);
+    border: 1px solid rgb(94, 50, 50) var(--primary-color) var(--primary-color) rgb(94, 50, 50);
 }
 
 .search input {
     margin-right: 2px;
-    /* outline: 1px solid var(--primary-color);
-    outline-offset: 0.5px;
-    outline-style: inset;
-    outline-width: thin;
-    outline-color: var(--primary-color); */
     border-color: var(--primary-trans);
     outline: none;
 }
