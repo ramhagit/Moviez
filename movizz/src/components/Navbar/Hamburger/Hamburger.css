@@ -52,7 +52,7 @@
 
 .side-menu {
     position: absolute;
-    top: 5rem;
+    top: 8vh;
     right: -25rem;
     width: 25rem;
     height: 92vh;
@@ -65,11 +65,11 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* .hamburger__links {
-    border-radius: 5px;
-    height: 50%;
-    display: table-column;
+.hamburger__links {
+    /* border-radius: 5px; */
+    /* height: 50%; */
+    /* display: table-column; */
     background-color: var(--background-color);
-    margin: 5rem;
-    mix-blend-mode: luminosity;
-} */
+    /* margin: 5rem; */
+    /* mix-blend-mode: luminosity; */
+}
