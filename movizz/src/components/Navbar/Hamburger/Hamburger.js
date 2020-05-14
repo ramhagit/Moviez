@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import Search from '../Search/Search';
 import './Hamburger.css';
-import { icon } from '@fortawesome/fontawesome-svg-core';
 
 const Hamburger = () => {
     const hamIconRef = useRef(null);
@@ -25,8 +25,11 @@ const Hamburger = () => {
                     <span className="ham_slice"></span>
                 </div>
             </div>
-            <div className="side-menu" ref={sideMenuRef}>Side menU
-            <Search />
+            <div className="side-menu" ref={sideMenuRef}>
+                <Search />
+                <div className="hamburger__links">
+                    <Link to="/movies/popular/page/1" >MOVIES</Link>
+                </div>
             </div>
         </>
     )

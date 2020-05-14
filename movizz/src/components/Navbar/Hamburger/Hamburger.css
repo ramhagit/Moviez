@@ -55,11 +55,21 @@
     top: 5rem;
     right: -25rem;
     width: 25rem;
-    height: calc(100vh - 5rem);
+    height: 92vh;
     transition: all 0.5s;
+    padding: 0.5rem 0 0 0;
 }
 
 .side-menu.show {
     right: 0;
     background-color: rgba(0, 0, 0, 0.5);
 }
+
+/* .hamburger__links {
+    border-radius: 5px;
+    height: 50%;
+    display: table-column;
+    background-color: var(--background-color);
+    margin: 5rem;
+    mix-blend-mode: luminosity;
+} */
