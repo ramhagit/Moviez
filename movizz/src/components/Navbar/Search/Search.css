@@ -13,12 +13,14 @@
     background-color: var(--primary-trans);
     color: var(--secondary-color);
     border: 1px solid rgb(94, 50, 50) var(--primary-color) var(--primary-color) rgb(94, 50, 50);
+    border-radius: 3px;
 }
 
 .search input {
     margin-right: 2px;
     border-color: var(--primary-trans);
     outline: none;
+    border-radius: 3px;
 }
 
 @media screen and (max-width: 650px) {

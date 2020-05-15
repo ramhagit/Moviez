@@ -58,6 +58,7 @@
     height: 92vh;
     transition: all 0.5s;
     padding: 0;
+    border-radius: 1px;
 }
 
 .side-menu.show {

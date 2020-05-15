@@ -1,3 +1,4 @@
 .search-results__headline, .search-results__num_of_results, .search-results__no_results {
     text-align: center;
+    color: var(--primary-color);
 }

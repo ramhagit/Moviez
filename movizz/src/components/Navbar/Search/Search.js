@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect, Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import AutoComplete from './AutoComplete';
 
 import './Search.css';
@@ -35,7 +37,7 @@ const Search = () => {
                     }}
                 />
                 <Link to={`/search/q=${value}`}>
-                    <button onClick={handleClick}>Search</button>
+                    <button onClick={handleClick}><FontAwesomeIcon icon={faSearch} /> Search</button>
                 </Link>
             </div>
             <div className="auto-complete-container">
