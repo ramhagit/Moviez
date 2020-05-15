@@ -57,7 +57,7 @@
     width: 85vw;
     height: 92vh;
     transition: all 0.5s;
-    padding: 0.5rem 0 0 0;
+    padding: 0;
 }
 
 .side-menu.show {
@@ -66,12 +66,12 @@
 }
 
 .hamburger__links {
-    border-radius: 5px;
+    border-radius: 2px;
     height: 90%;
     display: flex;
     flex-direction: column;
     background-color: rgba(245, 245, 220, 0.8);
-    margin: 5px;
+    margin: 0 5px;
     /* mix-blend-mode: luminosity; */
 }
 
