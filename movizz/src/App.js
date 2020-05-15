@@ -5,6 +5,7 @@ import Home from './components/Home/Home';
 import ItemDetail from './components/ItemDisplay/ItemDetail/ItemDetail';
 import Movies from './components/Movies/Movies';
 import SearchResults from './components/Navbar/Search/SearchResults';
+import Footer from './components/Footer/Footer';
 
 const App = () => {
     return (
@@ -19,6 +20,7 @@ const App = () => {
                     <Route path='/search/:search_query' exact component={props => <SearchResults searchQuery={props.match.params.search_query} />} />
                     <Route path='/search/:search_query/page/:page_num' exact component={props => <SearchResults searchQuery={props.match.params.search_query} pageNum={props.match.params.page_num} />} />
                 </div>
+                <Footer />
             </BrowserRouter>
         </div>
     );

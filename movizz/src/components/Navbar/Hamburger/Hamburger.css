@@ -1,8 +1,8 @@
 .ham-icon {
     display: flex;
 	align-items: center;
-	height: 5vh;
-    width: 5vh;
+	height: 4vh;
+    width: 4vh;
     position: relative;
 }
 
@@ -18,11 +18,11 @@
 }
 
 .ham_slice::before {
-    top: -1.5vh;
+    top: -1.2vh;
 }
 
 .ham_slice::after {
-    top: 1.5vh;
+    top: 1.2vh;
 }
 
 .ham_slice,
