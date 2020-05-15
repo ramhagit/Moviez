@@ -1,8 +1,8 @@
 .ham-icon {
     display: flex;
 	align-items: center;
-	height: 2rem;
-    width: 2rem;
+	height: 5vh;
+    width: 5vh;
     position: relative;
 }
 
@@ -18,17 +18,17 @@
 }
 
 .ham_slice::before {
-    top: -0.7rem;
+    top: -1.5vh;
 }
 
 .ham_slice::after {
-    top: 0.7rem;
+    top: 1.5vh;
 }
 
 .ham_slice,
 .ham_slice::before,
 .ham_slice::after {
-	height: 2px;
+	height: 0.3rem;
 	width: 100%;
 	background-color: var(--primary-color);
 }
