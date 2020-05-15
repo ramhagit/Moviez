@@ -18,7 +18,7 @@
 }
 
 .page, .pagination-arrow {
-    background-color: beige;
+    background-color: var(--secondary-color);
     color: var(--primary-color);
 }
 
@@ -28,10 +28,15 @@
 
 .page.active, .first:focus, .last:focus {
     background-color: var(--active-color);
+    color: var(--secondary-color);
+}
+
+.page.active:hover {
+    color: var(--active-color);
 }
 
 .page:hover, .pagination-arrow:hover {
-    background-color: var(--background-color);
+    background-color: var(--hover-color);
 }
 
 .pagination-arrow {

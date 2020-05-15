@@ -84,12 +84,9 @@
     transition: all 0.5s;
 }
 
-.hamburger__link a{
-}
-
-.hamburger__link:hover{
+/* .hamburger__link:hover{
     transform: rotateX(360deg);
-}
+} */
 
 a, a:hover {
     color: var(--primary-color);
