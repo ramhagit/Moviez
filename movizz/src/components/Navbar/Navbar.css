@@ -16,6 +16,50 @@ header {
     width: 4.5vh;
 }
 
+.links {
+    width: 45%;
+}
+
+a.link {
+    height: 4rem;
+    margin: 0.5rem 5% 0.5rem 0;
+    color: var(--primary-color);
+    font-weight: 700;
+    /* overflow: hidden; */
+    position: relative;
+}
+
+.link::before,
+.link::after {
+	position: absolute;
+	height: 1px;
+	width: 100%;
+	content: "";
+	background-color: var(--primary-color);
+    transition: all 0.5s;
+}
+
+.link::before {
+    top: -0.5rem;
+    transform: translateX(-50%) scale(0);
+}
+
+.link::after {
+    bottom: -0.5rem;
+    left: 0;
+    transform: translateX(50%) scale(0);
+}
+
+.link:hover::before,
+.link:hover::after {
+    transform: translateX(0);
+}
+
+.link:hover {
+    color: var(--primary-color);
+
+}
+
 @media screen and (max-width: 450px) {
     header {
         padding: 0 5%;

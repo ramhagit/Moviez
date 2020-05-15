@@ -10,12 +10,9 @@
 }
 
 .pages-bar {
-    /* max-width: 42vw; */
-    /* height: 2.2rem; */
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    /* flex-wrap: wrap; */
     overflow: hidden;
     margin: 1rem 0;
 }
@@ -30,7 +27,7 @@
 }
 
 .page.active, .first:focus, .last:focus {
-    background-color: rgba(218, 218, 218, 1);
+    background-color: var(--active-color);
 }
 
 .page:hover, .pagination-arrow:hover {
@@ -40,10 +37,6 @@
 .pagination-arrow {
     height: 2.2rem;
 }
-
-/* .backward:disabled, .forward:disabled, .prev:disabled, .next:disabled {
-    display: none;
-} */
 
 .pagination-arrow:disabled {
     display: none;

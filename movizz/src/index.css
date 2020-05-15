@@ -3,6 +3,7 @@
 @import './styles/variables.css';
 
 body {
+  width: 100vw;
   height: 92vh;
     background: var(--background-color);
 }
@@ -10,14 +11,6 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-a, a:hover {
-  color: var(--primary-color);
-}
-
-a:hover {
-  font-weight: 600;
 }
 
 .loading-spinner {

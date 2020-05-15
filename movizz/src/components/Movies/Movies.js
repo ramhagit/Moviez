@@ -69,7 +69,8 @@ const Movies = (props) => {
     return (
         <div>
             {path ?
-                <>
+                <div className="movies-container">
+                    <h1 className="movies-headline"><span className="headline-capital">M</span>ovies</h1>
                     <div className="navigation">
                         <div className="navigation__buttons">
                             <Link to='/movies/latest/page/1'>
@@ -80,7 +81,7 @@ const Movies = (props) => {
                             <Link to='/movies/top/page/1'>
                                 <button
                                     className={`nav-btn ${searchBy === 'top' ? 'active' : ''}`}
-                                >high rate</button>
+                                >highest</button>
                             </Link>
                             <Link to='/movies/popular/page/1'>
                                 <button
@@ -94,7 +95,7 @@ const Movies = (props) => {
                             </Link>
                         </div>
                     </div>
-                </> :
+                </div> :
                 <Loader />}
             {movieList.length ? <ShowList data={movieList} numOfPages={numOfPages} path={path} /> : <Loader />}
         </div>

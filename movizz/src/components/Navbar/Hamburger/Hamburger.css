@@ -73,14 +73,26 @@
     flex-direction: column;
     background-color: rgba(245, 245, 220, 0.8);
     margin: 0 5px;
-    /* mix-blend-mode: luminosity; */
 }
 
 .hamburger__link {
     width: 100%;
     margin: 10% 0.5rem;
-    color: var(--primary-color);
     font-weight: 600;
+    color: var(--primary-color);
+    transform: rotateX(0);
+    transition: all 0.5s;
+}
+
+.hamburger__link a{
+}
+
+.hamburger__link:hover{
+    transform: rotateX(360deg);
+}
+
+a, a:hover {
+    color: var(--primary-color);
 }
 
 .search {

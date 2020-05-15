@@ -16,7 +16,8 @@ const Navbar = () => {
             {width < 650 ? <Hamburger></Hamburger> :
                 <>
                     <div className="links">
-                        <Link to="/movies/popular/page/1" >MOVIES</Link>
+                        <Link className="link" to="/movies/popular/page/1" >MOVIES</Link>
+                        <Link className="link" to="/" >TV SHOWS</Link>
                     </div>
                     <Search />
                 </>}
