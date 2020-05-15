@@ -27,7 +27,7 @@ const Hamburger = () => {
             </div>
             <div className="side-menu" ref={sideMenuRef}>
                 <Search />
-                <ul className="hamburger__links">
+                <ul className="hamburger__links" onClick={handleClick} >
                     <li className="hamburger__link"><Link to="/" ><u>HOME</u></Link></li>
                     <li className="hamburger__link"><Link to="/movies/popular/page/1" ><u>MOVIES</u></Link></li>
                     <li className="hamburger__link">TV SHOWS</li>

@@ -14,13 +14,34 @@
     font-size: var(--heading-primary);
     font-weight: 600;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    margin: 7rem 1rem 5rem 1rem;
+    margin: 7rem 1rem;
     text-align: center;
+    position: relative;
 } 
 
-.welcome::before {
+.welcome::before, .welcome::after {
+    position: absolute;
     content: "";
-    color: var(--secondary-color);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     height: 2px;
-    width: 8px;
+}
+
+.welcome::before {
+    width: 50%;
+    bottom: -2rem;
+    left: 25%;
+    background-color: var(--primary-trans);
+}
+
+.welcome::after {
+    width: 30%;
+    bottom: -4rem;
+    left: 35%;
+    background-color: var(--secondary-color);
+}
+
+@media screen and (max-width: 450px) {
+    .welcome {
+        margin: 5rem 1rem 7rem 1rem;
+    }
 }

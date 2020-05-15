@@ -13,10 +13,7 @@ header {
 }
 
 .logo {
-    color: var(--primary-color);
-    width: 5vh;
-    /* filter: invert(0%) sepia(51%) saturate(2878%) hue-rotate(0deg) brightness(104%) contrast(97%); */
-    color: #f5f5dc;
+    width: 4.5vh;
 }
 
 @media screen and (max-width: 450px) {
