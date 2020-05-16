@@ -16,6 +16,10 @@
     border-radius: 3px;
 }
 
+.search button:focus {
+    outline: none;
+}
+
 .search input {
     margin-right: 2px;
     border-color: var(--primary-trans);
