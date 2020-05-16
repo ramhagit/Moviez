@@ -22,11 +22,6 @@
     color: var(--secondary-color);
 }
 
-/* .pagination-arrow {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-} */
-
 .page.active, .pagination-arrow:focus {
     outline: none;
 }
