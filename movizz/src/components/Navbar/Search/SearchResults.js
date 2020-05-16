@@ -40,7 +40,7 @@ const SearchResults = (props) => {
 
     return (
         <div className="search-results-container">
-            <MainHeadline title={"search results"} />
+            <MainHeadline title="search results" />
             <h1 className="search-results__headline">For:  <b>{searchQuery.split('q=')[1]}</b></h1>
             <h2 className="search-results__num_of_results">({totalResults})</h2>
             {!totalResults ?

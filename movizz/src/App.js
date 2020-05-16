@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
-import Home from './components/Home/Home';
+import Home from './components/MainPages/Home/Home';
 import ItemDetail from './components/ItemDisplay/ItemDetail/ItemDetail';
-import Movies from './components/Movies/Movies';
+import Movies from './components/MainPages/Movies/Movies';
 import SearchResults from './components/Navbar/Search/SearchResults';
 import Footer from './components/Footer/Footer';
 

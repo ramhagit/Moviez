@@ -76,11 +76,11 @@ const Pagination = (props) => {
                 disabled={prevDisabled}
             >&lt;P</button>
         </Link>
-        <button className="pagination-arrow backward" disabled={backwardsDisabled}><b>&lt;</b></button>
+        {/* <button className="pagination-arrow backward" disabled={backwardsDisabled}><b>&lt;</b></button> */}
         <div className="pages-bar">
             {pages.slice(indexOfFirstToDisplayPage, indexOfFirstToDisplayPage + amountOfDisplayedPages)}
         </div>
-        <button className="pagination-arrow forward" disabled={forwardsDisabled}><b>&gt;</b></button>
+        {/* <button className="pagination-arrow forward" disabled={forwardsDisabled}><b>&gt;</b></button> */}
         <Link to={`${path}/page/${currentPage + 1}`}>
             <button
                 className="pagination-arrow next"

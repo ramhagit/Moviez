@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { TMDBAPI, tmdbImage } from '../../api/base';
-import { tmdbKey } from '../../keys';
-import { tmdbNowPlaying } from '../../api/tmdb';
-import Carousel from '../Carousel/Carousel';
-import ShowList from '../ListDisplay/ShowList/ShowList';
-import Loader from '../Loader/Loader';
+import { TMDBAPI, tmdbImage } from '../../../api/base';
+import { tmdbKey } from '../../../keys';
+import { tmdbNowPlaying } from '../../../api/tmdb';
+import Carousel from '../../Carousel/Carousel';
+import ShowList from '../../ListDisplay/ShowList/ShowList';
+import Loader from '../../Loader/Loader';
 
 import './Home.css';
 

@@ -6,55 +6,6 @@
     height: 25vh;
 }
 
-.movies-headline {
-    color: var(--primary-color);
-    font-size: 3rem;
-    text-shadow: 0 0.5px 1px var(--secondary-color), 0 1px 2px var(--primary-color);
-    position: relative;
-}
-
-.movies-headline::after {
-    position: absolute;
-    content: "";
-    width: 100%;
-    height: 2px;
-    left: 0;
-    bottom: -0.5rem;
-    background-color: var(--secondary-color);
-    box-shadow: 0 1px 3px var(--primary-trans);
-}
-
-.headline-capital {
-    color: var(--secondary-color);
-    font-size: 4rem;
-    text-shadow: 0 1px 3px var(--background-color);
-    position: relative;
-    margin-right: 2.5px;
-}
-
-.headline-capital::before, .headline-capital::after {
-    position: absolute;
-    content: "";
-}
-
-.headline-capital::before {
-    z-index: -1;
-    top: 13%;
-    left: -4%;
-    width: 108%;
-    height: 77%;
-    background-color: var(--primary-color);
-    border-radius: 1px;
-}
-
-.headline-capital::after {
-    width: 101%;
-    height: 72%;
-    top: 15.5%;
-    left: -0.5%;
-    border: 1px solid var(--secondary-color);
-}
-
 .navigation {
     width: 100%;
     display: flex;

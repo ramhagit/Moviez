@@ -32,7 +32,7 @@
     width: 72vw;
     max-width: 650px;
     padding: 0.5rem;
-    color: beige;
+    color: var(--secondary-color);
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     text-align: center;
     background-image: linear-gradient(to right, rgba(65, 65, 57, 1), rgba(65, 65, 57,0));
@@ -43,7 +43,6 @@
     width: 100%;
     color: var(--primary-color);
     font-size: var(--heading-secondary);
-    /* margin-top: 1rem; */
     margin-left: 2rem;
     padding: 8vh 20% 0 0;
 }

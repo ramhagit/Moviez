@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { TMDBAPI } from '../../api/base';
-import { tmdbKey } from '../../keys';
+import { TMDBAPI } from '../../../api/base';
+import { tmdbKey } from '../../../keys';
 import { Link } from 'react-router-dom';
-import ShowList from '../ListDisplay/ShowList/ShowList';
-import Loader from '../Loader/Loader';
-import MainHeadline from '../MainHeadline/MainHeadline';
-import { releaseDateLimit } from '../../utils/date';
+import ShowList from '../../ListDisplay/ShowList/ShowList';
+import Loader from '../../Loader/Loader';
+import MainHeadline from '../../MainHeadline/MainHeadline';
+import { releaseDateLimit } from '../../../utils/date';
 
 import './Movies.css';
 
