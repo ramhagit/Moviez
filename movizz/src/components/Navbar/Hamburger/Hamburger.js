@@ -27,11 +27,11 @@ const Hamburger = () => {
             </div>
             <div className="side-menu" ref={sideMenuRef}>
                 <Search />
-                <ul className="hamburger__links" onClick={handleClick} >
-                    <li className="hamburger__link"><Link to="/" ><u>HOME</u></Link></li>
-                    <li className="hamburger__link"><Link to="/movies/popular/page/1" ><u>MOVIES</u></Link></li>
-                    <li className="hamburger__link">TV SHOWS</li>
-                </ul>
+                <dl className="hamburger__links" onClick={handleClick} >
+                    <dt className="hamburger__link"><Link to="/" ><u>HOME</u></Link></dt>
+                    <dt className="hamburger__link"><Link to="/movies/popular/page/1" ><u>MOVIES</u></Link></dt>
+                    <dt className="hamburger__link"><Link to="/tv/" ><u>TV SHOW</u></Link>S</dt>
+                </dl>
             </div>
         </>
     )

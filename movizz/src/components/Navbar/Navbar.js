@@ -17,7 +17,7 @@ const Navbar = () => {
                 <>
                     <div className="links">
                         <Link className="link" to="/movies/popular/page/1" >MOVIES</Link>
-                        <Link className="link" to="/" >TV SHOWS</Link>
+                        <Link className="link" to="/tv/" >TV SHOWS</Link>
                     </div>
                     <Search />
                 </>}
