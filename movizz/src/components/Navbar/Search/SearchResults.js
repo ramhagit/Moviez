@@ -3,6 +3,7 @@ import { tmdbKey } from '../../../keys';
 import { TMDBAPI } from '../../../api/base';
 import Pagination from '../../ListDisplay/Pagination/Pagination';
 import ShowList from '../../ListDisplay/ShowList/ShowList';
+import MainHeadline from '../../MainHeadline/MainHeadline';
 import Loader from '../../Loader/Loader';
 
 import './SearchResults.css';
@@ -39,7 +40,8 @@ const SearchResults = (props) => {
 
     return (
         <div className="search-results-container">
-            <h1 className="search-results__headline">Search Results For:  <b>{searchQuery.split('q=')[1]}</b></h1>
+            <MainHeadline title={"search results"} />
+            <h1 className="search-results__headline">For:  <b>{searchQuery.split('q=')[1]}</b></h1>
             <h2 className="search-results__num_of_results">({totalResults})</h2>
             {!totalResults ?
                 <h1 className="search-results__no_results">No items found</h1>

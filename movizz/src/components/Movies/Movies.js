@@ -4,6 +4,7 @@ import { tmdbKey } from '../../keys';
 import { Link } from 'react-router-dom';
 import ShowList from '../ListDisplay/ShowList/ShowList';
 import Loader from '../Loader/Loader';
+import MainHeadline from '../MainHeadline/MainHeadline';
 import { releaseDateLimit } from '../../utils/date';
 
 import './Movies.css';
@@ -70,7 +71,7 @@ const Movies = (props) => {
         <div>
             {path ?
                 <div className="movies-container">
-                    <h1 className="movies-headline"><span className="headline-capital">M</span>ovies</h1>
+                    <MainHeadline title="movies" />
                     <div className="navigation">
                         <div className="navigation__buttons">
                             <Link to='/movies/latest/page/1'>
