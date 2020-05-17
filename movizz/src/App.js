@@ -7,6 +7,7 @@ import Movies from './components/MainPages/Movies/Movies';
 import SearchResults from './components/MainPages/SearchResults/SearchResults';
 import Footer from './components/Footer/Footer';
 import TVShows from './components/MainPages/TVShows/TVShows';
+import Attributes from './components/Attributes/Attributes';
 
 const App = () => {
     return (
@@ -21,6 +22,7 @@ const App = () => {
                     <Route path='/search/:search_query' exact component={props => <SearchResults searchQuery={props.match.params.search_query} />} />
                     <Route path='/search/:search_query/page/:page_num' exact component={props => <SearchResults searchQuery={props.match.params.search_query} pageNum={props.match.params.page_num} />} />
                     <Route path='/tv/' exact component={() => <TVShows />} />
+                    <Route path='/attributes/' exact component={() => <Attributes />} />
                 </div>
                 <Footer />
             </BrowserRouter>
