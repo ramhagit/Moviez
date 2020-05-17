@@ -12,14 +12,16 @@ const Carousel = (props) => {
     const { displayList, activeIndex, setActiveIndex } = props;
     const [auto, setAuto] = useState(true);
     const [mobile, setMobile] = useState(false);
+    const [slideShift, setSlideShift] = useState(null);
     const length = displayList.length;
     const width = useWidth();
     console.log('displayList: ', displayList, 'activeIndex: ', activeIndex, 'displayList at activeIndex: ', displayList[activeIndex]);
 
     useEffect(() => {
         setTimeout(() => {
-            setAuto(false);
+            stopAutoSlideShift();
         }, 25000)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
@@ -28,13 +30,18 @@ const Carousel = (props) => {
 
     useEffect(() => {
         if (auto && length) {
-            setTimeout(() => {
+            setSlideShift(setTimeout(() => {
                 setActiveIndex(nextIndex());
-            }, 5000)
+            }, 5000))
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [auto, length, activeIndex])
 
+    const stopAutoSlideShift = () => {
+        setAuto(false);
+        clearTimeout(slideShift);
+    }
+    
     const prevIndex = () => {
         return activeIndex === 0 ? length - 1 : activeIndex - 1;
     }
@@ -44,17 +51,17 @@ const Carousel = (props) => {
     }
 
     const goToPrevSlide = () => {
-        setAuto(false);
+        stopAutoSlideShift();
         setActiveIndex(prevIndex());
     }
 
     const goToNextSlide = () => {
-        setAuto(false);
+        stopAutoSlideShift();
         setActiveIndex(nextIndex());
     }
 
     const goToSlide = (index) => {
-        setAuto(false);
+        stopAutoSlideShift();
         setActiveIndex(index);
     }
 
@@ -73,21 +80,12 @@ const Carousel = (props) => {
                     <div className="carousel_show_slide">
                         {mobile && <LeftArrow goToPrevSlide={goToPrevSlide} />}
                         {!mobile && <LeftArrow goToPrevSlide={goToPrevSlide} imgSrc={leftImgSrc()} />}
-                        {/* <img
-                            className="carousel__img_home prev"
-                            src={displayList[prevIndex()].img_src}
-                            alt=""
-                        /> */}
                         <img
                             className="carousel__img_home"
                             src={displayList[activeIndex].img_src}
                             alt={displayList[activeIndex].title}
+                            onMouseEnter={stopAutoSlideShift}
                         />
-                        {/* <img
-                            className="carousel__img_home next"
-                            src={displayList[nextIndex()].img_src}
-                            alt=""
-                        /> */}
                         <Link to={displayList[activeIndex].link_path} >
                             <div className="carousel__title_home">
                                 <h1>{displayList[activeIndex].title}</h1>
