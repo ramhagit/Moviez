@@ -44,6 +44,7 @@ const ItemDetail = (props) => {
             }
         }
         fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [itemId])
 
     useEffect(() => {
@@ -62,8 +63,13 @@ const ItemDetail = (props) => {
             cast: displayCast()
         }
         setData(dataObj);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [omdbData])
 
+
+
+
+    
     const genre = () => {
         return <>
             {
@@ -133,9 +139,9 @@ const ItemDetail = (props) => {
         <img alt={tmdbData.backdrop_path ? "TMDB backdrop" : null} src={data.backdrop} className="backdropImg" />
         || <Loader /> : null;
 
-    const movieCard = Object.keys(data).includes('card') && <MovieCard data={data} /> || <Loader />;
+    const movieCard = Object.keys(data).includes('card') ? <MovieCard data={data} /> : <Loader />;
 
-    const cast = Object.keys(data).includes('cast') && <Cast castList={data.cast} /> || <Loader />;
+    const cast = Object.keys(data).includes('cast') ? <Cast castList={data.cast} movieId={itemId} /> : <Loader />;
 
     const trailerThumb = omdbData.Response === "True" && omdbData.Poster !== "N/A" ?
         <img alt="OMDB poster" src={omdbData.Poster} className="posterImg" /> :

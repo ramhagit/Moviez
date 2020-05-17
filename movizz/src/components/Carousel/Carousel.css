@@ -62,6 +62,7 @@
 }
 
 button.back_arrow, button.forward_arrow {
+    cursor: pointer;
     color: var(--primary-trans);
     border: 1px solid var(--secondary-color);
     position: absolute;

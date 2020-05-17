@@ -1,4 +1,14 @@
 .footer {
     color: var(--primary-color);
     background-color: var(--secondary-color);
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 5%;
+}
+
+.credits {
+    color: var(--active-color);
+    font-weight: 600;
 }

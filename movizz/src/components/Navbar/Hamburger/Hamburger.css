@@ -4,6 +4,7 @@
 	height: 4vh;
     width: 4vh;
     position: relative;
+    cursor: pointer;
 }
 
 .ham_slice {

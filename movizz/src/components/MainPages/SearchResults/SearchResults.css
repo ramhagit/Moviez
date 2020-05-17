@@ -4,7 +4,10 @@
     align-items: center;
 }
 
-.search-results__headline, .search-results__num_of_results, .search-results__no_results {
-    text-align: center;
+.search-results__headline, .search-results__no_results, .search-results__num_of_results {
     color: var(--primary-color);
+}
+
+.search-text {
+    color: var(--active-color);
 }

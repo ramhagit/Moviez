@@ -21,7 +21,7 @@
     font-size: 4rem;
     text-shadow: 0 1px 3px var(--background-color);
     position: relative;
-    margin-right: 2.5px;
+    margin-right: 3.5px;
 }
 
 .headline-capital::before, .headline-capital::after {
@@ -32,17 +32,17 @@
 .headline-capital::before {
     z-index: -1;
     top: 13%;
-    left: -4%;
-    width: 108%;
+    left: -10%;
+    width: 120%;
     height: 77%;
     background-color: var(--primary-color);
     border-radius: 1px;
 }
 
 .headline-capital::after {
-    width: 101%;
+    width: 110%;
     height: 72%;
-    top: 15.5%;
-    left: -0.5%;
+    top: 15%;
+    left: -5%;
     border: 1px solid var(--secondary-color);
 }

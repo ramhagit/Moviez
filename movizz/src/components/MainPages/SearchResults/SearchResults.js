@@ -41,7 +41,9 @@ const SearchResults = (props) => {
     return (
         <div className="search-results-container">
             <MainHeadline title="search results" />
-            <h1 className="search-results__headline">For:  <b>{searchQuery.split('q=')[1]}</b></h1>
+            <h1 className="search-results__headline">for:&nbsp;&nbsp;
+                <span className="search-text"><b>{searchQuery.split('q=')[1]}</b></span>
+            </h1>
             <h2 className="search-results__num_of_results">({totalResults})</h2>
             {!totalResults ?
                 <h1 className="search-results__no_results">No items found</h1>
