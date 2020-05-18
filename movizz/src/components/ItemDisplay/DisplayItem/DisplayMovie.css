@@ -85,7 +85,7 @@
 
 @media screen and (max-width: 450px) {
     .item__trailer_thumb, .item__card {
-        top: 32vh;
+        top: 30vh;
     }
 
     .item__tagline {
