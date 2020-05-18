@@ -75,6 +75,27 @@ button.back_arrow, button.forward_arrow {
     box-shadow: 1px 1px 0.5px rgba(0, 0, 0, 0.5);
 }
 
+button.arrow_back, button.arrow_forward {
+    position: absolute;
+    width: 3rem;
+    height: 4rem;
+    top: calc(2.5rem + 30%);
+    border-radius: 5px;
+    text-align: center;
+    /* mix-blend-mode: normal; */
+    border: 1px solid var(--secondary-color);
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+}
+
+button.arrow_back {
+    right: calc(90% + 1.5rem);
+}
+
+button.arrow_forward {
+    left: calc(90% + 1.5rem);
+}
+
 button.back_arrow {
     right: 99.5%;
     top: calc(2.5rem - 5%);
@@ -106,7 +127,7 @@ button.back_arrow:focus, button.forward_arrow:focus {
     height: 0.7rem;
     width: 0.7rem;
     border-radius: 50%;
-    background-color: beige;
+    background-color: var(--secondary-color);
     border: 1px solid var(--primary-color);
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
@@ -166,7 +187,7 @@ button.back_arrow:focus, button.forward_arrow:focus {
         background-color: var(--primary-color);
     }
 
-    button.back_arrow{
+    button.back_arrow {
         right: calc(90% + 1.5rem);
     }
 

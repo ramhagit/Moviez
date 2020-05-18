@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { TMDBAPI, tmdbImage } from '../../../api/base';
-import { tmdbKey } from '../../../keys';
-import { tmdbNowPlaying } from '../../../api/tmdb';
+import { tmdbNowPlaying, tmdbNowPlayingFiltered } from '../../../api/tmdb';
 import Carousel from '../../Carousel/Carousel';
 import ShowList from '../../ListDisplay/ShowList/ShowList';
 import Loader from '../../Loader/Loader';
@@ -16,17 +15,16 @@ const Home = (props) => {
     const [carouselActiveIndex, setCarouselActiveIndex] = useState(0);
 
     useEffect(() => {
-        const fetchData = () => {
+        const getHomeData = () => {
             try {
                 tmdbNowPlaying(pageNum).then(response => {
                     setData(response.data.results);
                     setNumOfPages(response.data.total_pages);
                 });
 
-                TMDBAPI.get(`movie/now_playing?api_key=${tmdbKey}&language=en-US&vote_average.gte=5`)
-                    .then(response => {
-                        setCoverMovies(response.data.results);
-                    });
+                tmdbNowPlayingFiltered().then(response => {
+                    setCoverMovies(response.data.results);
+                });
 
                 return () => {
                     TMDBAPI.CancelToken.source().cancel();
@@ -36,16 +34,21 @@ const Home = (props) => {
                 console.error(error);
             }
         }
-        fetchData();
+        getHomeData();
     }, [pageNum])
 
     const coverList = () => {
         const topMovies = coverMovies.filter(item => item.vote_average > 7 && item.backdrop_path);
-        const fiveTop = topMovies.length >= 5 ? topMovies.slice(topMovies.length - 6, topMovies.length - 1) : coverMovies.slice(5, 10);
-        const disp = fiveTop.map(movie => {
+        const topFive = topMovies.length >= 5 ? topMovies.slice(topMovies.length - 6, topMovies.length - 1) : coverMovies.slice(5, 10);
+
+        return makeObjListForCarousel(topFive);
+    };
+
+    const makeObjListForCarousel = (arrOfItems) => {
+        return arrOfItems.map(movie => {
             return (
                 {
-                    title: movie.title.length < 20 ? movie.title : `${movie.title.substring(0,20)}`,
+                    title: movie.title.length < 20 ? movie.title : `${movie.title.substring(0, 20)}`,
                     year: movie.release_date.split('-')[0],
                     rate: movie.vote_average,
                     img_src: `${tmdbImage}w780${movie.backdrop_path}`,
@@ -53,9 +56,7 @@ const Home = (props) => {
                 }
             )
         })
-
-        return disp;
-    };
+    }
 
     return (
         <div className="home-container">
@@ -65,7 +66,11 @@ const Home = (props) => {
                 setActiveIndex={setCarouselActiveIndex}
             />
             <div className="welcome">Welcome to MovizZ</div>
-            {data.length ? <ShowList data={data} numOfPages={numOfPages} path={""}/> : <Loader />}
+            {
+                data.length ?
+                    <ShowList data={data} numOfPages={numOfPages} path={""} /> :
+                    <Loader />
+            }
         </div>
     );
 }

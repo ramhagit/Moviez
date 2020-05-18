@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { TMDBAPI } from '../../../api/base';
 import { tmdbKey } from '../../../keys';
-import { Link } from 'react-router-dom';
 import ShowList from '../../ListDisplay/ShowList/ShowList';
 import Loader from '../../Loader/Loader';
 import MainHeadline from '../../MainHeadline/MainHeadline';
+import MainNavigation from '../../MainNavigation/MainNavigation';
 import { releaseDateLimit } from '../../../utils/date';
 
 import './Movies.css';
@@ -15,6 +15,7 @@ const Movies = (props) => {
     const [numOfPages, setNumOfPages] = useState(1);
     const [searchProp, setSearchProp] = useState('');
     const [path, setPath] = useState('');
+    const btnList = ['latest', 'top', 'popular', 'upcoming'];
 
     useEffect(() => {
         const common = `?api_key=${tmdbKey}&language=en-US`;
@@ -43,9 +44,7 @@ const Movies = (props) => {
     }, [searchBy])
 
     useEffect(() => {
-        const fetchData = () => {
-            setMovieList([]);
-            setNumOfPages(1);
+        const getMoviesData = () => {
             try {
                 if (searchProp) {
                     TMDBAPI.get(`${searchProp}&page=${pageNum}`).then(response => {
@@ -62,9 +61,9 @@ const Movies = (props) => {
                 console.error(error);
             }
         }
-        fetchData();
+        getMoviesData();
     }, [searchProp, pageNum])
-
+    
     console.log('searchBy: ', searchBy, 'pageNum: ', pageNum, 'searchProp: ', searchProp, 'movieList: ', movieList);
 
     return (
@@ -72,33 +71,15 @@ const Movies = (props) => {
             {path ?
                 <div className="movies-container">
                     <MainHeadline title="movies" />
-                    <div className="navigation">
-                        <div className="navigation__buttons">
-                            <Link to='/movies/latest/page/1'>
-                                <button
-                                    className={`nav-btn ${searchBy === 'latest' ? 'active' : ''}`}
-                                >latest</button>
-                            </Link>
-                            <Link to='/movies/top/page/1'>
-                                <button
-                                    className={`nav-btn ${searchBy === 'top' ? 'active' : ''}`}
-                                >highest</button>
-                            </Link>
-                            <Link to='/movies/popular/page/1'>
-                                <button
-                                    className={`nav-btn ${searchBy === 'popular' ? 'active' : ''}`}
-                                >popular</button>
-                            </Link>
-                            <Link to='/movies/upcoming/page/1'>
-                                <button
-                                    className={`nav-btn ${searchBy === 'upcoming' ? 'active' : ''}`}
-                                >upcoming</button>
-                            </Link>
-                        </div>
-                    </div>
+                    <MainNavigation btnList={btnList} searchBy={searchBy} linkPathInitial="movies"/>
                 </div> :
-                <Loader />}
-            {movieList.length ? <ShowList data={movieList} numOfPages={numOfPages} path={path} /> : <Loader />}
+                <Loader />
+            }
+            {
+                movieList.length ?
+                    <ShowList data={movieList} numOfPages={numOfPages} path={path} /> :
+                    <Loader />
+            }
         </div>
     )
 }

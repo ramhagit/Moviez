@@ -13,7 +13,11 @@ const RightArrow = (props) => {
     }
 
     return (
-        <button className='forward_arrow' onClick={goToNextSlide} style={imgSrc ? backgroundImgStyle : {}}>
+        <button
+            className={imgSrc ? 'forward_arrow' : 'arrow_forward'}
+            onClick={goToNextSlide}
+            style={imgSrc ? backgroundImgStyle : {}}
+        >
             <span>
                 {imgSrc && 'Next '}
                 <FontAwesomeIcon icon={faAngleRight} />
