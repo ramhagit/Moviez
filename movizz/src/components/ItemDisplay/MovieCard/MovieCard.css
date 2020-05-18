@@ -32,3 +32,21 @@
 .card__languages {
     margin-left: 0.5rem;
 }
+
+.ratings {
+    display: flex;
+    justify-content: center;
+}
+
+.rating {
+    margin: 0 5%;
+}
+
+.rating_img {
+    width: 2.5rem;
+}
+
+.rating_img.imdb {
+    /* width: 3rem; */
+    /* height: 2.5rem; */
+}

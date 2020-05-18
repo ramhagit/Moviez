@@ -4,6 +4,9 @@ import { tmdbKey, omdbKey } from '../../../keys';
 import DisplayMovie from '../DisplayItem/DisplayMovie';
 import Loader from '../../Loader/Loader';
 import uniqid from 'uniqid';
+import imdbIcon from '../../../assets/images/imdbIcon.png';
+import Rotten_Tomatoes from '../../../assets/images/Rotten_Tomatoes.svg';
+import Metacritic from '../../../assets/images/Metacritic.svg';
 
 const ItemDetail = (props) => {
     const { itemId } = props;
@@ -108,7 +111,7 @@ const ItemDetail = (props) => {
 
     const languages = () => {
         return <>
-            {
+            {omdbData.Language ? <span key={uniqid()}>{omdbData.Language}</span> :
                 tmdbData.spoken_languages ? tmdbData.spoken_languages.map(
                     (language, index) => {
                         return <span key={uniqid()}>
@@ -120,20 +123,43 @@ const ItemDetail = (props) => {
     }
 
     const ratings = () => {
-        return <>
-            {
-                omdbData.Response === "True" && omdbData.Ratings.length ? omdbData.Ratings.map(
-                    (rating, index) => {
-                        return <span key={uniqid()}>
-                            {
-                                index === omdbData.Ratings.length - 1 ?
-                                    `${rating.Source} :  ${rating.Value}` :
-                                    `${rating.Source} :  ${rating.Value}, `
-                            }
-                        </span>
+        return (
+            <div className="ratings">
+                {omdbData.Response === "True" && omdbData.Ratings.length ? omdbData.Ratings.map(
+                    rating => {
+                        let imgSrc = '';
+                        let class_name = '';
+
+                        switch (rating.Source) {
+                            case "Internet Movie Database":
+                                imgSrc = imdbIcon;
+                                class_name = 'imdb';
+                                break;
+
+                            case "Rotten Tomatoes":
+                                imgSrc = Rotten_Tomatoes;
+                                class_name = 'rotten_tomatoes';
+                                break;
+
+                            case "Metacritic":
+                                imgSrc = Metacritic;
+                                class_name = 'metacritic';
+                                break;
+
+                            default:
+                                break;
+                        }
+
+                        return (
+                            <span className="rating" key={rating.Source}>
+                                <img className={`rating_img ${class_name}`} src={imgSrc} alt="" />
+                                <p className="rating_rate">{rating.Value}</p>
+                            </span>
+                        )
                     }) : null
-            }
-        </>
+                }
+            </div>
+        )
     }
 
     const displayCast = () => {

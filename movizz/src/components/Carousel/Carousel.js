@@ -16,16 +16,14 @@ const Carousel = (props) => {
     const length = displayList.length;
     const width = useWidth();
     console.log('displayList: ', displayList, 'activeIndex: ', activeIndex, 'displayList at activeIndex: ', displayList[activeIndex]);
-
+    
     useEffect(() => {
-        const timeOut = setTimeout(() => {
-            stopAutoSlideShift();
-        }, 25000)
+        timeOutAuto();
 
-        return () => {
-            clearTimeout(timeOut);
-        }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // return () => {
+        //     clearTimeout(timeOutAuto);
+        // }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
@@ -44,11 +42,17 @@ const Carousel = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [auto, length, activeIndex])
 
+    const timeOutAuto = () => {
+        setTimeout(() => {
+            stopAutoSlideShift();
+        }, 25000)
+    }
+
     const stopAutoSlideShift = () => {
         setAuto(false);
         clearTimeout(slideShift);
     }
-    
+
     const prevIndex = () => {
         return activeIndex === 0 ? length - 1 : activeIndex - 1;
     }
@@ -92,7 +96,7 @@ const Carousel = (props) => {
                             src={displayList[activeIndex].img_src}
                             alt={displayList[activeIndex].title}
                             onMouseEnter={stopAutoSlideShift}
-                            onMouseLeave={() => {setAuto(true)}}
+                            onMouseLeave={() => { setAuto(true); timeOutAuto() }}
                         />
                         <Link to={displayList[activeIndex].link_path} >
                             <div className="carousel__title_home">
