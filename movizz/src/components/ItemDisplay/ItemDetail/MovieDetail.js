@@ -8,7 +8,7 @@ import imdbIcon from '../../../assets/images/imdbIcon.png';
 import Rotten_Tomatoes from '../../../assets/images/Rotten_Tomatoes.svg';
 import Metacritic from '../../../assets/images/Metacritic.svg';
 
-const ItemDetail = (props) => {
+const MovieDetail = (props) => {
     const { itemId } = props;
     const [tmdbData, setTmdbData] = useState({});
     const [omdbData, setOmdbData] = useState({});
@@ -31,6 +31,7 @@ const ItemDetail = (props) => {
                 setMovieVideos(res.data.results);
 
                 return () => {
+                    response.CancelToken.source().cancel();
                     TMDBAPI.CancelToken.source().cancel();
                     OMDBAPI.CancelToken.source().cancel();
                 }
@@ -98,13 +99,12 @@ const ItemDetail = (props) => {
 
     const genre = () => {
         return <>
-            {
-                omdbData.Genre || tmdbData.genres ? tmdbData.genres.map(
-                    (genre, index) => {
-                        return <span key={uniqid()}>
-                            {index === tmdbData.genres.length - 1 ? genre.name : `${genre.name}, `}
-                        </span>
-                    }) : 'No genre available'
+            {omdbData.Genre || tmdbData.genres ? tmdbData.genres.map(
+                (genre, index) => {
+                    return <span key={uniqid()}>
+                        {index === tmdbData.genres.length - 1 ? genre.name : `${genre.name}, `}
+                    </span>
+                }) : 'No genre available'
             }
         </>
     }
@@ -185,4 +185,4 @@ const ItemDetail = (props) => {
     );
 }
 
-export default ItemDetail;
+export default MovieDetail;
