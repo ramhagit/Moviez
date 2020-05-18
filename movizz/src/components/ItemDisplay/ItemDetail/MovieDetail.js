@@ -1,38 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { TMDBAPI, OMDBAPI, tmdbImage } from '../../../api/base';
 import { tmdbKey, omdbKey } from '../../../keys';
-import MovieCard from '../MovieCard/MovieCard';
-import Cast from '../Cast/Cast';
-import Trailer from '../Trailer/Trailer';
+import DisplayMovie from '../DisplayItem/DisplayMovie';
 import Loader from '../../Loader/Loader';
 import uniqid from "uniqid";
 
-import './MovieDetail.css';
-
 const ItemDetail = (props) => {
     const { itemId } = props;
-    const [tmdbData, setTmadbData] = useState({});
-    const [omdbData, setOmadbData] = useState({});
-    const [movieVideos, setMovieVideos] = useState({});
-    const [data, setData] = useState({});
+    const [tmdbData, setTmdbData] = useState({});
+    const [omdbData, setOmdbData] = useState({});
+    const [data, setMovieData] = useState({});
+    const [movieVideos, setMovieVideos] = useState([]);
     const [trailerURL, setTrailerURL] = useState('');
     const backdropSize = 'w1280';
     const posterSize = 'w185';
 
     useEffect(() => {
-        async function fetchData() {
+        async function getMovieDetails() {
             try {
                 const response = await TMDBAPI.get(`movie/${itemId}?api_key=${tmdbKey}`);
-                const fetchedData = response.data;
-                setTmadbData(fetchedData);
+                setTmdbData(response.data);
 
-                const anotherResponse = await OMDBAPI.get(`?apikey=${omdbKey}&i=${fetchedData.imdb_id}`)
-                const anotherFetchedData = anotherResponse.data;
-                setOmadbData(anotherFetchedData);
+                const anotherResponse = await OMDBAPI.get(`?apikey=${omdbKey}&i=${response.data.imdb_id}`);
+                setOmdbData(anotherResponse.data);
 
                 const res = await TMDBAPI.get(`movie/${itemId}/videos?api_key=${tmdbKey}&language=en-US`);
                 setMovieVideos(res.data.results);
-                youtubeTrailers(res.data.results);
 
                 return () => {
                     TMDBAPI.CancelToken.source().cancel();
@@ -43,33 +36,63 @@ const ItemDetail = (props) => {
                 console.error(error);
             }
         }
-        fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [itemId])
+        getMovieDetails();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [itemId]);
 
     useEffect(() => {
         const dataObj = {
-            backdrop: `${tmdbImage}${backdropSize}${tmdbData.backdrop_path}`,
+            backdrop: tmdbData.backdrop_path ? `${tmdbImage}${backdropSize}${tmdbData.backdrop_path}` : null,
             card: {
                 title: tmdbData.title,
-                year: omdbData.Response === "True" ? omdbData.Year : tmdbData.release_date ? tmdbData.release_date.split('-')[0] : null,
-                runTime: omdbData.Response === "True" && omdbData.Runtime !== "N/A" ? omdbData.Runtime : tmdbData.runtime ? `${tmdbData.runtime} min` : 'run time unknown',
+                year: omdbData.Response === "True" ? omdbData.Year : tmdbData.release_date ?
+                    tmdbData.release_date.split('-')[0] : null,
+                runTime: omdbData.Response === "True" && omdbData.Runtime !== "N/A" ? omdbData.Runtime :
+                    tmdbData.runtime ? `${tmdbData.runtime} min` : 'run time unknown',
                 genres: genre(),
                 language: languages(),
                 rating: ratings()
             },
             tagline: tmdbData.tagline ? `"${tmdbData.tagline}"` : null,
             overview: tmdbData.overview,
-            cast: displayCast()
+            cast: displayCast(),
+            poster: omdbData.Response === "True" && omdbData.Poster !== "N/A" ? omdbData.Poster :
+                tmdbData.poster_path ? `${tmdbImage}${posterSize}${tmdbData.poster_path}` : null
         }
-        setData(dataObj);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [omdbData])
+        setMovieData(dataObj);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [tmdbData, omdbData]);
 
+    useEffect(() => {
+        getVideosURLs(movieVideos);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [movieVideos]);
 
+    const getVideosURLs = (videos) => {
+        if (videos.length) {
+            const videosURLs = videos.map(video => {
+                let url = '';
+                switch (video.site) {
+                    case "YouTube":
+                        url = `https://www.youtube.com/watch?v=${video.key}`;
+                        break;
 
+                    default:
+                        break;
+                }
+                return url;
+            })
+            const youtubeTrailersList = videos.filter(video => {
+                return video.site === "YouTube" && video.type === "Trailer";
+            })
+            const youtubeTrailersUrls = youtubeTrailersList.map(trailer => {
+                return `https://www.youtube.com/watch?v=${trailer.key}`;
+            });
+            setTrailerURL(youtubeTrailersUrls[0]);
+            console.log('inside getVideosURLs trailerURL: ', trailerURL, 'youtubeTrailersUrls: ', youtubeTrailersUrls);
+        }
+    }
 
-    
     const genre = () => {
         return <>
             {
@@ -124,52 +147,15 @@ const ItemDetail = (props) => {
         </>
     }
 
-    const youtubeTrailers = (videos) => {
-        const youtubeTrailersList = videos.filter(video => {
-            return video.site === "YouTube" && video.type === "Trailer";
-        })
-        const url = `https://www.youtube.com/watch?v=${youtubeTrailersList[0].key}`;
-        setTrailerURL(url);
-        console.log('inside youtubeTrailers trailerURL: ', trailerURL);
-    }
-
     console.log('TMDB: ', tmdbData, 'OMDB: ', omdbData, 'Videos: ', movieVideos);
 
-    const backdrop = tmdbData.backdrop_path ?
-        <img alt={tmdbData.backdrop_path ? "TMDB backdrop" : null} src={data.backdrop} className="backdropImg" />
-        || <Loader /> : null;
-
-    const movieCard = Object.keys(data).includes('card') ? <MovieCard data={data} /> : <Loader />;
-
-    const cast = Object.keys(data).includes('cast') ? <Cast castList={data.cast} movieId={itemId} /> : <Loader />;
-
-    const trailerThumb = omdbData.Response === "True" && omdbData.Poster !== "N/A" ?
-        <img alt="OMDB poster" src={omdbData.Poster} className="posterImg" /> :
-        tmdbData.poster_path ?
-            <img alt="TMDB poster" src={`${tmdbImage}${posterSize}${tmdbData.poster_path}`} className="posterImg" /> :
-            null;
-
-    const trailerStyle = {
-        maxHeight: '390px'
-    };
-
     return (
-        <div className="item-container">
-            <div className="item-content">
-                {Object.keys(data).length ?
-                    <>
-                        <div className="item__backdrop">{backdrop}</div>
-                        <div className="item__card">{movieCard}</div>
-                        <div className="item__tagline">{data.tagline}</div>
-                        <div className="item__overview"><div className="overview-content">{data.overview}</div></div>
-                        {trailerURL ? <Trailer trailerURL={trailerURL} trailerStyle={trailerStyle} /> : null} 
-                        <div className="item__cast">{cast}</div>
-                        <div className="item__trailer">{trailerThumb}</div>
-                    </> :
-                    <Loader />
-                }
-            </div>
-        </div>
+        <>
+            {Object.keys(data).length ?
+                <DisplayMovie data={data} itemId={itemId} trailerURL={trailerURL} /> :
+                <Loader />
+            }
+        </>
     );
 }
 

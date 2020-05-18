@@ -4,7 +4,7 @@ import './MovieCard.css';
 
 const MovieCard = (props) => {
     const { data } = props;
-    const { title, year, runTime, genres, language, rating } = data.card;
+    const { title, year, runTime, genres, language, rating } = data;
 
     return (
         <div className="movie-card">
