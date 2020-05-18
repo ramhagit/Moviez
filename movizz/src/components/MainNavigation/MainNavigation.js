@@ -7,10 +7,10 @@ const MainNavigation = (props) => {
     const { btnList, searchBy, linkPathInitial } = props;
 
     const buttons = btnList.map(btn => {
-        return <Link to={`/${linkPathInitial}/${btn}/page/1`}>
+        return <Link to={`/${linkPathInitial}/${btn.prop}/page/1`}>
             <button
-                className={`nav-btn ${searchBy === btn ? 'active' : ''}`}
-            >{btn}</button>
+                className={`nav-btn ${searchBy === btn.prop ? 'active' : ''}`}
+            >{btn.displayTitle}</button>
         </Link>
     })
 
@@ -18,26 +18,6 @@ const MainNavigation = (props) => {
         <div className="navigation">
             <div className="navigation__buttons">
                 {buttons}
-                {/* <Link to='/movies/latest/page/1'>
-                    <button
-                        className={`nav-btn ${searchBy === 'latest' ? 'active' : ''}`}
-                    >latest</button>
-                </Link>
-                <Link to='/movies/top/page/1'>
-                    <button
-                        className={`nav-btn ${searchBy === 'top' ? 'active' : ''}`}
-                    >highest</button>
-                </Link>
-                <Link to='/movies/popular/page/1'>
-                    <button
-                        className={`nav-btn ${searchBy === 'popular' ? 'active' : ''}`}
-                    >popular</button>
-                </Link>
-                <Link to='/movies/upcoming/page/1'>
-                    <button
-                        className={`nav-btn ${searchBy === 'upcoming' ? 'active' : ''}`}
-                    >upcoming</button>
-                </Link> */}
             </div>
         </div>
     )

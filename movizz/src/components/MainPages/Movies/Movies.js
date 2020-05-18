@@ -15,7 +15,12 @@ const Movies = (props) => {
     const [numOfPages, setNumOfPages] = useState(1);
     const [searchProp, setSearchProp] = useState('');
     const [path, setPath] = useState('');
-    const btnList = ['latest', 'top', 'popular', 'upcoming'];
+    const btnList = [
+        {prop:'latest', displayTitle: 'Latest'}, 
+        {prop:'top', displayTitle: 'Top-rated'}, 
+        {prop:'popular', displayTitle: 'Popular'}, 
+        {prop:'upcoming', displayTitle: 'Upcoming'}
+    ];
 
     useEffect(() => {
         const common = `?api_key=${tmdbKey}&language=en-US`;
