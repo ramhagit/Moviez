@@ -3,7 +3,7 @@ import { TMDBAPI, OMDBAPI, tmdbImage } from '../../../api/base';
 import { tmdbKey, omdbKey } from '../../../keys';
 import DisplayMovie from '../DisplayItem/DisplayMovie';
 import Loader from '../../Loader/Loader';
-import uniqid from "uniqid";
+import uniqid from 'uniqid';
 
 const ItemDetail = (props) => {
     const { itemId } = props;
@@ -11,7 +11,7 @@ const ItemDetail = (props) => {
     const [omdbData, setOmdbData] = useState({});
     const [data, setMovieData] = useState({});
     const [movieVideos, setMovieVideos] = useState([]);
-    const [trailerURL, setTrailerURL] = useState('');
+    const [trailersURL, setTrailersURL] = useState([]);
     const backdropSize = 'w1280';
     const posterSize = 'w185';
 
@@ -88,8 +88,8 @@ const ItemDetail = (props) => {
             const youtubeTrailersUrls = youtubeTrailersList.map(trailer => {
                 return `https://www.youtube.com/watch?v=${trailer.key}`;
             });
-            setTrailerURL(youtubeTrailersUrls[0]);
-            console.log('inside getVideosURLs trailerURL: ', trailerURL, 'youtubeTrailersUrls: ', youtubeTrailersUrls);
+            setTrailersURL(youtubeTrailersUrls);
+            console.log('inside getVideosURLs trailersURL: ', trailersURL, 'youtubeTrailersUrls: ', youtubeTrailersUrls);
         }
     }
 
@@ -139,7 +139,7 @@ const ItemDetail = (props) => {
     const displayCast = () => {
         return <>
             {
-                omdbData.Actors && omdbData.Actors !== "N/A" ? omdbData.Actors.split(',').map(
+                omdbData.Actors && omdbData.Actors !== "N/A" ? omdbData.Actors.trim().split(',').map(
                     item => {
                         return <div key={uniqid()}>{item}</div>
                     }) : ''
@@ -152,7 +152,7 @@ const ItemDetail = (props) => {
     return (
         <>
             {Object.keys(data).length ?
-                <DisplayMovie data={data} itemId={itemId} trailerURL={trailerURL} /> :
+                <DisplayMovie data={data} itemId={itemId} trailersURL={trailersURL} /> :
                 <Loader />
             }
         </>

@@ -4,10 +4,6 @@ import { tmdbKey } from '../../../keys';
 
 const Cast = (props) => {
     const { castList, movieId } = props;
-    
-    // const displayCast = castList !== "N/A" ? castList.split(',').map(item => {
-    //     return <div key={item}>{item}</div>
-    // }) : '';
 
     useEffect(() => {
         const tmdbMovieCredits = () => {

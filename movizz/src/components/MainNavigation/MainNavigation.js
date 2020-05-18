@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import uniqid from 'uniqid';
 
 import './MainNavigation.css';
 
@@ -7,7 +8,7 @@ const MainNavigation = (props) => {
     const { btnList, searchBy, linkPathInitial } = props;
 
     const buttons = btnList.map(btn => {
-        return <Link to={`/${linkPathInitial}/${btn.prop}/page/1`}>
+        return <Link to={`/${linkPathInitial}/${btn.prop}/page/1`} key={uniqid()}>
             <button
                 className={`nav-btn ${searchBy === btn.prop ? 'active' : ''}`}
             >{btn.displayTitle}</button>

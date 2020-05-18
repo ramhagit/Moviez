@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TMDBAPI, tmdbImage } from '../../../api/base';
+import { tmdbImage } from '../../../api/base';
 import { tmdbNowPlaying, tmdbNowPlayingFiltered } from '../../../api/tmdb';
 import Carousel from '../../Carousel/Carousel';
 import ShowList from '../../ListDisplay/ShowList/ShowList';
@@ -17,17 +17,18 @@ const Home = (props) => {
     useEffect(() => {
         const getHomeData = () => {
             try {
-                tmdbNowPlaying(pageNum).then(response => {
+                const TMDBnowPlaying = tmdbNowPlaying(pageNum).then(response => {
                     setData(response.data.results);
                     setNumOfPages(response.data.total_pages);
                 });
 
-                tmdbNowPlayingFiltered().then(response => {
+                const TMDBnowPlayingFiltered = tmdbNowPlayingFiltered().then(response => {
                     setCoverMovies(response.data.results);
                 });
 
                 return () => {
-                    TMDBAPI.CancelToken.source().cancel();
+                    TMDBnowPlaying.CancelToken.source().cancel();
+                    TMDBnowPlayingFiltered.CancelToken.source().cancel();
                 }
 
             } catch (error) {

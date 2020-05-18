@@ -7,15 +7,11 @@ import Trailer from '../Trailer/Trailer';
 import './DisplayMovie.css';
 
 const DisplayMovie = (props) => {
-    const { data, itemId, trailerURL } = props;
+    const { data, itemId, trailersURL } = props;
 
     const movieCard = Object.keys(data).includes('card') ? <MovieCard data={data.card} /> : <Loader />;
 
     const cast = Object.keys(data).includes('cast') ? <Cast castList={data.cast} movieId={itemId} /> : <Loader />;
-
-
-
-    // const trailer = trailerURL ? <Trailer trailerURL={trailerURL} trailerStyle={trailerStyle} /> : null;
 
     return (
         <div className="item-container">
@@ -35,7 +31,7 @@ const DisplayMovie = (props) => {
                     </div>
                 </div>
                 <div className="item__trailer">
-                    <Trailer trailerURL={trailerURL} />
+                    <Trailer trailersURL={trailersURL} />
                 </div>
                 <div className="item__cast">
                     {cast}
