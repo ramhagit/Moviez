@@ -52,7 +52,7 @@ const MovieDetail = (props) => {
                 year: omdbData.Response === "True" ? omdbData.Year : tmdbData.release_date ?
                     tmdbData.release_date.split('-')[0] : null,
                 runTime: omdbData.Response === "True" && omdbData.Runtime !== "N/A" ? omdbData.Runtime :
-                    tmdbData.runtime ? `${tmdbData.runtime} min` : 'run time unknown',
+                    tmdbData.runtime ? `${tmdbData.runtime} min` : 'unknown time',
                 genres: genre(),
                 language: languages(),
                 rating: ratings()
