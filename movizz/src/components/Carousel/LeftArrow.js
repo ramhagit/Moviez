@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 
 const LeftArrow = (props) => {
-    const { goToPrevSlide, imgSrc } = props;
+    const { goToPrevSlide, imgSrc, buttonDisable } = props;
 
     const backgroundImgStyle = {
         backgroundImage: `linear-gradient(rgba(218, 218, 194, 0.5), rgba(218, 218, 194, 0.5)), url('${imgSrc}')`,
@@ -18,6 +18,7 @@ const LeftArrow = (props) => {
             className={imgSrc ? 'back_arrow' : 'arrow_back'}
             onClick={goToPrevSlide}
             style={imgSrc ? backgroundImgStyle : {}}
+            disabled={buttonDisable}
         >
             <span>
                 <FontAwesomeIcon icon={faAngleLeft} />

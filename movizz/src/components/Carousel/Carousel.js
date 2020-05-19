@@ -11,6 +11,7 @@ import './Carousel.css';
 const Carousel = (props) => {
     const { displayList, activeIndex, setActiveIndex } = props;
     const [auto, setAuto] = useState(true);
+    const [buttonDisable, setButtonDisable] = useState(true);
     const [mobile, setMobile] = useState(false);
     const [slideShift, setSlideShift] = useState(null);
     const length = displayList.length;
@@ -44,6 +45,7 @@ const Carousel = (props) => {
 
     const timeOutAuto = () => {
         setTimeout(() => {
+            setButtonDisable(false);
             stopAutoSlideShift();
         }, 25000)
     }
@@ -89,14 +91,14 @@ const Carousel = (props) => {
             {length ?
                 <div className="carousel">
                     <div className="carousel_show_slide">
-                        {mobile && <LeftArrow goToPrevSlide={goToPrevSlide} />}
-                        {!mobile && <LeftArrow goToPrevSlide={goToPrevSlide} imgSrc={leftImgSrc()} />}
+                        {mobile && <LeftArrow goToPrevSlide={goToPrevSlide} buttonDisable={buttonDisable}/>}
+                        {!mobile && <LeftArrow goToPrevSlide={goToPrevSlide} imgSrc={leftImgSrc()} buttonDisable={buttonDisable}/>}
                         <img
                             className="carousel__img_home"
                             src={displayList[activeIndex].img_src}
                             alt={displayList[activeIndex].title}
                             onMouseEnter={stopAutoSlideShift}
-                            onMouseLeave={() => { setAuto(true); timeOutAuto() }}
+                            onMouseDown={() => { setAuto(true); timeOutAuto() }}
                         />
                         <Link to={displayList[activeIndex].link_path} >
                             <div className="carousel__title_home">
@@ -105,10 +107,10 @@ const Carousel = (props) => {
                             </div>
                         </Link>
                         <div className="carousel__rate_home">{displayList[activeIndex].rate}</div>
-                        {!mobile && <RightArrow goToNextSlide={goToNextSlide} imgSrc={rightImgSrc()} />}
-                        {mobile && <RightArrow goToNextSlide={goToNextSlide} />}
+                        {!mobile && <RightArrow goToNextSlide={goToNextSlide} imgSrc={rightImgSrc()} buttonDisable={buttonDisable}/>}
+                        {mobile && <RightArrow goToNextSlide={goToNextSlide} disable={buttonDisable} buttonDisable={buttonDisable}/>}
                     </div>
-                    <DotButtons numOfButtons={length} goToSlide={goToSlide} activeIndex={activeIndex} />
+                    <DotButtons numOfButtons={length} goToSlide={goToSlide} activeIndex={activeIndex} buttonDisable={buttonDisable}/>
                 </div>
                 : <Loader />}
         </>
