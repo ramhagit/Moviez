@@ -23,7 +23,7 @@
 .carousel__title_home {
     padding: 0 2rem;
     left: 50%;
-    top: calc(2.5rem + 40%);
+    top: calc(2.5rem + 45%);
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
     border-radius: 5px;
@@ -70,9 +70,10 @@ button.back_arrow, button.forward_arrow {
     z-index: 0;
     transform: translateY(7%);
     width: 35%;
-    height: 30%;
+    height: 60%;
     min-width: 20px;
     box-shadow: 1px 1px 0.5px rgba(0, 0, 0, 0.5);
+    top: calc(24.5% - 2.5rem);
 }
 
 button.arrow_back, button.arrow_forward {
@@ -82,7 +83,6 @@ button.arrow_back, button.arrow_forward {
     top: calc(2.5rem + 30%);
     border-radius: 5px;
     text-align: center;
-    /* mix-blend-mode: normal; */
     border: 1px solid var(--secondary-color);
     color: var(--secondary-color);
     background-color: var(--primary-color);
@@ -98,12 +98,14 @@ button.arrow_forward {
 
 button.back_arrow {
     right: 99.5%;
-    top: calc(2.5rem - 5%);
+    text-align: left;
+    /* top: calc(2.5rem - 5%); */
 }
 
 button.forward_arrow {
     left: 99.5%;
-    bottom: 0;
+    text-align: right;
+    /* bottom: 0; */
 }
 
 button.back_arrow:focus, button.forward_arrow:focus {
@@ -176,7 +178,7 @@ button.back_arrow:focus, button.forward_arrow:focus {
         width: 100%;
     }
 
-    button.back_arrow, button.forward_arrow {
+    /* button.back_arrow, button.forward_arrow {
         width: 3rem;
         height: 4rem;
         top: calc(2.5rem + 30%);
@@ -193,6 +195,6 @@ button.back_arrow:focus, button.forward_arrow:focus {
 
     button.forward_arrow {
         left: calc(90% + 1.5rem);
-    }
+    } */
 }
 
