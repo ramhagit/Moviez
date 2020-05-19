@@ -24,3 +24,6 @@
     min-height: 90vh;
   }
   
+  .tmdb-img {
+      width: 7.5rem;
+  }
