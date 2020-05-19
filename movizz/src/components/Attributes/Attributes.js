@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from "react-helmet";
 import tmdb_logo_big from '../../assets/images/tmdb_logo_big.svg';
 import Omdb_logo from '../../assets/images/Omdb_logo.png';
 import fontAwesomeLogoFullSolid from '../../assets/images/font-awesome-logo-full-solid.svg';
@@ -6,7 +7,10 @@ import flaticon from '../../assets/images/flaticon.svg';
 
 const Attributes = () => {
     return (
-        <>
+        <div className="attributes-container">
+            <Helmet>
+                <title>Attributes</title>
+            </Helmet>
             <h1>Thanks to</h1>
             <dl>
                 <dt>
@@ -54,7 +58,7 @@ const Attributes = () => {
                     &nbsp;&nbsp;https://www.flaticon.com/
                 </dt>
             </dl>
-        </>
+        </div>
     )
 }
 

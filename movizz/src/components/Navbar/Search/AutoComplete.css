@@ -10,6 +10,7 @@
 
 .auto-complete-suggestion:hover {
     cursor: pointer;
+    text-shadow: 0 2px 5px var(--secondary-color);
 }
 
 .auto-complete-suggestion {

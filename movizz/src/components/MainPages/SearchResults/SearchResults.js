@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from "react-helmet";
 import { tmdbKey } from '../../../keys';
 import { TMDBAPI } from '../../../api/base';
 import Pagination from '../../ListDisplay/Pagination/Pagination';
@@ -40,6 +41,9 @@ const SearchResults = (props) => {
 
     return (
         <div className="search-results-container">
+            <Helmet>
+                <title>Search Results</title>
+            </Helmet>
             <MainHeadline title="search results" />
             <h1 className="search-results__headline">for:&nbsp;&nbsp;
                 <span className="search-text"><b>{searchQuery.split('q=')[1]}</b></span>

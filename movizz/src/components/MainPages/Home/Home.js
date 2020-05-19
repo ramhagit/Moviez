@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Helmet } from "react-helmet";
 import { tmdbImage } from '../../../api/base';
 import { tmdbNowPlaying, tmdbNowPlayingFiltered } from '../../../api/tmdb';
 import Carousel from '../../Carousel/Carousel';
@@ -13,12 +14,11 @@ const Home = (props) => {
     const [numOfPages, setNumOfPages] = useState(1);
     const [coverMovies, setCoverMovies] = useState([]);
     const [carouselActiveIndex, setCarouselActiveIndex] = useState(0);
-    const containerRef = useRef(null);
 
     useEffect(() => {
-        containerRef.current.scrollTo(0,0);
+        window.scrollTo(0, 0);
     }, [])
-    
+
     useEffect(() => {
         const getHomeData = () => {
             try {
@@ -65,7 +65,10 @@ const Home = (props) => {
     }
 
     return (
-        <div className="home-container" ref={containerRef}>
+        <div className="home-container">
+            <Helmet>
+                <title>MovizZ</title>
+            </Helmet>
             <Carousel
                 displayList={coverList()}
                 activeIndex={carouselActiveIndex}

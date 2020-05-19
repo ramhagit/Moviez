@@ -13,14 +13,15 @@ const App = () => {
     const containerRef = useRef(null);
 
     useEffect(() => {
-        containerRef.current.scrollTo(0,0);
+        window.scrollTo(0,0);
+        // containerRef.current.scrollTo(0,0);
     }, [])
 
     return (
-        <div className="page-container">
+        <div className="page-container" ref={containerRef}>
             <BrowserRouter>
                 <Navbar />
-                <div className="content-container" ref={containerRef}>
+                <div className="content-container">
                     <Route path='/' exact component={() => <Home />} />
                     <Route path='/page/:page_num' exact component={props => <Home pageNum={props.match.params.page_num} />} />
                     <Route path='/movie/:id' exact component={props => <MovieDetail itemId={props.match.params.id} />} />

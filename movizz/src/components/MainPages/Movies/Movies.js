@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from "react-helmet";
 import { TMDBAPI } from '../../../api/base';
 import { tmdbKey } from '../../../keys';
 import ShowList from '../../ListDisplay/ShowList/ShowList';
@@ -16,10 +17,10 @@ const Movies = (props) => {
     const [searchProp, setSearchProp] = useState('');
     const [path, setPath] = useState('');
     const btnList = [
-        {prop:'latest', displayTitle: 'Latest'}, 
-        {prop:'top', displayTitle: 'Top-rated'}, 
-        {prop:'popular', displayTitle: 'Popular'}, 
-        {prop:'upcoming', displayTitle: 'Upcoming'}
+        { prop: 'latest', displayTitle: 'Latest' },
+        { prop: 'top', displayTitle: 'Top-rated' },
+        { prop: 'popular', displayTitle: 'Popular' },
+        { prop: 'upcoming', displayTitle: 'Upcoming' }
     ];
 
     useEffect(() => {
@@ -68,15 +69,18 @@ const Movies = (props) => {
         }
         getMoviesData();
     }, [searchProp, pageNum])
-    
+
     console.log('searchBy: ', searchBy, 'pageNum: ', pageNum, 'searchProp: ', searchProp, 'movieList: ', movieList);
 
     return (
         <div>
+            <Helmet>
+                <title>Movies</title>
+            </Helmet>
             {path ?
                 <div className="movies-container">
                     <MainHeadline title="movies" />
-                    <MainNavigation btnList={btnList} searchBy={searchBy} linkPathInitial="movies"/>
+                    <MainNavigation btnList={btnList} searchBy={searchBy} linkPathInitial="movies" />
                 </div> :
                 <Loader />
             }
