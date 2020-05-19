@@ -17,44 +17,11 @@
     width: 56vw;
     max-width: 780px;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+}
+
+.carousel__img_home.auto {
     animation: slidemovenext 5s ease 0s;
     animation-iteration-count: 5;
-}
-
-@keyframes slidemovenext {
-    0% {transform: scale(0) translateX(500%); opacity: 0;}
-    30% {transform: scale(1); opacity: 1;}
-    65% {transform: scale(1); opacity: 1;}
-    99% {transform: scale(0.7) translateX(-120%); opacity: 1;}
-    100% {transform: scale(0.6) translateX(-250%); opacity: 0.2;}
-}
-
-@keyframes scaledown {
-    0% {transform: scale(0.4) translateX(100%);}
-    35% {transform: scale(1) translateX(0);}
-    50% {transform: scale(1) translateX(0);}
-    90% {transform: scale(0.2) translateX(-100%);}
-    100% {transform: scale(0) translateX(-500%);}
-}
-
-@keyframes appear {
-    0% {opacity: 0;}
-    15% {opacity: 0;}
-    50% {opacity: 1;}
-    85% {opacity: 0;}
-    100% {opacity: 0;}
-}
-
-@keyframes disappear {
-    from {opacity: 1;}
-    to {opacity: 0;}
-}
-
-@keyframes fadein {
-    0% {opacity: 0;}
-    20% {opacity: 0;}
-    60% {opacity: 1;}
-    100% {opacity: 0;}
 }
 
 .carousel__title_home {
@@ -80,6 +47,9 @@
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     color: rgba(0, 0, 0, 0.6);
     mix-blend-mode: luminosity;
+}
+
+.carousel__title_home.auto, .carousel__rate_home.auto {
     animation: appear 5s ease 0s;
     animation-iteration-count: 5;
 }
@@ -122,12 +92,18 @@ button.arrow_back, button.arrow_forward {
     top: calc(2.5rem + 30%);
     border-radius: 5px;
     text-align: center;
-    border: 1px solid var(--secondary-color);
-    color: var(--secondary-color);
-    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    background-color: var(--background-color);
     outline: none;
-    animation: fadein 5s ease-in-out 0s;
-    animation-iteration-count: 5;
+}
+
+button.arrow_back:hover, button.arrow_forward:hover {
+    background-color: var(--active-color);
+}
+
+button.arrow_back.auto, button.arrow_forward.auto {
+    opacity: 0;
 }
 
 button.arrow_back {
@@ -146,6 +122,9 @@ button.back_arrow {
 button.forward_arrow {
     left: 101.5%;
     text-align: right;
+}
+
+button.forward_arrow.auto {
     animation: scaledown 5s ease 0s;
     animation-iteration-count: 5;
 }
@@ -183,6 +162,30 @@ button.back_arrow:focus, button.forward_arrow:focus {
 
 .dot-button.active {
     background-color: var(--active-color);
+}
+
+@keyframes slidemovenext {
+    0% {transform: scale(0) translateX(500%); opacity: 0;}
+    30% {transform: scale(1); opacity: 1;}
+    65% {transform: scale(1); opacity: 1;}
+    99% {transform: scale(0.7) translateX(-120%); opacity: 1;}
+    100% {transform: scale(0.6) translateX(-250%); opacity: 0.2;}
+}
+
+@keyframes scaledown {
+    0% {transform: scale(0.4) translateX(100%);}
+    35% {transform: scale(1) translateX(0);}
+    50% {transform: scale(1) translateX(0);}
+    90% {transform: scale(0.2) translateX(-100%);}
+    100% {transform: scale(0) translateX(-500%);}
+}
+
+@keyframes appear {
+    0% {opacity: 0;}
+    15% {opacity: 0;}
+    50% {opacity: 1;}
+    85% {opacity: 0;}
+    100% {opacity: 0;}
 }
 
 @media screen and (max-width: 695px) {

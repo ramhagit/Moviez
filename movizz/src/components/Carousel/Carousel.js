@@ -11,19 +11,15 @@ import './Carousel.css';
 const Carousel = (props) => {
     const { displayList, activeIndex, setActiveIndex } = props;
     const [auto, setAuto] = useState(true);
-    const [buttonDisable, setButtonDisable] = useState(true);
+    const [buttonDisable, setButtonDisable] = useState(false);
     const [mobile, setMobile] = useState(false);
     const [slideShift, setSlideShift] = useState(null);
     const length = displayList.length;
     const width = useWidth();
     console.log('displayList: ', displayList, 'activeIndex: ', activeIndex, 'displayList at activeIndex: ', displayList[activeIndex]);
-    
+
     useEffect(() => {
         timeOutAuto();
-
-        // return () => {
-        //     clearTimeout(timeOutAuto);
-        // }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -64,17 +60,17 @@ const Carousel = (props) => {
     }
 
     const goToPrevSlide = () => {
-        stopAutoSlideShift();
+        // stopAutoSlideShift();
         setActiveIndex(prevIndex());
     }
 
     const goToNextSlide = () => {
-        stopAutoSlideShift();
+        // stopAutoSlideShift();
         setActiveIndex(nextIndex());
     }
 
     const goToSlide = (index) => {
-        stopAutoSlideShift();
+        // stopAutoSlideShift();
         setActiveIndex(index);
     }
 
@@ -90,27 +86,51 @@ const Carousel = (props) => {
         <>
             {length ?
                 <div className="carousel">
-                    <div className="carousel_show_slide">
-                        {mobile && <LeftArrow goToPrevSlide={goToPrevSlide} buttonDisable={buttonDisable}/>}
-                        {!mobile && <LeftArrow goToPrevSlide={goToPrevSlide} imgSrc={leftImgSrc()} buttonDisable={buttonDisable}/>}
+                    <div className="carousel_show_slide" onMouseEnter={stopAutoSlideShift}>
+                        {mobile && <LeftArrow
+                            goToPrevSlide={goToPrevSlide}
+                            auto={auto}
+                            stopAutoSlideShift={stopAutoSlideShift}
+                        />}
+                        {!mobile && <LeftArrow
+                            goToPrevSlide={goToPrevSlide}
+                            imgSrc={leftImgSrc()}
+                            auto={auto}
+                            stopAutoSlideShift={stopAutoSlideShift}
+                        />}
                         <img
-                            className="carousel__img_home"
+                            className={`carousel__img_home ${auto ? 'auto' : ''}`}
                             src={displayList[activeIndex].img_src}
                             alt={displayList[activeIndex].title}
-                            onMouseEnter={stopAutoSlideShift}
                             onMouseDown={() => { setAuto(true); timeOutAuto() }}
                         />
                         <Link to={displayList[activeIndex].link_path} >
-                            <div className="carousel__title_home">
+                            <div className={`carousel__title_home ${auto ? 'auto' : ''}`}>
                                 <h1>{displayList[activeIndex].title}</h1>
                                 <h2>{displayList[activeIndex].year}</h2>
                             </div>
                         </Link>
-                        <div className="carousel__rate_home">{displayList[activeIndex].rate}</div>
-                        {!mobile && <RightArrow goToNextSlide={goToNextSlide} imgSrc={rightImgSrc()} buttonDisable={buttonDisable}/>}
-                        {mobile && <RightArrow goToNextSlide={goToNextSlide} disable={buttonDisable} buttonDisable={buttonDisable}/>}
+                        <div className={`carousel__rate_home ${auto ? 'auto' : ''}`}>
+                            {displayList[activeIndex].rate}
+                        </div>
+                        {!mobile && <RightArrow
+                            goToNextSlide={goToNextSlide}
+                            imgSrc={rightImgSrc()}
+                            auto={auto}
+                            stopAutoSlideShift={stopAutoSlideShift}
+                        />}
+                        {mobile && <RightArrow
+                            goToNextSlide={goToNextSlide}
+                            auto={auto}
+                            stopAutoSlideShift={stopAutoSlideShift}
+                        />}
                     </div>
-                    <DotButtons numOfButtons={length} goToSlide={goToSlide} activeIndex={activeIndex} buttonDisable={buttonDisable}/>
+                    <DotButtons
+                        numOfButtons={length}
+                        goToSlide={goToSlide}
+                        activeIndex={activeIndex}
+                        stopAutoSlideShift={stopAutoSlideShift}
+                    />
                 </div>
                 : <Loader />}
         </>
