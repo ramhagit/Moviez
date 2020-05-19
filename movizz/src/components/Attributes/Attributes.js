@@ -1,6 +1,8 @@
 import React from 'react';
 import tmdb_logo_big from '../../assets/images/tmdb_logo_big.svg';
 import Omdb_logo from '../../assets/images/Omdb_logo.png';
+import fontAwesomeLogoFullSolid from '../../assets/images/font-awesome-logo-full-solid.svg';
+import flaticon from '../../assets/images/flaticon.svg';
 
 const Attributes = () => {
     return (
@@ -22,20 +24,35 @@ const Attributes = () => {
                         className="tmdb-img"
                         src={tmdb_logo_big}
                         alt="tmdb logo" />
-                    &nbsp;https://www.themoviedb.org/
+                    &nbsp;&nbsp;https://www.themoviedb.org/
                 </dt>
                 <dt>&nbsp;</dt>
                 <dt>
                     <img
                         className="omdb-img"
                         src={Omdb_logo}
-                        alt="omdb logo" />
-                    &nbsp;http://www.omdbapi.com/
+                        alt="omdb logo"
+                    />
+                    &nbsp;&nbsp;http://www.omdbapi.com/
                 </dt>
                 <dt>&nbsp;</dt>
-                <dt>https://fontawesome.com/</dt>
+                <dt>
+                    <img
+                        className="fontawsome-img"
+                        src={fontAwesomeLogoFullSolid}
+                        alt="fontawsome logo"
+                    />
+                    &nbsp;&nbsp;https://fontawesome.com/
+                </dt>
                 <dt>&nbsp;</dt>
-                <dt>https://www.flaticon.com/</dt>
+                <dt>
+                    <img
+                        className="flaticon-img"
+                        src={flaticon}
+                        alt="flaticon logo"
+                    />
+                    &nbsp;&nbsp;https://www.flaticon.com/
+                </dt>
             </dl>
         </>
     )

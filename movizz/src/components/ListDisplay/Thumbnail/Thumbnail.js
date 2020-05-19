@@ -7,7 +7,10 @@ const Thumbnail = (props) => {
 
     return (
         <div className="thumb">
-            {<img className="thumb__poster" alt={name} src={imgSrc} /> || <div className="thumb__noposter">No Poster</div>}
+            {imgSrc ?
+                <img className="thumb__poster" alt="" src={imgSrc} /> :
+                <div className="thumb__noposter">No Poster</div>
+            }
             <span className="thumb__year">{releaseYear}</span>
             <span className="thumb__rate"><span role="img" aria-label="Star">⭐ </span> {starRate} </span>
             <span className="thumb__title">{name}</span>

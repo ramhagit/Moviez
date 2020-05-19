@@ -97,13 +97,15 @@ button.arrow_forward {
 }
 
 button.back_arrow {
-    right: 99.5%;
+    /* right: 99.5%; */
+    right: 100.3%;
     text-align: left;
     /* top: calc(2.5rem - 5%); */
 }
 
 button.forward_arrow {
-    left: 99.5%;
+    /* left: 99.5%; */
+    left: 100.5%;
     text-align: right;
     /* bottom: 0; */
 }
