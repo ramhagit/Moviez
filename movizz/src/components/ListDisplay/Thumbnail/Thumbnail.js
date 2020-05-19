@@ -7,7 +7,7 @@ const Thumbnail = (props) => {
 
     return (
         <div className="thumb">
-            {imgSrc ?
+            {imgSrc !== null ?
                 <img className="thumb__poster" alt="" src={imgSrc} /> :
                 <div className="thumb__noposter">No Poster</div>
             }

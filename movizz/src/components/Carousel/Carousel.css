@@ -17,7 +17,38 @@
     width: 56vw;
     max-width: 780px;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
-    transition: all 1s ease;
+    /* transform: scale(0.6) translateX(150%); */
+    /* transition: slidemovenext 1s ease 0s; */
+    animation: slidemovenext 5s ease 0s;
+    animation-iteration-count: 5;
+}
+
+@keyframes slidemovenext {
+    0% {transform: scale(0.6) translateX(100%); opacity: 0;}
+    30% {transform: scale(1) translateX(0); opacity: 1;}
+    60% {transform: scale(1) translateX(0); opacity: 1;}
+    100% {transform: scale(0.65) translateX(-125%); opacity: 0.5;}
+}
+
+@keyframes scaledown {
+    /* 0% {transform: scale(1);} */
+    0% {transform: scale(0.8);}
+    25% {transform: scale(1);}
+    50% {transform: scale(1);}
+    100% {transform: scale(0);}
+}
+
+@keyframes appear {
+    0% {opacity: 0;}
+    25% {opacity: 0;}
+    50% {opacity: 1;}
+    75% {opacity: 0;}
+    100% {opacity: 0;}
+}
+
+@keyframes disappear {
+    from {opacity: 1;}
+    to {opacity: 0;}
 }
 
 .carousel__title_home {
@@ -43,6 +74,8 @@
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     color: rgba(0, 0, 0, 0.6);
     mix-blend-mode: luminosity;
+    animation: appear 5s ease 0s;
+    animation-iteration-count: 5;
 }
 
 .carousel__rate_home {
@@ -86,6 +119,7 @@ button.arrow_back, button.arrow_forward {
     border: 1px solid var(--secondary-color);
     color: var(--secondary-color);
     background-color: var(--primary-color);
+    outline: none;
 }
 
 button.arrow_back {
@@ -98,16 +132,20 @@ button.arrow_forward {
 
 button.back_arrow {
     /* right: 99.5%; */
-    right: 100.3%;
+    right: 101.3%;
     text-align: left;
     /* top: calc(2.5rem - 5%); */
+    animation: disappear 1.5s ease-out 2.9s;
+    animation-iteration-count: 5;
 }
 
 button.forward_arrow {
     /* left: 99.5%; */
-    left: 100.5%;
+    left: 101.5%;
     text-align: right;
     /* bottom: 0; */
+    animation: scaledown 5s ease 0s;
+    animation-iteration-count: 5;
 }
 
 button.back_arrow:focus, button.forward_arrow:focus {
