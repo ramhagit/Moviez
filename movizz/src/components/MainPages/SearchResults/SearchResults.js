@@ -16,6 +16,10 @@ const SearchResults = (props) => {
     const [totalResults, setTotalResults] = useState(0);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
+    useEffect(() => {
         const fetchData = () => {
             try {
                 if (searchQuery) {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from "react-helmet";
 import tmdb_logo_big from '../../assets/images/tmdb_logo_big.svg';
 import Omdb_logo from '../../assets/images/Omdb_logo.png';
@@ -6,6 +6,11 @@ import fontAwesomeLogoFullSolid from '../../assets/images/font-awesome-logo-full
 import flaticon from '../../assets/images/flaticon.svg';
 
 const Attributes = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+
     return (
         <div className="attributes-container">
             <Helmet>

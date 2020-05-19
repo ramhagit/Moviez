@@ -22,6 +22,10 @@ const Movies = (props) => {
         { prop: 'popular', displayTitle: 'Popular' },
         { prop: 'upcoming', displayTitle: 'Upcoming' }
     ];
+    
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
 
     useEffect(() => {
         const common = `?api_key=${tmdbKey}&language=en-US`;
