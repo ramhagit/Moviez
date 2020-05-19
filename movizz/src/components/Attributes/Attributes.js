@@ -9,26 +9,33 @@ const Attributes = () => {
             <dl>
                 <dt>
                     <b>Appleseeds Academy</b>, for initiating this project
+                    <dd>&nbsp;</dd>
                 </dt>
                 <dt>
                     <b>Pinchas Hodadad</b>, from Appleseeds Academy - for mentoring
                 </dt>
-                <dt></dt>
             </dl>
             <h2>sources:</h2>
             <dl>
-                <dt><img
-                    className="tmdb-img"
-                    src={tmdb_logo_big}
-                    alt="tmdb logo" />
+                <dt>
+                    <img
+                        className="tmdb-img"
+                        src={tmdb_logo_big}
+                        alt="tmdb logo" />
                     &nbsp;https://www.themoviedb.org/
                 </dt>
-                <dt><img
-                    className="omdb-img"
-                    src={Omdb_logo}
-                    alt="omdb logo" />
+                <dt>&nbsp;</dt>
+                <dt>
+                    <img
+                        className="omdb-img"
+                        src={Omdb_logo}
+                        alt="omdb logo" />
                     &nbsp;http://www.omdbapi.com/
                 </dt>
+                <dt>&nbsp;</dt>
+                <dt>https://fontawesome.com/</dt>
+                <dt>&nbsp;</dt>
+                <dt>https://www.flaticon.com/</dt>
             </dl>
         </>
     )
