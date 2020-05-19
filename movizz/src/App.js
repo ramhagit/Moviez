@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect  } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/MainPages/Home/Home';
@@ -10,11 +10,17 @@ import TVShows from './components/MainPages/TVShows/TVShows';
 import Attributes from './components/Attributes/Attributes';
 
 const App = () => {
+    const containerRef = useRef(null);
+
+    useEffect(() => {
+        containerRef.current.scrollTo(0,0);
+    }, [])
+
     return (
         <div className="page-container">
             <BrowserRouter>
                 <Navbar />
-                <div className="content-container">
+                <div className="content-container" ref={containerRef}>
                     <Route path='/' exact component={() => <Home />} />
                     <Route path='/page/:page_num' exact component={props => <Home pageNum={props.match.params.page_num} />} />
                     <Route path='/movie/:id' exact component={props => <MovieDetail itemId={props.match.params.id} />} />
