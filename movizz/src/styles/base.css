@@ -24,6 +24,6 @@
     min-height: 90vh;
   }
   
-  .tmdb-img {
+  .tmdb-img, .omdb-img {
       width: 7.5rem;
   }
