@@ -9,7 +9,7 @@ import useWidth from '../../hooks/useWidth';
 import './Carousel.css';
 
 const Carousel = (props) => {
-    const { displayList } = props;
+    const { displayList, displayType } = props;
     const [auto, setAuto] = useState(true);
     const [activeIndex, setActiveIndex] = useState(0);
     const [mobile, setMobile] = useState(false);
@@ -24,7 +24,7 @@ const Carousel = (props) => {
     }, [])
 
     useEffect(() => {
-        width < 450 ? setMobile(true) : setMobile(false);
+        width <= 450 ? setMobile(true) : setMobile(false);
     }, [width])
 
     useEffect(() => {
@@ -41,7 +41,6 @@ const Carousel = (props) => {
 
     const timeOutAuto = () => {
         setTimeout(() => {
-            // setButtonDisable(false);
             stopAutoSlideShift();
         }, 25000)
     }
@@ -60,17 +59,14 @@ const Carousel = (props) => {
     }
 
     const goToPrevSlide = () => {
-        // stopAutoSlideShift();
         setActiveIndex(prevIndex());
     }
 
     const goToNextSlide = () => {
-        // stopAutoSlideShift();
         setActiveIndex(nextIndex());
     }
 
     const goToSlide = (index) => {
-        // stopAutoSlideShift();
         setActiveIndex(index);
     }
 
@@ -80,6 +76,47 @@ const Carousel = (props) => {
 
     const rightImgSrc = () => {
         return displayList[nextIndex()].img_src;
+    }
+
+    const CoverDisplay = () => {
+        return (
+            <div className={`carousel__slide_cover ${auto ? 'auto' : ''}`}>
+                <img
+                    className="carousel__img_cover"
+                    src={displayList[activeIndex].img_src}
+                    alt={displayList[activeIndex].title}
+                    onMouseDown={() => { setAuto(true); timeOutAuto() }}
+                />
+                <Link to={displayList[activeIndex].link_path} >
+                    <div className={`carousel__title_cover ${auto ? 'auto' : ''}`}>
+                        <h1>{displayList[activeIndex].title}</h1>
+                        <h2>{displayList[activeIndex].year}</h2>
+                    </div>
+                </Link>
+                <div className={`carousel__rate_cover ${auto ? 'auto' : ''}`}>
+                    {displayList[activeIndex].rate}
+                </div>
+            </div>
+        )
+    }
+
+    const PacksDisplay = () => {
+        return (
+            <div className={`carousel__slide_packs ${auto ? 'auto' : ''}`}>
+                <img
+                    className="carousel__img_packs"
+                    src={displayList[activeIndex].img_src}
+                    alt={displayList[activeIndex].title}
+                    onMouseDown={() => { setAuto(true); timeOutAuto() }}
+                />
+                <Link to={displayList[activeIndex].link_path} >
+                    <div className={`carousel__title_packs ${auto ? 'auto' : ''}`}>
+                        <h1>{displayList[activeIndex].title}</h1>
+                        <h2>{displayList[activeIndex].year}</h2>
+                    </div>
+                </Link>
+            </div>
+        )
     }
 
     return (
@@ -92,13 +129,15 @@ const Carousel = (props) => {
                             auto={auto}
                             stopAutoSlideShift={stopAutoSlideShift}
                         />}
-                        {!mobile && <LeftArrow
+                        {displayType === "cover" && !mobile && <LeftArrow
                             goToPrevSlide={goToPrevSlide}
                             imgSrc={leftImgSrc()}
                             auto={auto}
                             stopAutoSlideShift={stopAutoSlideShift}
                         />}
-                        <div className={`carousel__slide ${auto ? 'auto' : ''}`}>
+                        {displayType === "cover" && <CoverDisplay />}
+                        {displayType === "packs" && <PacksDisplay />}
+                        {/* <div className={`carousel__slide ${auto ? 'auto' : ''}`}>
                             <img
                                 className="carousel__img_home"
                                 src={displayList[activeIndex].img_src}
@@ -114,8 +153,8 @@ const Carousel = (props) => {
                             <div className={`carousel__rate_home ${auto ? 'auto' : ''}`}>
                                 {displayList[activeIndex].rate}
                             </div>
-                        </div>
-                        {!mobile && <RightArrow
+                        </div> */}
+                        {displayType === "cover" && !mobile && <RightArrow
                             goToNextSlide={goToNextSlide}
                             imgSrc={rightImgSrc()}
                             auto={auto}
@@ -137,6 +176,10 @@ const Carousel = (props) => {
                 : <Loader />}
         </>
     )
+}
+
+Carousel.defaultProps = {
+    displayType: "cover"
 }
 
 export default Carousel;

@@ -11,12 +11,12 @@
     display: inline-table;
 }
 
-.carousel__slide.auto {
+.carousel__slide_cover.auto {
     animation: slidemovenext 5s ease 0s;
     animation-iteration-count: 5;
 }
 
-.carousel__img_home {
+.carousel__img_cover {
     box-sizing: border-box;
     margin-top: 2.5rem;
     width: 56vw;
@@ -24,7 +24,7 @@
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
 }
 
-.carousel__title_home {
+.carousel__title_cover {
     padding: 0 2rem;
     left: 50%;
     top: calc(2.5rem + 45%);
@@ -34,27 +34,27 @@
     display: table-column;
 }
 
-.carousel__title_home h2, .carousel__rate_home {
+.carousel__title_cover h2, .carousel__rate_cover {
     font-size: x-large;
 }
 
-.carousel__title_home h1 {
+.carousel__title_cover h1 {
     font-size: xx-large;
 }
 
-.carousel__title_home, .carousel__rate_home {
+.carousel__title_cover, .carousel__rate_cover {
     position: absolute;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     color: rgba(0, 0, 0, 0.6);
     mix-blend-mode: luminosity;
 }
 
-.carousel__title_home.auto, .carousel__rate_home.auto {
+.carousel__title_cover.auto, .carousel__rate_cover.auto {
     animation: appear 5s ease 0s;
     animation-iteration-count: 5;
 }
 
-.carousel__rate_home {
+.carousel__rate_cover {
     border-radius: 50%;
     padding: 1rem;
     bottom: 1rem;
@@ -66,7 +66,7 @@
     align-items: center;
 }
 
-.carousel__title_home, .carousel__rate_home {
+.carousel__title_cover, .carousel__rate_cover {
     background-color: var(--background-color);
 }
 
@@ -189,18 +189,18 @@ button.back_arrow:focus, button.forward_arrow:focus {
 }
 
 @media screen and (max-width: 695px) {
-    .carousel__title_home h1, .carousel__rate_home {
+    .carousel__title_cover h1, .carousel__rate_cover {
         font-size: x-large;
     }
 
-    .carousel__rate_home {
+    .carousel__rate_cover {
         height: 5rem;
         width: 5rem;
     }
 }
 
 @media screen and (max-width: 450px) {
-    .carousel__title_home {
+    .carousel__title_cover {
         display: table-column-group;
         width: 78%;
         max-height: calc(100% - 3rem);

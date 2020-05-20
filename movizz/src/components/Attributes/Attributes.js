@@ -5,6 +5,8 @@ import Omdb_logo from '../../assets/images/Omdb_logo.png';
 import fontAwesomeLogoFullSolid from '../../assets/images/font-awesome-logo-full-solid.svg';
 import flaticon from '../../assets/images/flaticon.svg';
 
+import './Attributes.css';
+
 const Attributes = () => {
 
     useEffect(() => {
@@ -25,6 +27,7 @@ const Attributes = () => {
                 <dt>
                     <b>Pinchas Hodadad</b>, from Appleseeds Academy - for mentoring
                 </dt>
+                <dt>&nbsp;</dt>
             </dl>
             <h2>sources:</h2>
             <dl>
