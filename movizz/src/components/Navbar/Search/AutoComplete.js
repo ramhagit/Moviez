@@ -33,23 +33,23 @@ const AutoComplete = (props) => {
     // console.log('inputValue: ', inputValue, 'resultsList: ', resultsList);
 
     const display = resultsList.length ? resultsList.map(item => {
-        return <span
-            className="auto-complete-suggestion"
-            key={item.title}
-            data-title={item.title}
-            onClick={e => {
-                const newInputValue = e.target.dataset.title;
-                setTimeout(() => {
-                    setInputValue(newInputValue);
-                }, 250)
-            }}
-        >
-            {item.title.length > 18 ? `${item.title.substring(0, 18)}` : item.title}
-            <Link to={`/movie/${item.id}`} key={item.id} onMouseUp={() => { setReset(true) }}>
+        return <Link to={`/movie/${item.id}`} key={item.id} onMouseUp={() => { setReset(true) }}>
+            <span
+                className="auto-complete-suggestion"
+                key={item.title}
+                data-title={item.title}
+                onClick={e => {
+                    const newInputValue = e.target.dataset.title;
+                    setTimeout(() => {
+                        setInputValue(newInputValue);
+                    }, 250)
+                }}
+            >
+                {item.title.length > 18 ? `${item.title.substring(0, 18)}` : item.title}
                 <img src={`${tmdbImage}w92${item.poster_path}`} alt={item.poster_path ? item.title : ''} />
-            </Link>
 
-        </span>
+            </span>
+        </Link>
     }) : null;
 
     return (
