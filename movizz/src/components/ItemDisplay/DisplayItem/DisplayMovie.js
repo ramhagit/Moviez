@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from "react-helmet";
 import Loader from '../../Loader/Loader';
 import MovieCard from '../MovieCard/MovieCard';
 import Cast from '../Cast/Cast';
@@ -15,6 +16,9 @@ const DisplayMovie = (props) => {
 
     return (
         <div className="item-container">
+            <Helmet>
+                <title>{`Movie |${itemId}`}</title>
+            </Helmet>
             <div className="item-content">
                 <div className="item__backdrop">
                     <img alt="" src={data.backdrop} className="backdropImg" />
