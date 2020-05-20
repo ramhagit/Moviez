@@ -9,9 +9,9 @@ import useWidth from '../../hooks/useWidth';
 import './Carousel.css';
 
 const Carousel = (props) => {
-    const { displayList, activeIndex, setActiveIndex } = props;
+    const { displayList } = props;
     const [auto, setAuto] = useState(true);
-    // const [buttonDisable, setButtonDisable] = useState(false);
+    const [activeIndex, setActiveIndex] = useState(0);
     const [mobile, setMobile] = useState(false);
     const [slideShift, setSlideShift] = useState(null);
     const length = displayList.length;

@@ -69,11 +69,7 @@ const Home = (props) => {
             <Helmet>
                 <title>MovizZ</title>
             </Helmet>
-            <Carousel
-                displayList={coverList()}
-                activeIndex={carouselActiveIndex}
-                setActiveIndex={setCarouselActiveIndex}
-            />
+            <Carousel displayList={coverList()} />
             <div className="welcome">Welcome to MovizZ</div>
             {
                 data.length ?
