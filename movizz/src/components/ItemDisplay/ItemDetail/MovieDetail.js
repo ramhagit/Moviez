@@ -19,6 +19,10 @@ const MovieDetail = (props) => {
     const posterSize = 'w185';
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
+    
+    useEffect(() => {
         async function getMovieDetails() {
             try {
                 const response = await TMDBAPI.get(`movie/${itemId}?api_key=${tmdbKey}`);
