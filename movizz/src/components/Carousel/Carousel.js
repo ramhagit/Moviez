@@ -11,7 +11,7 @@ import './Carousel.css';
 const Carousel = (props) => {
     const { displayList, activeIndex, setActiveIndex } = props;
     const [auto, setAuto] = useState(true);
-    const [buttonDisable, setButtonDisable] = useState(false);
+    // const [buttonDisable, setButtonDisable] = useState(false);
     const [mobile, setMobile] = useState(false);
     const [slideShift, setSlideShift] = useState(null);
     const length = displayList.length;
@@ -41,7 +41,7 @@ const Carousel = (props) => {
 
     const timeOutAuto = () => {
         setTimeout(() => {
-            setButtonDisable(false);
+            // setButtonDisable(false);
             stopAutoSlideShift();
         }, 25000)
     }
@@ -98,20 +98,22 @@ const Carousel = (props) => {
                             auto={auto}
                             stopAutoSlideShift={stopAutoSlideShift}
                         />}
-                        <img
-                            className={`carousel__img_home ${auto ? 'auto' : ''}`}
-                            src={displayList[activeIndex].img_src}
-                            alt={displayList[activeIndex].title}
-                            onMouseDown={() => { setAuto(true); timeOutAuto() }}
-                        />
-                        <Link to={displayList[activeIndex].link_path} >
-                            <div className={`carousel__title_home ${auto ? 'auto' : ''}`}>
-                                <h1>{displayList[activeIndex].title}</h1>
-                                <h2>{displayList[activeIndex].year}</h2>
+                        <div className={`carousel__slide ${auto ? 'auto' : ''}`}>
+                            <img
+                                className="carousel__img_home"
+                                src={displayList[activeIndex].img_src}
+                                alt={displayList[activeIndex].title}
+                                onMouseDown={() => { setAuto(true); timeOutAuto() }}
+                            />
+                            <Link to={displayList[activeIndex].link_path} >
+                                <div className={`carousel__title_home ${auto ? 'auto' : ''}`}>
+                                    <h1>{displayList[activeIndex].title}</h1>
+                                    <h2>{displayList[activeIndex].year}</h2>
+                                </div>
+                            </Link>
+                            <div className={`carousel__rate_home ${auto ? 'auto' : ''}`}>
+                                {displayList[activeIndex].rate}
                             </div>
-                        </Link>
-                        <div className={`carousel__rate_home ${auto ? 'auto' : ''}`}>
-                            {displayList[activeIndex].rate}
                         </div>
                         {!mobile && <RightArrow
                             goToNextSlide={goToNextSlide}
