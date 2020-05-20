@@ -89,17 +89,17 @@ button.arrow_back, button.arrow_forward {
     position: absolute;
     width: 3rem;
     height: 4rem;
-    top: calc(2.5rem + 30%);
+    top: calc(2.5rem + 35%);
     border-radius: 5px;
     text-align: center;
     /* border: 1px solid var(--secondary-color); */
     color: var(--secondary-color);
-    background-color: var(--active-color);
+    background-color: var(--primary-trans);
     outline: none;
 }
 
 button.arrow_back:hover, button.arrow_forward:hover {
-    background-color: var(--primary-trans);
+    background-color: var(--active-color);
 }
 
 button.arrow_back.auto, button.arrow_forward.auto {
