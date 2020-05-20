@@ -92,14 +92,14 @@ button.arrow_back, button.arrow_forward {
     top: calc(2.5rem + 30%);
     border-radius: 5px;
     text-align: center;
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
-    background-color: var(--background-color);
+    /* border: 1px solid var(--secondary-color); */
+    color: var(--secondary-color);
+    background-color: var(--active-color);
     outline: none;
 }
 
 button.arrow_back:hover, button.arrow_forward:hover {
-    background-color: var(--active-color);
+    background-color: var(--primary-trans);
 }
 
 button.arrow_back.auto, button.arrow_forward.auto {
