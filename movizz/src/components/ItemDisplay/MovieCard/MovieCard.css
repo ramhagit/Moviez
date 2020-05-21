@@ -8,6 +8,7 @@
     display: flex;
     align-items: flex-start;
     margin-bottom: 2px;
+    font-size: 1.5rem;
 }
 
 .card__genres, .card__languages {
@@ -36,6 +37,7 @@
 .ratings {
     display: flex;
     justify-content: center;
+    font-size: 1.5rem;
 }
 
 .rating {

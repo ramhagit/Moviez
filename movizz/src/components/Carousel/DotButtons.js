@@ -2,7 +2,7 @@ import React from 'react';
 import uniqid from "uniqid";
 
 const DotButtons = (props) => {
-    const { numOfButtons, goTo, activeIndex, stopAutoSlideShift } = props;
+    const { numOfButtons, goTo, activeIndex, stopAutoSlideShift, displayType } = props;
 
     const DotButton = (index) => {
         return <span
@@ -21,7 +21,7 @@ const DotButtons = (props) => {
     
     return (
         <div className="dot-buttons-container">
-            <div className="dot-buttons">{dots}</div>
+            <div className={`dot-buttons ${displayType}`}>{dots}</div>
         </div>
     )
 }

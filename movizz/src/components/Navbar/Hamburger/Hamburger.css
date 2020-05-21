@@ -8,11 +8,13 @@
 }
 
 .ham_slice {
+    height: 0.3rem;
     position: relative;
 }
 
 .ham_slice::before,
 .ham_slice::after {
+    height: 100%;
     content:"";
     position: absolute;
 }
@@ -28,7 +30,6 @@
 .ham_slice,
 .ham_slice::before,
 .ham_slice::after {
-	height: 0.3rem;
 	width: 100%;
 	background-color: var(--primary-color);
 }
