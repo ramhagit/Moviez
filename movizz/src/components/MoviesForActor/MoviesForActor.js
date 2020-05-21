@@ -74,7 +74,7 @@ const MoviesForActor = (props) => {
             <div className="movies_for_actor-container">
                 <MainHeadline title={name.replace('+', ' ')} />
                 <h1 className="search-results__headline">
-                    <span className="search-text"><b>{resultsList.length ? 'featuring movies' : 'best known for movies'}</b></span>
+                    <span className="search-text"><b>{resultsList.length ? 'featured movies' : 'best known for movies'}</b></span>
                 </h1>
             </div>
             {resultsList.length ?
