@@ -8,11 +8,6 @@
     justify-content: center;
 }
 
-.carousel.packs {
-    /* align-items: flex-end; */
-
-}
-
 .carousel_show_slide.cover {
     text-align: center;
     position: relative;
@@ -63,8 +58,6 @@
     max-width: 780px;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
 }
-
-.carousel__card_description {}
 
 .carousel__card_description_name {
     font-weight: 800;

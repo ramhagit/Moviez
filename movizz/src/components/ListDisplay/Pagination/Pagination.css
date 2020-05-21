@@ -53,3 +53,9 @@
 .pagination-arrow:disabled {
     display: none;
 }
+
+@media screen and (max-width: 450px) {
+    .pagination-arrow {
+        height: 22px;
+    }
+}
