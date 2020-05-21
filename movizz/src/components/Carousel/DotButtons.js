@@ -2,14 +2,12 @@ import React from 'react';
 import uniqid from "uniqid";
 
 const DotButtons = (props) => {
-    const { numOfButtons, goToSlide, activeIndex, stopAutoSlideShift } = props;
+    const { numOfButtons, goTo, activeIndex, stopAutoSlideShift } = props;
 
     const DotButton = (index) => {
         return <span
             className={`dot-button ${index === activeIndex ? 'active' : ''}`}
-            // data-index={index}
-            // onClick={e => goToSlide(e.target.dataset.index)}
-            onClick={() => { stopAutoSlideShift(); goToSlide(index) }}
+            onClick={() => { stopAutoSlideShift(); goTo(index) }}
             onMouseEnter={stopAutoSlideShift}
             key={uniqid()}
         ></span>
@@ -19,6 +17,8 @@ const DotButtons = (props) => {
         return DotButton(dot);
     });
 
+    console.log('numOfButtons: ', numOfButtons, 'goTo: ', goTo, 'activeIndex: ', activeIndex);
+    
     return (
         <div className="dot-buttons-container">
             <div className="dot-buttons">{dots}</div>

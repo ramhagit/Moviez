@@ -20,7 +20,7 @@ const Pagination = (props) => {
 
 
     useEffect(() => {
-        width < 440 ? setAmountOfDisplayedPages(4) :
+        width < 450 ? setAmountOfDisplayedPages(4) :
             width < 540 ? setAmountOfDisplayedPages(5) :
                 width < 660 ? setAmountOfDisplayedPages(7) :
                     width < 850 ? setAmountOfDisplayedPages(10) :

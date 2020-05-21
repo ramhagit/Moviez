@@ -5,9 +5,9 @@ import { tmdbImage } from '../../../api/base';
 import Carousel from '../../Carousel/Carousel';
 
 const Cast = (props) => {
-    const { castList, movieId } = props;
+    const { movieId } = props;
     const [casrArr, setCasrArr] = useState([]);
-    const [crewArr, setCrewArr] = useState([]);
+    // const [crewArr, setCrewArr] = useState([]);
 
     useEffect(() => {
         const tmdbMovieCredits = () => {
@@ -16,7 +16,7 @@ const Cast = (props) => {
                     .then(response => {
                         console.log('Credits: ', response.data);
                         setCasrArr(response.data.cast);
-                        setCrewArr(response.data.crew);
+                        // setCrewArr(response.data.crew);
                     });
 
                 return () => {
@@ -34,21 +34,18 @@ const Cast = (props) => {
         return arrOfItems.map(castMember => {
             return (
                 {
-                    title: castMember.name,
-                    year: castMember.character,
-                    rate: castMember.vote_average,
+                    name: castMember.name,
+                    character: castMember.character,
                     img_src: `${tmdbImage}original${castMember.profile_path}`,
-                    link_path: `/person/${castMember.id}`
+                    link_path: `/person/${castMember.id}`,
+                    id: castMember.id
                 }
             )
         })
     }
 
     return (
-        <>
-            {castList.props.children && <div>Cast: {castList}</div>}
-            <Carousel displayList={makeCastListForCarousel(casrArr).slice(0,5)} displayType="cover"/>
-        </>
+            <Carousel displayList={makeCastListForCarousel(casrArr)} displayType="packs"/>
     )
 }
 

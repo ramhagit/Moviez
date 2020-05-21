@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 const RightArrow = (props) => {
-    const { goToNextSlide, imgSrc, auto, stopAutoSlideShift } = props;
+    const { goToNextSlide, goToNextPack, imgSrc, mobile, auto, stopAutoSlideShift, displayType } = props;
 
     const backgroundImgStyle = {
         backgroundImage: `linear-gradient(rgba(218, 218, 194, 0.5), rgba(218, 218, 194, 0.5)), url('${imgSrc}')`,
@@ -14,13 +14,13 @@ const RightArrow = (props) => {
 
     return (
         <button
-            className={`${imgSrc ? 'forward_arrow' : 'arrow_forward'} ${auto ? 'auto' : ''}`}
-            onClick={goToNextSlide}
-            style={imgSrc ? backgroundImgStyle : {}}
+            className={`${displayType === "packs" || mobile ? 'arrow_forward' : 'forward_arrow'} ${displayType} ${auto ? 'auto' : ''}`}
+            onClick={displayType === "cover" ? goToNextSlide : displayType === "packs" ? goToNextPack : null}
+            style={displayType === "cover" && !mobile ? backgroundImgStyle : {}}
             onMouseEnter={stopAutoSlideShift}
         >
             <span>
-                {imgSrc && 'Next '}
+                {displayType === "cover" && !mobile && 'Next '}
                 <FontAwesomeIcon icon={faAngleRight} />
             </span>
         </button>

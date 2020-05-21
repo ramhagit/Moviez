@@ -10,12 +10,17 @@ import './Carousel.css';
 
 const Carousel = (props) => {
     const { displayList, displayType } = props;
-    const [auto, setAuto] = useState(true);
     const [activeIndex, setActiveIndex] = useState(0);
-    const [mobile, setMobile] = useState(false);
+    const [activePack, setActivePack] = useState(0);
+    const [indexOfPackStart, setIndexOfPackStart] = useState(0);
+    const [packSize, setPackSize] = useState(1);
+    const [numOfPacks, setNumOfPacks] = useState(Math.ceil(displayList.length/packSize));
     const [slideShift, setSlideShift] = useState(null);
-    const length = displayList.length;
+    const [auto, setAuto] = useState(true);
+    const [mobile, setMobile] = useState(false);
     const width = useWidth();
+    const length = displayList.length;
+    // const numOfPacks = Math.ceil(length/packSize);
     console.log('displayList: ', displayList, 'activeIndex: ', activeIndex, 'displayList at activeIndex: ', displayList[activeIndex]);
 
     useEffect(() => {
@@ -24,7 +29,22 @@ const Carousel = (props) => {
     }, [])
 
     useEffect(() => {
-        width <= 450 ? setMobile(true) : setMobile(false);
+        setNumOfPacks(Math.ceil(displayList.length/packSize));
+    }, [displayList, packSize])
+
+    useEffect(() => {
+        setIndexOfPackStart(activePack*packSize);
+    }, [activePack, packSize])
+
+    useEffect(() => {
+        if (width > 695) {
+            setPackSize(6)
+        } else if (width > 450) {
+            setPackSize(5);
+        } else {
+            setMobile(true);
+            setPackSize(3);
+        }
     }, [width])
 
     useEffect(() => {
@@ -70,6 +90,26 @@ const Carousel = (props) => {
         setActiveIndex(index);
     }
 
+    const prevPack = () => {
+        return activePack === 0 ? numOfPacks - 1 : activePack - 1;
+    }
+
+    const nextPack = () => {
+        return (activePack + 1) % numOfPacks;
+    }
+
+    const goToPrevPack = () => {
+        setActivePack(prevPack());
+    }
+
+    const goToNextPack = () => {
+        setActivePack(nextPack());
+    }
+
+    const goToPack = (num) => {
+        setActivePack(num);
+    }
+
     const leftImgSrc = () => {
         return displayList[prevIndex()].img_src;
     }
@@ -80,6 +120,7 @@ const Carousel = (props) => {
 
     const CoverDisplay = () => {
         return (
+            <>
             <div className={`carousel__slide_cover ${auto ? 'auto' : ''}`}>
                 <img
                     className="carousel__img_cover"
@@ -97,24 +138,26 @@ const Carousel = (props) => {
                     {displayList[activeIndex].rate}
                 </div>
             </div>
+            </>
         )
     }
 
     const PacksDisplay = () => {
+        const cards = displayList.map(item => {
+            return <div className="carousel__card">
+                <Link to={item.link_path} >
+                    <img className="carousel__card_img" src={item.img_src} alt="" />
+                </Link>
+                <div className="carousel__card_description">
+                    <h2>{item.name}</h2>
+                    <h3>{item.character}</h3>
+                </div>
+            </div>
+        })
+
         return (
             <div className={`carousel__slide_packs ${auto ? 'auto' : ''}`}>
-                <img
-                    className="carousel__img_packs"
-                    src={displayList[activeIndex].img_src}
-                    alt={displayList[activeIndex].title}
-                    onMouseDown={() => { setAuto(true); timeOutAuto() }}
-                />
-                <Link to={displayList[activeIndex].link_path} >
-                    <div className={`carousel__title_packs ${auto ? 'auto' : ''}`}>
-                        <h1>{displayList[activeIndex].title}</h1>
-                        <h2>{displayList[activeIndex].year}</h2>
-                    </div>
-                </Link>
+                {cards.slice(indexOfPackStart, indexOfPackStart + packSize)}
             </div>
         )
     }
@@ -122,56 +165,41 @@ const Carousel = (props) => {
     return (
         <>
             {length ?
-                <div className="carousel">
-                    <div className="carousel_show_slide" onMouseEnter={stopAutoSlideShift}>
-                        {mobile && <LeftArrow
+                <div className={`carousel ${displayType}`}>
+                    <div className={`carousel_show_slide ${displayType}`} onMouseEnter={stopAutoSlideShift}>
+                        <LeftArrow
                             goToPrevSlide={goToPrevSlide}
-                            auto={auto}
-                            stopAutoSlideShift={stopAutoSlideShift}
-                        />}
-                        {displayType === "cover" && !mobile && <LeftArrow
-                            goToPrevSlide={goToPrevSlide}
+                            goToPrevPack={goToPrevPack}
                             imgSrc={leftImgSrc()}
+                            mobile={mobile}
                             auto={auto}
                             stopAutoSlideShift={stopAutoSlideShift}
-                        />}
+                            displayType={displayType}
+                        />
                         {displayType === "cover" && <CoverDisplay />}
                         {displayType === "packs" && <PacksDisplay />}
-                        {/* <div className={`carousel__slide ${auto ? 'auto' : ''}`}>
-                            <img
-                                className="carousel__img_home"
-                                src={displayList[activeIndex].img_src}
-                                alt={displayList[activeIndex].title}
-                                onMouseDown={() => { setAuto(true); timeOutAuto() }}
-                            />
-                            <Link to={displayList[activeIndex].link_path} >
-                                <div className={`carousel__title_home ${auto ? 'auto' : ''}`}>
-                                    <h1>{displayList[activeIndex].title}</h1>
-                                    <h2>{displayList[activeIndex].year}</h2>
-                                </div>
-                            </Link>
-                            <div className={`carousel__rate_home ${auto ? 'auto' : ''}`}>
-                                {displayList[activeIndex].rate}
-                            </div>
-                        </div> */}
-                        {displayType === "cover" && !mobile && <RightArrow
+                        <RightArrow
                             goToNextSlide={goToNextSlide}
+                            goToNextPack={goToNextPack}
                             imgSrc={rightImgSrc()}
+                            mobile={mobile}
                             auto={auto}
                             stopAutoSlideShift={stopAutoSlideShift}
-                        />}
-                        {mobile && <RightArrow
-                            goToNextSlide={goToNextSlide}
-                            auto={auto}
-                            stopAutoSlideShift={stopAutoSlideShift}
-                        />}
+                            displayType={displayType}
+                        />
                     </div>
-                    <DotButtons
+                    {displayType === "packs" && <DotButtons
+                        numOfButtons={numOfPacks}
+                        goTo={goToPack}
+                        activeIndex={activePack}
+                        stopAutoSlideShift={stopAutoSlideShift}
+                    />}
+                    {displayType === "cover" && <DotButtons
                         numOfButtons={length}
-                        goToSlide={goToSlide}
+                        goTo={goToSlide}
                         activeIndex={activeIndex}
                         stopAutoSlideShift={stopAutoSlideShift}
-                    />
+                    />}
                 </div>
                 : <Loader />}
         </>
