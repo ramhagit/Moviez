@@ -37,7 +37,7 @@ const Cast = (props) => {
                     name: castMember.name,
                     character: castMember.character,
                     img_src: `${tmdbImage}original${castMember.profile_path}`,
-                    link_path: `/person/${castMember.id}`,
+                    link_path: `/movies_for_actor/${castMember.name.trim().replace(' ', '+')}`,
                     id: castMember.id
                 }
             )

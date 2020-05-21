@@ -30,4 +30,8 @@ const ShowList = (props) => {
     )
 }
 
+ShowList.defaultProps = {
+    numOfPages: 1
+}
+
 export default ShowList;

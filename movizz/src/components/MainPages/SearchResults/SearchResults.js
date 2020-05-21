@@ -56,10 +56,7 @@ const SearchResults = (props) => {
             {!totalResults ?
                 <h1 className="search-results__no_results">No items found</h1>
                 : resultsList.length ?
-                    <>
-                        <Pagination numOfPages={numOfPages} path={`/search/${searchQuery}`} />
-                        <ShowList data={resultsList} />
-                    </>
+                    <ShowList data={resultsList} numOfPages={numOfPages} path={`/search/${searchQuery}`}/>
                     : <Loader />}
         </div>
     )

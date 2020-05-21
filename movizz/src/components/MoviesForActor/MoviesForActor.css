@@ -1,0 +1,6 @@
+.movies_for_actor-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 25vh;
+}

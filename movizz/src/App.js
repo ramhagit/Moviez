@@ -8,6 +8,7 @@ import SearchResults from './components/MainPages/SearchResults/SearchResults';
 import Footer from './components/Footer/Footer';
 import TVShows from './components/MainPages/TVShows/TVShows';
 import Attributes from './components/Attributes/Attributes';
+import MoviesForActor from './components/MoviesForActor/MoviesForActor';
 
 const App = () => {
     const containerRef = useRef(null);
@@ -30,6 +31,7 @@ const App = () => {
                     <Route path='/search/:search_query/page/:page_num' exact component={props => <SearchResults searchQuery={props.match.params.search_query} pageNum={props.match.params.page_num} />} />
                     <Route path='/tv/' exact component={() => <TVShows />} />
                     <Route path='/attributes/' exact component={() => <Attributes />} />
+                    <Route path='/movies_for_actor/:name' exact component={props => <MoviesForActor name={props.match.params.name} />} />
                 </div>
                 <Footer />
             </BrowserRouter>
