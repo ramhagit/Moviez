@@ -46,3 +46,9 @@
     outline: var(--active-color) thin ridge;
     outline-offset: -5px;
 }
+
+@media screen and (max-width: 450px) {
+    .nav-btn {
+        height: 45px;
+    }
+}
