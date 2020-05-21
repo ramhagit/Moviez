@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Helmet } from "react-helmet";
 import { tmdbKey } from '../../../keys';
 import { TMDBAPI } from '../../../api/base';
-import Pagination from '../../ListDisplay/Pagination/Pagination';
 import ShowList from '../../ListDisplay/ShowList/ShowList';
 import MainHeadline from '../../MainHeadline/MainHeadline';
 import Loader from '../../Loader/Loader';

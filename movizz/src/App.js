@@ -31,7 +31,7 @@ const App = () => {
                     <Route path='/search/:search_query/page/:page_num' exact component={props => <SearchResults searchQuery={props.match.params.search_query} pageNum={props.match.params.page_num} />} />
                     <Route path='/tv/' exact component={() => <TVShows />} />
                     <Route path='/attributes/' exact component={() => <Attributes />} />
-                    <Route path='/movies_for_actor/:name' exact component={props => <MoviesForActor name={props.match.params.name} />} />
+                    <Route path='/movies_for_actor/:name/:id/page/:page_num' component={props => <MoviesForActor name={props.match.params.name} id={props.match.params.id} pageNum={props.match.params.page_num} />}/>
                 </div>
                 <Footer />
             </BrowserRouter>
