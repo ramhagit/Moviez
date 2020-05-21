@@ -48,7 +48,6 @@
     width: 90%;
     border-radius: 3px;
     padding-top: 4px;
-    /* height: 135%; */
 }
 
 .carousel__img_cover {
@@ -57,6 +56,7 @@
     width: 56vw;
     max-width: 780px;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
 }
 
 .carousel__card_description_name {
@@ -114,7 +114,6 @@
 }
 
 button.back_arrow, button.forward_arrow {
-    cursor: pointer;
     color: var(--primary-trans);
     border: 1px solid var(--secondary-color);
     position: absolute;
@@ -126,6 +125,15 @@ button.back_arrow, button.forward_arrow {
     min-width: 20px;
     box-shadow: 1px 1px 0.5px rgba(0, 0, 0, 0.5);
     top: calc(24.5% - 2.5rem);
+    border-radius: 4px;
+    text-align: center;
+}
+
+.back_arrow.cover button, .forward_arrow.cover button {
+    cursor: pointer;
+    color: var(--primary-color);
+    background-color: var(--background-color);
+    mix-blend-mode: luminosity;
 }
 
 button.arrow_back, button.arrow_forward {
@@ -135,7 +143,6 @@ button.arrow_back, button.arrow_forward {
     top: calc(2.5rem + 35%);
     border-radius: 5px;
     text-align: center;
-    /* border: 1px solid var(--secondary-color); */
     color: var(--secondary-color);
     background-color: var(--primary-trans);
     outline: none;
@@ -159,12 +166,12 @@ button.arrow_forward {
 
 button.back_arrow {
     right: 101.3%;
-    text-align: left;
+    /* text-align: left; */
 }
 
 button.forward_arrow {
     left: 101.5%;
-    text-align: right;
+    /* text-align: right; */
 }
 
 button.forward_arrow.auto {

@@ -20,7 +20,6 @@ const Carousel = (props) => {
     const [mobile, setMobile] = useState(false);
     const width = useWidth();
     const length = displayList.length;
-    // const numOfPacks = Math.ceil(length/packSize);
     console.log('displayList: ', displayList, 'activeIndex: ', activeIndex, 'displayList at activeIndex: ', displayList[activeIndex]);
 
     useEffect(() => {

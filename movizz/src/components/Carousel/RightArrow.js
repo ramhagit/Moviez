@@ -19,10 +19,10 @@ const RightArrow = (props) => {
             style={displayType === "cover" && !mobile ? backgroundImgStyle : {}}
             onMouseEnter={stopAutoSlideShift}
         >
-            <span>
+            <button>
                 {displayType === "cover" && !mobile && 'Next '}
                 <FontAwesomeIcon icon={faAngleRight} />
-            </span>
+            </button>
         </button>
     )
 }
