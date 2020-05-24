@@ -41,7 +41,6 @@
 
 .carousel__card_img_container {
     width: 100%;
-    /* padding: 1rem; */
 }
 
 .carousel__card_img {
@@ -127,14 +126,18 @@ button.back_arrow, button.forward_arrow {
     top: calc(24.5% - 2.5rem);
     border-radius: 4px;
     text-align: center;
+    cursor: pointer;
 }
 
-.back_arrow.cover button, .forward_arrow.cover button {
-    cursor: pointer;
+button.back_arrow:hover, button.forward_arrow:hover {
+    color: var(--active-color);
+}
+
+/* .back_arrow.cover button, .forward_arrow.cover button {
     color: var(--primary-color);
     background-color: var(--background-color);
     mix-blend-mode: luminosity;
-}
+} */
 
 button.arrow_back, button.arrow_forward {
     position: absolute;
@@ -166,12 +169,10 @@ button.arrow_forward {
 
 button.back_arrow {
     right: 101.3%;
-    /* text-align: left; */
 }
 
 button.forward_arrow {
     left: 101.5%;
-    /* text-align: right; */
 }
 
 button.forward_arrow.auto {
@@ -186,8 +187,6 @@ button.back_arrow:focus, button.forward_arrow:focus {
 
 button.arrow_back.packs, button.arrow_forward.packs {
     position: absolute;
-    /* width: 3rem; */
-    /* height: 4rem; */
     top: calc(2.5rem + 35%);
 }
 
