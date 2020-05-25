@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { TMDBAPI, OMDBAPI, tmdbImage } from '../../../api/base';
 import { tmdbKey, omdbKey } from '../../../keys';
-import DisplayMovie from '../DisplayItem/DisplayMovie';
+import DisplayMovie from '../DisplayMovie/DisplayMovie';
 import Loader from '../../Loader/Loader';
 import uniqid from 'uniqid';
 import imdbIcon from '../../../assets/images/imdbIcon.png';
@@ -12,7 +12,7 @@ const MovieDetail = (props) => {
     const { itemId } = props;
     const [tmdbData, setTmdbData] = useState({});
     const [omdbData, setOmdbData] = useState({});
-    const [data, setMovieData] = useState({});
+    const [movieData, setMovieData] = useState({});
     const [movieVideos, setMovieVideos] = useState([]);
     const [trailersURL, setTrailersURL] = useState([]);
     const backdropSize = 'w1280';
@@ -181,8 +181,8 @@ const MovieDetail = (props) => {
 
     return (
         <>
-            {Object.keys(data).length ?
-                <DisplayMovie data={data} itemId={itemId} trailersURL={trailersURL} /> :
+            {Object.keys(movieData).length ?
+                <DisplayMovie data={movieData} itemId={itemId} trailersURL={trailersURL} /> :
                 <Loader />
             }
         </>
