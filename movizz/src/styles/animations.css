@@ -1,0 +1,23 @@
+@keyframes slidemovenext {
+    0% {transform: scale(0) translateX(500%); opacity: 0;}
+    30% {transform: scale(1); opacity: 1;}
+    65% {transform: scale(1); opacity: 1;}
+    99% {transform: scale(0.7) translateX(-120%); opacity: 1;}
+    100% {transform: scale(0.6) translateX(-250%); opacity: 0.2;}
+}
+
+@keyframes scaledown {
+    0% {transform: scale(0.4) translateX(100%);}
+    35% {transform: scale(1) translateX(0);}
+    50% {transform: scale(1) translateX(0);}
+    90% {transform: scale(0.2) translateX(-100%);}
+    100% {transform: scale(0) translateX(-500%);}
+}
+
+@keyframes appear {
+    0% {opacity: 0;}
+    15% {opacity: 0;}
+    50% {opacity: 1;}
+    85% {opacity: 0;}
+    100% {opacity: 0;}
+}
