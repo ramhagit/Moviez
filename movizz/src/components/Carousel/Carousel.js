@@ -36,13 +36,18 @@ const Carousel = (props) => {
     }, [activePack, packSize])
 
     useEffect(() => {
-        if (width > 695) {
+        if (width > 750) {
             setPackSize(5)
-        } else if (width > 450) {
+        } else if (width > 640) {
             setPackSize(4);
-        } else {
-            setMobile(true);
+        } else if (width > 330) {
             setPackSize(3);
+        } else {
+            setPackSize(2);
+        }
+        
+        if (width < 450) {
+            setMobile(true);
         }
     }, [width])
 
