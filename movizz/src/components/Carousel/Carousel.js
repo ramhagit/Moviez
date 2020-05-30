@@ -45,7 +45,7 @@ const Carousel = (props) => {
         } else {
             setPackSize(2);
         }
-        
+
         if (width < 450) {
             setMobile(true);
         }
@@ -153,11 +153,11 @@ const Carousel = (props) => {
                     <div className="carousel__card_img_container">
                         <img className="carousel__card_img" src={item.img_src} alt="" />
                     </div>
+                    <div className="carousel__card_description">
+                        <div className="carousel__card_description_name">{item.name}</div>
+                        <div className="carousel__card_description_character">{item.character}</div>
+                    </div>
                 </Link>
-                <div className="carousel__card_description">
-                    <div className="carousel__card_description_name">{item.name}</div>
-                    <div className="carousel__card_description_character">{item.character}</div>
-                </div>
             </div>
         })
 
