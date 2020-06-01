@@ -1,4 +1,4 @@
-import React, { useRef, useEffect  } from 'react';
+import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/MainPages/Home/Home';
@@ -11,15 +11,8 @@ import Attributes from './components/Attributes/Attributes';
 import MoviesForActor from './components/MoviesForActor/MoviesForActor';
 
 const App = () => {
-    const containerRef = useRef(null);
-
-    useEffect(() => {
-        window.scrollTo(0,0);
-        // containerRef.current.scrollTo(0,0);
-    }, [])
-
     return (
-        <div className="page-container" ref={containerRef}>
+        <div className="page-container" >
             <BrowserRouter>
                 <Navbar />
                 <div className="content-container">
