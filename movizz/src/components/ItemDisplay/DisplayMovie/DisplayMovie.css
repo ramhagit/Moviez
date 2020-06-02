@@ -140,11 +140,11 @@
 
 @media screen and (max-width: 450px) {
     .item__trailer_thumb, .item__card {
-        top: 28vh;
+        top: 25vh;
     }
     
     .item__backdrop, .item__card {
-        width: 35.5rem;
+        width: 42rem;
     }
 
     .item__trailer_thumb {
@@ -152,16 +152,22 @@
     }
 }
 
-@media screen and (max-width: 340px) {
+@media screen and (max-width: 382px) {
     .item__backdrop, .item__card {
-        width: 30rem;
+        width: 38rem;
     }
 
     .item__trailer_thumb {
         left: calc(50% + 10rem);
     }
+}
 
-    .item__tagline {
-        margin-top: 11vh;
+@media screen and (max-width: 346px) {
+    .item__backdrop, .item__card {
+        width: 36rem;
+    }
+
+    .item__trailer_thumb {
+        left: calc(50% + 10rem);
     }
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { TMDBAPI } from '../../api/base';
 import { tmdbKey } from '../../keys';
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet';
 import MainHeadline from '../MainHeadline/MainHeadline';
 import Loader from '../Loader/Loader';
 import ShowList from '../ListDisplay/ShowList/ShowList';
