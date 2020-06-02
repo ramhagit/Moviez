@@ -1,6 +1,6 @@
 # Moviez
 ## https://movizz.netlify.app/
-### Get all the info of your desired movies in one place!
+### Find your desired movies with ease!
 
 ![Image of Homepage](/screenshots/HomePage.png)
 
