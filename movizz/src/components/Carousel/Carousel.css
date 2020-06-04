@@ -240,14 +240,8 @@ button.arrow_forward.packs {
 @media screen and (max-width: 450px) {
     .carousel__title_cover {
         display: table-column-group;
-        /* width: 78%; */
-        /* max-height: calc(100% - 3rem); */
     }
 
-    /* .carousel__rate_cover {
-        font-size: medium;
-    } */
-    
     .carousel__rate_cover, .carousel__title_cover h2 {
         font-size: medium;
     }

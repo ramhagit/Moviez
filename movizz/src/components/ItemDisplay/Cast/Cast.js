@@ -7,7 +7,6 @@ import Carousel from '../../Carousel/Carousel';
 const Cast = (props) => {
     const { movieId } = props;
     const [casrArr, setCasrArr] = useState([]);
-    // const [crewArr, setCrewArr] = useState([]);
 
     useEffect(() => {
         const tmdbMovieCredits = () => {
@@ -16,7 +15,6 @@ const Cast = (props) => {
                     .then(response => {
                         console.log('Credits: ', response.data);
                         setCasrArr(response.data.cast);
-                        // setCrewArr(response.data.crew);
                     });
 
                 return () => {

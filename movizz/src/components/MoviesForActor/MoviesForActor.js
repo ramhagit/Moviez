@@ -44,8 +44,6 @@ const MoviesForActor = (props) => {
         const fetchData = () => {
             try {
                 if (id) {
-                    // discover/movie?api_key=${ApiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_cast=${id}`
-                    // TMDBAPI.get(`search/person?api_key=${tmdbKey}&language=en-US&query=${name}&page=1&include_adult=false`)
                     TMDBAPI.get(`discover/movie?api_key=${tmdbKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${pageNum}&with_cast=${id}`)
                         .then(response => {
                             console.log('by id: ', response.data);
@@ -74,13 +72,22 @@ const MoviesForActor = (props) => {
             <div className="movies_for_actor-container">
                 <MainHeadline title={name.replace('+', ' ')} />
                 <h1 className="search-results__headline">
-                    <span className="search-text"><b>{resultsList.length ? 'featured movies' : 'best known for movies'}</b></span>
+                    <span className="search-text">
+                        <b>{resultsList.length ? 'featured movies' : 'best known for movies'}</b>
+                    </span>
                 </h1>
             </div>
             {resultsList.length ?
-                <ShowList data={resultsList} numOfPages={numOfPages} path={`/movies_for_actor/${name}/${id}`} />
+                <ShowList
+                    data={resultsList}
+                    numOfPages={numOfPages}
+                    path={`/movies_for_actor/${name}/${id}`}
+                />
                 : bestKnownForList.length ?
-                    <ShowList data={bestKnownForList} path={`/movies_for_actor/${name}/${id}`} />
+                    <ShowList
+                        data={bestKnownForList}
+                        path={`/movies_for_actor/${name}/${id}`}
+                    />
                     : <Loader />}
         </>
     )
