@@ -148,17 +148,20 @@ const Carousel = (props) => {
 
     const PacksDisplay = () => {
         const cards = displayList.map(item => {
-            return <div className="carousel__card">
-                <Link to={item.link_path} >
-                    <div className="carousel__card_img_container">
-                        <img className="carousel__card_img" src={item.img_src} alt="" />
-                    </div>
+            return (
+                <div className="carousel__card">
+                    <Link to={item.link_path} >
+                        <div className="carousel__card_img_container">
+                            <img className="carousel__card_img" src={item.img_src} alt="" />
+                        </div>
+                    </Link>
                     <div className="carousel__card_description">
                         <div className="carousel__card_description_name">{item.name}</div>
                         <div className="carousel__card_description_character">{item.character}</div>
                     </div>
-                </Link>
-            </div>
+
+                </div>
+            )
         })
 
         return (
