@@ -2,7 +2,7 @@
 ## https://movizz.netlify.app/
 ### Find your desired movies with ease!
 
-![Image of Homepage](/screenshots/HomePage.png)
+![Image of Homepage](/screenshots/HomePage2.png)
 
 #### This is a REACT application 
 
