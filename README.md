@@ -11,13 +11,13 @@
 #
 
 ## Orientation
-You will find movies directly through the **HOME** Page  ||  under **MOVIES** tab on the Navbar  ||  by typing key words into the **SEARCH** input bar.
+- You will find movies directly through the **HOME** Page  ||  under **MOVIES** tab on the Navbar  ||  by typing key words into the **SEARCH** input bar.
 
-When clicking a specific *Movie Thumbnail* - the site will navigate to a **Detail Page** of that Movie (where you can find overview, trailer, cast etc.) 
+- When clicking a specific *Movie Thumbnail* - the site will navigate to a **Detail Page** of that Movie (where you can find overview, trailer, cast etc.) 
 
-Clicking *Cast member card* - will shift to **Featured Movies** for that Actor.
+- Clicking *Cast member card* - will shift to **Featured Movies** for that Actor.
 
-The *SEARCH Input Bar* has a dropdown auto-suggestion feature to it - clicking on any of the suggested movies will direct to it's **Detail Page**, *while* hiting the ***SEARCH** button* will direct to a **Search Results** Page holding <ins>all</ins> the matching movies. 
+- The *SEARCH Input Bar* has a dropdown auto-suggestion feature to it - clicking on any of the suggested movies will direct to it's **Detail Page**, *while* hiting the ***SEARCH** button* will direct to a **Search Results** Page holding <ins>all</ins> the matching movies. 
 
 #
 
