@@ -11,7 +11,7 @@
 #
 
 ## Orientation
-- You will find movies directly through the **HOME** Page  ||  under **MOVIES** tab on the Navbar  ||  by typing key words into the **SEARCH** input bar.
+- Finding movies: directly through the **HOME** Page  ||  under **MOVIES** tab on the Navbar  ||  by typing key words into the **SEARCH** input bar.
 
 - When clicking a specific *Movie Thumbnail* - the site will navigate to a **Detail Page** of that Movie (where you can find overview, trailer, cast etc.) 
 
